@@ -15,7 +15,7 @@ variables:
   webAppName: 'Portfolio'
 
   # Environment name
-  environmentName: ''
+  environmentName: 'Azure'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
