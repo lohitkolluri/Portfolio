@@ -1,22 +1,22 @@
 :root {
-  --navy-shadow: rgba(2, 12, 27, 0.7);
-  --background-color: #0a192f;
-  --lightest-navy: #233554;
+  --navy-shadow: rgba(0, 0, 0, 0.25);
+  --background-color: #1E1E1E;
+  --lightest-navy: rgba(50, 50, 50, 1);
   --light-navy: #112240;
-  --dark-slate: #495670;
+  --dark-slate: #2f4f4f;
   --slate: #8892b0;
-  --light-slate: #ccd6f6;
-  --lightest-slate: #a8b2d1;
+  --light-slate: #a8b2d1;
+  --lightest-slate: #ccd6f6;
   --theme-color: #64ffda;
 }
 
 ::-moz-selection {
-  color: white;
+  color: var(--background-color);
   background: var(--theme-color);
 }
 
 ::selection {
-  color: white;
+  color: var(--background-color);
   background: var(--theme-color);
 }
 
@@ -27,6 +27,7 @@ body {
 
 body {
   background-color: var(--background-color);
+  color: var(--lightest-slate);
   counter-reset: title;
 }
 
@@ -60,4 +61,8 @@ html {
   background-color: var(--dark-slate);
   border: 3px solid var(--background-color);
   border-radius: 10px;
+}
+
+.text-justify {
+  text-align: justify;
 }
