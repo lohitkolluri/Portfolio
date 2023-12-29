@@ -10,6 +10,7 @@ import About from "../sections/About";
 import Contact from "../sections/Contact";
 import Projects from "../sections/Projects";
 import Experience from "../sections/Experience";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 function Index() {
   const [isLoading, setIsLoading] = useState(true);
