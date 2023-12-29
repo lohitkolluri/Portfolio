@@ -62,7 +62,7 @@ function Navbar() {
             ease: "easeInOut",
           }}
         >
-          <Link href="lohitkolluri.tech">
+          <Link href="">
             <Logo />
           </Link>
         </motion.div>
