@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 :root {
   --tsm: 13px;
   --tsm1: 14px;
@@ -10,23 +11,27 @@
   --tx2large: 32px;
   --tgiant: clamp(40px, 8vw, 80px);
 }
+
 @media screen and (max-width: 480px) {
   :root {
     --tx2large: 25px;
   }
 }
 
+/* Social Icons */
 .social-icons {
   position: fixed;
   bottom: 0;
   left: 4rem;
 }
+
 .social-icons-list {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
+
 .social-icons-list-item {
   font-size: var(--tlarge2);
   transition: 0.3s ease-in-out;
@@ -34,20 +39,24 @@
   justify-content: center;
   align-items: center;
 }
+
 .social-icons-list-item-link {
   padding: 10px;
   color: var(--lightest-slate);
   transition: 0.3s ease-in-out;
   outline: 2px dashed transparent;
 }
+
 .social-icons-list-item-link:hover {
   color: var(--theme-color);
 }
+
 .social-icons-list-item-link:focus {
   outline-color: var(--theme-color);
   transform: translateY(-4px);
   color: var(--theme-color);
 }
+
 .social-icons-list-item:hover {
   transform: translateY(-4px);
 }
@@ -73,6 +82,7 @@
   }
 }
 
+/* Email */
 .email {
   position: fixed;
   bottom: 0;
@@ -81,6 +91,7 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .email-link {
   writing-mode: vertical-rl;
   text-decoration: none;
@@ -93,12 +104,15 @@
   padding: 10px;
   transition: 0.3s ease-in-out;
 }
+
 .email-link:hover {
   color: var(--theme-color);
 }
+
 .email-link:focus {
   outline-color: var(--theme-color);
 }
+
 .email::after {
   content: "";
   display: block;
@@ -118,6 +132,7 @@
   }
 }
 
+/* Button */
 .btn {
   color: var(--theme-color);
   padding: 0.75em 1em;
@@ -129,16 +144,21 @@
   font-size: var(--tsm);
   outline: none;
 }
-.btn:hover, .btn:focus {
+
+.btn:hover,
+.btn:focus {
   background-color: var(--lightest-navy);
 }
 
+
+/* Link */
 .link {
   text-decoration: none;
   display: inline-block;
   position: relative;
   color: var(--theme-color);
 }
+
 .link:after {
   content: "";
   position: absolute;
@@ -151,10 +171,13 @@
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
-.link:hover::after, .link:focus::after {
+
+.link:hover::after,
+.link:focus::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
 .link:focus {
   outline: none;
 }
@@ -168,38 +191,47 @@
   overflow: hidden;
   height: 90vh;
 }
+
 .loader svg {
   height: 10rem;
   width: 10rem;
 }
 
+/* Main Content */
 main {
   margin: 0 15rem;
 }
+
 @media screen and (max-width: 1020px) {
   main {
     margin: 0 8rem;
   }
 }
+
 @media screen and (max-width: 768px) {
   main {
     margin: 0 3rem;
   }
 }
+
 @media screen and (max-width: 480px) {
   main {
     margin: 0 1.5rem;
   }
 }
 
+/* Body */
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: var(--background-color);
 }
 
+/* Navigation */
 nav {
   min-height: 60px;
 }
+
 nav .wrapper {
   width: 100%;
   display: flex;
@@ -309,12 +341,14 @@ nav .blur-nav {
   top: 0;
   transition: 0.3s ease-in-out;
   z-index: 100;
-  background-color: rgba(10, 25, 47, 0.85);
-  box-shadow: 0 10px 30px -10px var(--navy-shadow);
+  background-color: rgba(239, 239, 239, 0.85); /* Update with your preferred color */
+
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
+
+/* Hero Section */
 .hero {
   margin-top: 4rem;
   display: flex;
@@ -359,6 +393,7 @@ nav .blur-nav {
   }
 }
 
+/* About Section */
 .about {
   margin: 15rem 0;
 }
@@ -452,7 +487,7 @@ nav .blur-nav {
   position: absolute;
   height: 350px;
   width: 350px;
-  background-color: rgba(157, 0, 255, 0.3019607843);
+  background-color: rgba(100, 255, 210, 0.35);
   border-radius: 0.2rem;
 }
 .about-grid-photo .overlay-border {
@@ -537,10 +572,12 @@ nav .blur-nav {
   }
 }
 
+/* Experience Section */
 .experience {
   margin: 15rem auto;
   max-width: 700px;
 }
+
 .experience .title {
   font-family: var(--raleway);
   color: var(--lightest-slate);
@@ -749,7 +786,7 @@ nav .blur-nav {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(157, 0, 255, 0.3019607843);
+  background-color: rgba(100, 255, 210, 0.35);
 }
 .projects-container .project-image img {
   z-index: 0;

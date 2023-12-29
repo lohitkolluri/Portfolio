@@ -11,14 +11,8 @@ function Projects() {
       projectName: "Portfolio Website",
       projectLink: "https://v2.lohitkolluri.tech",
       projectDescription:
-        "This Portfolio Website is a sleek and user-friendly platform, powered by Vite.js and React. With sections like Home, About, Work, Contact, and Resume, it seamlessly showcases Lohit's projects, skills, and background. The responsive design ensures an optimal viewing experience across devices, inviting visitors to explore and connect. Visit [https://v2.lohitkolluri.tech](https://v2.lohitkolluri.tech) to discover more.",
-      projectTech: [
-        "React",
-        "Vite.Js",
-        "Three.Js",
-        "Microsoft Azure",
-        "TailwindCSS",
-      ],
+        "This Portfolio Website is a sleek and user-friendly platform, powered by Vite.js and React. With sections like Home, About, Work, Contact, and Resume, it seamlessly showcases Lohit's projects, skills, and background. The responsive design ensures an optimal viewing experience across devices, inviting visitors to explore and connect.",
+      projectTech: ["React", "Vite.Js", "Three.Js", "Microsoft Azure", "TailwindCSS"],
       projectExternalLinks: {
         github: "https://github.com/lohitkolluri/Portfolio-Website",
         externalLink: "https://v2.lohitkolluri.tech",
@@ -26,20 +20,15 @@ function Projects() {
     },
     {
       image: "/P2.png",
-      projectName: "Mental Health Fitness Tracker",
+      projectName: "Mental Health Tracker",
       projectLink: "https://github.com/lohitkolluri/mental_health_fitness_tracker/blob/master/mental_health_tracker.pdf",
       projectDescription:
         "The Mental Health Fitness Tracker project focuses on analyzing and predicting mental fitness levels of individuals from various countries with different mental disorders. It utilizes regression techniques to provide insights into mental health and make predictions based on the available data.",
-      projectTech: [
-        "Numpy",
-        "Matplotlib",
-        "Scikit-learn",
-        "XGBoost",
-        "Seaborn",
-      ],
+      projectTech: ["Numpy", "Matplotlib", "Scikit-learn", "XGBoost", "Seaborn"],
       projectExternalLinks: {
         github: "https://github.com/lohitkolluri/mental_health_fitness_tracker",
-        externalLink: "https://github.com/lohitkolluri/mental_health_fitness_tracker/blob/master/mental_health_tracker.pdf",
+        externalLink:
+          "https://github.com/lohitkolluri/mental_health_fitness_tracker/blob/master/mental_health_tracker.pdf",
       },
     },
     {
@@ -48,19 +37,14 @@ function Projects() {
       projectLink: "https://code.lohitkolluri.tech",
       projectDescription:
         "A web-based code editor that allows you to compile and run your code in over 40 programming languages. You can also customize your coding environment by choosing from a selection of available themes.",
-      projectTech: [
-        "React",
-        "Node.js",
-        "Judge0 Api",
-        "Microsoft Azure",
-        "TailwindCSS",
-      ],
+      projectTech: ["React", "Node.js", "Judge0 Api", "Microsoft Azure", "TailwindCSS"],
       projectExternalLinks: {
         github: "https://github.com/lohitkolluri/CompileVortex",
         externalLink: "https://code.lohitkolluri.tech",
       },
     },
   ];
+  
   return (
     <div className="projects" id="work">
       <motion.div
