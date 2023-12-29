@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 function Projects() {
   const projectsData = [
     {
-      image: "/P1.png",
+      image: "/P1.webp",
       projectName: "Portfolio Website",
       projectLink: "https://v2.lohitkolluri.tech",
       projectDescription:
@@ -19,7 +19,7 @@ function Projects() {
       },
     },
     {
-      image: "/P2.png",
+      image: "/P2.webp",
       projectName: "Mental Health Tracker",
       projectLink: "https://github.com/lohitkolluri/mental_health_fitness_tracker/blob/master/mental_health_tracker.pdf",
       projectDescription:
@@ -32,7 +32,7 @@ function Projects() {
       },
     },
     {
-      image: "/P3.png",
+      image: "/P3.webp",
       projectName: "Compile Vortex",
       projectLink: "https://code.lohitkolluri.tech",
       projectDescription:
