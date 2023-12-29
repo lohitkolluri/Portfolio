@@ -44,7 +44,7 @@ function Projects() {
       },
     },
   ];
-  
+
   return (
     <div className="projects" id="work">
       <motion.div
@@ -93,7 +93,7 @@ function Projects() {
                   <p className="project-info-overline">Featured Project</p>
                   <h3 className="project-info-title">{projectName}</h3>
                   <div className="project-info-description">
-                    <p>{projectDescription}</p>
+                    <p style={{ textAlign: "justify" }}>{projectDescription}</p>
                   </div>
                   <ul className="project-info-tech-list">
                     {projectTech.map((tech) => (
