@@ -1,3 +1,48 @@
-node_modules
-.next
-.DS_STORE
+# Node.js
+node_modules/
+
+# Next.js
+.next/
+
+# macOS system files
+.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+# WebStorm
+.idea/
+
+# Temporary files
+*.swp
+*.swo
+*.swn
+*~
+
+# Build files
+/build/
+/out/
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Compiled binary addons
+/build/Release
+/build/Debug
+
+# Dependency directories
+/jspm_packages/
+/bower_components/
+/libs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
