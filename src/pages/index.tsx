@@ -25,6 +25,7 @@ function Index() {
       <Head>
         <title>LOHIT KOLLURI</title>
         <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name="google-site-verification" content="DgzOS3oNMuUQ4Y1sU7x860SgyvsYvnd1BCWQLFu0KT8" />
       </Head>
       {showContent && (
         <>
