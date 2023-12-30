@@ -23,7 +23,7 @@ function Index() {
   return (
     <div className="app">
       <Head>
-        <title>Lohit Kolluri</title>
+        <title>LOHIT KOLLURI</title>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       {showContent && (
