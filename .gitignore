@@ -2,7 +2,7 @@
 node_modules/
 
 # Next.js
-.next/
+
 
 # macOS system files
 .DS_Store
