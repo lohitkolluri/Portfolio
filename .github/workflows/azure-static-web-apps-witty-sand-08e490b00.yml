@@ -30,5 +30,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
-          output_location: ".next" # Built app content directory - optional
+          output_location: ".next"
+          app_build_command: 'npm run build && rm -rf ./node_modules/@next/swc-* && rm -rf ./.next/cache'
+          
           ###### End of Repository/Build Configurations ######
