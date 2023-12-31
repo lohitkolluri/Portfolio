@@ -1,75 +1,65 @@
-# Lohit Kolluri - Portfolio
+<h1 align="center" id="title">Portfolio Website</h1>
 
-This is my personal portfolio website built using Next.js. It showcases my projects, skills, and experience in the field of software engineering. The design inspiration is derived from [Brittany Chiang](https://brittanychiang.com/).
+<p id="description">Welcome to my personal portfolio website built with Next.js. It serves as a showcase for my projects, skills, and experience in the field of software engineering. The design inspiration for this portfolio is derived from Brittany Chiang.</p>
 
-## Table of Contents
+<h2>🚀 Demo</h2>
 
-- [Demo](#demo)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Folder Structure](#folder-structure)
-- [Built With](#built-with)
-- [License](#license)
-- [Credits](#credits)
+[https://lohitkolluri.tech](https://lohitkolluri.tech)
 
-## Demo
+<h2>🧐 Features</h2>
 
-You can view the live demo of the portfolio [here](https://lohitkolluri.tech/).
+Explore some of the project's key features:
 
-## Features
+* Responsive design
+* Section-wise navigation
+* Project showcase
+* Experience and skills presentation
+* Contact information
 
-- Responsive design
-- Section-wise navigation
-- Project showcase
-- Experience and skills presentation
-- Contact information
-- Loader animation
+<h2>🛠️ Installation Steps:</h2>
 
-## Getting Started
+1. Clone the repository:
 
-To run this project locally, follow these steps:
+    ```bash
+    git clone https://github.com/lohitkolluri/Portfolio.git
+    ```
 
-1. **Clone the repository:**
+2. Go to the directory:
 
-   ```bash
-   git clone https://github.com/lohitkolluri/Portfolio.git
-   ```
+    ```bash
+    cd Portfolio
+    ```
 
-2. **Install dependencies:**
+3. Install dependencies:
 
-   ```bash
-   cd Portfolio
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
-3. **Run the development server:**
+4. Run the development server:
 
-   ```bash
-   npm run dev
-   ```
+    ```bash
+    npm run dev
+    ```
 
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open localhost in your browser:
 
-## Folder Structure
+    [http://localhost:3000](http://localhost:3000)
 
-The project follows the standard Next.js folder structure. Key directories include:
+<h2>💻 Built with</h2>
 
-- `components`: React components used throughout the application.
-- `pages`: Next.js pages defining routes and content for each page.
-- `sections`: Sections of the portfolio (Hero, About, Experience, Projects, Contact).
-- `styles`: Global styles and CSS modules.
+Technologies used in the project:
 
-## Built With
+* Next.js
+* React
+* Framer Motion
+* Tailwind CSS
 
-- [Next.js](https://nextjs.org/)
-- [React](https://reactjs.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [Tailwind CSS](https://tailwindcss.com/)
+<h2>🛡️ License:</h2>
 
-## License
+This project is licensed under the [MIT License](LICENSE)
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Credits
+<h2>👨‍💻 Credits</h2>
 
 The design inspiration for this portfolio is derived from [Brittany Chiang](https://brittanychiang.com/). I appreciate her work and used it as a reference for creating my personal portfolio.
