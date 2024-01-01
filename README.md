@@ -1,65 +1,42 @@
-<h1 align="center" id="title">Portfolio Website</h1>
+<h1 align="center" id="title">Stack Machine Simulator</h1>
 
-<p id="description">Welcome to my personal portfolio website built with Next.js. It serves as a showcase for my projects, skills, and experience in the field of software engineering. The design inspiration for this portfolio is derived from Brittany Chiang.</p>
+<p id="description">A simple Arduino sketch that simulates a stack machine allowing you to execute stack-based operations via serial communication.</p>
 
 <h2>🚀 Demo</h2>
 
-[https://lohitkolluri.tech](https://lohitkolluri.tech)
+[www.tinkercad.com/things/fhYWyLqPAry](www.tinkercad.com/things/fhYWyLqPAry)
 
+  
+  
 <h2>🧐 Features</h2>
 
-Explore some of the project's key features:
+Here're some of the project's best features:
 
-* Responsive design
-* Section-wise navigation
-* Project showcase
-* Experience and skills presentation
-* Contact information
+*   Push values onto the stack.
+*   Pop values from the stack.
+*   Perform addition multiplication and division operations.
+*   Error handling for stack underflow and division by zero.
+*   Interaction via the Arduino Serial Monitor.
 
 <h2>🛠️ Installation Steps:</h2>
 
-1. Clone the repository:
+1. **Upload the provided Arduino sketch:**
+   - Use the Arduino IDE or compatible online platforms to upload the sketch to your Arduino board.
 
-    ```bash
-    git clone https://github.com/lohitkolluri/Portfolio.git
-    ```
+2. **Open the Arduino Serial Monitor:**
+   - Navigate to Tools -> Serial Monitor in the Arduino IDE or use a serial communication tool if you're using Tinkercad.
 
-2. Go to the directory:
+3. **Enter instructions in the Serial Monitor:**
+   - Supported commands include:
+     - `PUSH <value>`: Push a floating-point value onto the stack.
+     - `POP`: Pop the top value from the stack.
+     - `ADD`: Perform addition on the top two stack values.
+     - `MUL`: Perform multiplication on the top two stack values.
+     - `DIV`: Perform division on the top two stack values (avoiding division by zero).
 
-    ```bash
-    cd Portfolio
-    ```
-
-3. Install dependencies:
-
-    ```bash
-    npm install
-    ```
-
-4. Run the development server:
-
-    ```bash
-    npm run dev
-    ```
-
-5. Open localhost in your browser:
-
-    [http://localhost:3000](http://localhost:3000)
-
-<h2>💻 Built with</h2>
-
-Technologies used in the project:
-
-* Next.js
-* React
-* Framer Motion
-* Tailwind CSS
+4. **Observe the stack's current state and operation results:**
+   - View the Serial Monitor for real-time feedback on the stack's state and any operation results.
 
 <h2>🛡️ License:</h2>
 
-This project is licensed under the [MIT License](LICENSE)
-
-
-<h2>👨‍💻 Credits</h2>
-
-The design inspiration for this portfolio is derived from [Brittany Chiang](https://brittanychiang.com/). I appreciate her work and used it as a reference for creating my personal portfolio.
+This project is licensed under the MIT License
