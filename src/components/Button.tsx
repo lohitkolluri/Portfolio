@@ -1,12 +1,16 @@
-import Link from "next/link";
 import React from "react";
 
-function Button({ text, link }: { text: string; link: string }) {
-  return (
-    <Link className="btn" href={link}>
-      {text}
-    </Link>
-  );
+interface ButtonProps {
+  text: string;
+  link: string;
 }
+
+const Button: React.FC<ButtonProps> = ({ text, link }) => {
+  return (
+    <a href={link} className="btn" target="_blank" rel="noopener noreferrer">
+      {text}
+    </a>
+  );
+};
 
 export default Button;

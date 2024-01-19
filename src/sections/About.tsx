@@ -9,7 +9,7 @@ function About() {
   useEffect(() => {
     console.log("Element is in view: ", isInView);
   }, [isInView]);
-  
+
   return (
     <motion.div
       className="about"
@@ -28,15 +28,15 @@ function About() {
       </div>
       <div className="about-grid">
         <div className="about-grid-info">
-        <p className="about-grid-info-text text-justify">
-  Hello! I&apos;m Lohit Kolluri, a passionate and versatile technologist with a strong foundation in machine learning, cloud computing, and software development. I thrive on the intersection of creativity and technology, constantly exploring new ways to innovate and solve complex problems.
-</p>
-<p className="about-grid-info-text text-justify">
-  I specialize in Python, Google Cloud, and Three.Js, with hands-on experience in machine learning, C++, and Node.JS. My expertise extends to building robust web applications with React, Vue.Js, and Tailwind CSS. As an AI/ML enthusiast, I&apos;ve honed my skills through internships, including one at EduSkill Foundation, where I delved into AWS Cloud and machine learning fundamentals.
-</p>
-<p className="about-grid-info-text text-justify">
-  Here are a few technologies I&apos;ve been working with recently:
-</p>
+          <p className="about-grid-info-text text-justify">
+            Hello! I&apos;m Lohit Kolluri, a passionate and versatile technologist with a strong foundation in machine learning, cloud computing, and software development. I thrive on the intersection of creativity and technology, constantly exploring new ways to innovate and solve complex problems.
+          </p>
+          <p className="about-grid-info-text text-justify">
+            I specialize in Python, Google Cloud, and Three.Js, with hands-on experience in machine learning, C++, and Node.JS. My expertise extends to building robust web applications with React, Vue.Js, and Tailwind CSS. As an AI/ML enthusiast, I&apos;ve honed my skills through internships, including one at EduSkill Foundation, where I delved into AWS Cloud and machine learning fundamentals.
+          </p>
+          <p className="about-grid-info-text text-justify">
+            Here are a few technologies I&apos;ve been working with recently:
+          </p>
 
           <ul className="about-grid-info-list">
             <li className="about-grid-info-list-item">React</li>
@@ -51,7 +51,13 @@ function About() {
           <div className="overlay"></div>
           <div className="overlay-border"></div>
           <div className="about-grid-photo-container">
-          <Image src="https://lohitcdn.blob.core.windows.net/portfoliocdn/Etc/lohit.webp" alt="profile" fill />
+            <Image
+              src="https://lohitcdn.blob.core.windows.net/portfoliocdn/Etc/lohit.webp"
+              alt="profile"
+              fill
+              sizes="100vw" // Add appropriate sizes
+            />
+
 
           </div>
         </div>
