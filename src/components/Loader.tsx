@@ -1,13 +1,23 @@
-import React, { useEffect, useState } from "react";
-import Logo from "./Logo";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import { AnimatePresence, motion } from "framer-motion";
 
-function Loader({ isLoading, setIsLoading }: any) {
+interface LoaderProps {
+  isLoading: boolean;
+  setIsLoading: () => void;
+}
+
+function Loader({ isLoading, setIsLoading }: LoaderProps) {
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading();
+    // Simulate loading completion after 1900 milliseconds
+    const timeoutId = setTimeout(() => {
+      setIsLoading();  // No need to pass an argument here
     }, 1900);
-  }, [setIsLoading]);
+
+    // Cleanup the timeout when the component unmounts or loading is complete
+    return () => clearTimeout(timeoutId);
+  }, []);  // Removed setIsLoading from the dependency array
+
   return (
     <AnimatePresence>
       {isLoading && (
@@ -65,11 +75,16 @@ function Loader({ isLoading, setIsLoading }: any) {
           L 89, 28 z"
               />
             </g>
-          </motion.svg>
+            </motion.svg>
         </motion.div>
       )}
     </AnimatePresence>
   );
 }
+
+Loader.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  setIsLoading: PropTypes.func.isRequired,
+};
 
 export default Loader;

@@ -1,10 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  output: "standalone",
+// next.config.js
+module.exports = {
   images: {
-    domains: ['lohitcdn.blob.core.windows.net'], // Only the root domain
-  },  
+    domains: ['lohitcdn.blob.core.windows.net'],
+  },
 };
-
-module.exports = nextConfig;
