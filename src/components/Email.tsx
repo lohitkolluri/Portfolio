@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 function Email() {
   return (
@@ -12,8 +11,8 @@ function Email() {
         delay: 1.95,
       }}
     >
-      <a href="mailto:me@lohitkolluri.tech" className="email-link">
-        me@lohitkolluri.tech
+      <a href="mailto:lohitkolluri@gmail.com" className="email-link">
+        lohitkolluri@gmail.com
       </a>
     </motion.div>
   );

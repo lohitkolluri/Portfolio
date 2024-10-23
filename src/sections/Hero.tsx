@@ -1,7 +1,6 @@
-import Button from "../components/Button";
-import Link from "next/link";
-import React from "react";
 import { motion } from "framer-motion";
+import Button from "../components/Button";
+
 function Hero() {
   return (
     <div className="hero-container">
@@ -25,7 +24,7 @@ function Hero() {
             delay: 0.6,
           }}
         >
-          Hi my name is
+          Hi, my name is
         </motion.h1>
         <motion.h2
           className="hero-title-large"
@@ -49,7 +48,7 @@ function Hero() {
             delay: 1.05,
           }}
         >
-          I craft things for the web.
+          I craft solutions for the web.
         </motion.h3>
         <motion.p
           className="hero-text"
@@ -61,8 +60,7 @@ function Hero() {
             delay: 1.35,
           }}
         >
-          I&apos;m a software engineer with expertise in creating top-notch
-          digital experiences. My current focus is on Web Development, AI/ML, and CyberSecurity.
+          I&apos;m a software developer with a focus on building exceptional digital experiences. My current interests lie in Web Development, AI/ML, and Cybersecurity.
         </motion.p>
         <motion.div
           className="hero-button"

@@ -1,10 +1,11 @@
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { CgClose } from "react-icons/cg";
+import { GiHamburgerMenu } from "react-icons/gi";
 import Button from "../components/Button";
 import Logo from "../components/Logo";
-import Link from "next/link";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { CgClose } from "react-icons/cg";
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+
 function Navbar() {
   const [navbarVisible, setNavbarVisible] = useState(false);
   const [responsiveNavVisible, setResponsiveNavVisible] = useState(false);
@@ -12,10 +13,7 @@ function Navbar() {
     { name: "About", link: "/#about" },
     { name: "Experience", link: "/#experience" },
     { name: "Work", link: "/#work" },
-    {
-      name: "Contact",
-      link: "/#contact",
-    },
+    { name: "Contact", link: "/#contact" },
   ];
 
   useEffect(() => {

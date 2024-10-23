@@ -1,6 +1,7 @@
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 function Experience() {
   const [selected, setSelected] = useState(0);
 
@@ -12,11 +13,11 @@ function Experience() {
     transformSelected();
   }, [selected]);
 
-  const expereinces = [
+  const experiences = [
     {
       name: "EduSkill Foundation",
-      role: "AI/ML Internship",
-      url: "https://www.rapidops.com",
+      role: "AI Intern",
+      url: "https://www.eduskillsfoundation.org",
       start: "September 2023",
       end: "November 2023",
       shortDescription: [
@@ -25,30 +26,42 @@ function Experience() {
       ],
     },
     {
-      name: "Mathwork",
+      name: "MathWorks",
       role: "Virtual Intern",
-      url: "https://www.mathwork.com",
+      url: "https://www.mathworks.com",
       start: "May 2023",
       end: "September 2023",
       shortDescription: [
-        "Completed virtual internship, gaining a strong foundation in MATLAB, including data analysis and processing.",
-        "Acquired practical skills in image and signal processing, including segmentation, batch processing, and spectral analysis.",
-        "Developed expertise in machine learning models for clustering, classification, and regression, and customized deep learning techniques for image classification.",
+        "Completed advanced courses in utilizing AI tools provided by MathWorks.",
+        "Gained proficiency in data analysis, model development, and AI tools like MATLAB.",
+        "Specialized in machine learning models for clustering, classification, and deep learning techniques for image classification.",
       ],
     },
     {
       name: "Edunet Foundation",
-      role: "Artificial Intelligence Intern",
+      role: "AI Intern",
       url: "https://www.edunetfoundation.org",
       start: "June 2023",
       end: "July 2023",
       shortDescription: [
-        "Engineered a comprehensive Mental Health Fitness Tracker ML model utilizing Python and scikit-learn.",
-        "Maximized the model's performance by refining model parameters and employing ensemble methods, yielding an outstanding accuracy percentage of 98.50%.",
-        "Leveraged 12 regression algorithms to attain precise outcomes in analyzing and predicting mental fitness levels across 150+ countries.",
+        "Developed a precise Mental Health Fitness Tracker using Python and scikit-learn.",
+        "Improved model accuracy to 98.5% through feature engineering and ensemble methods.",
+        "Utilized 12 regression algorithms for mental fitness analysis across 150+ countries.",
+      ],
+    },
+    {
+      name: "Apollo Tyres Ltd",
+      role: "Project Trainee",
+      url: "https://www.apollotyres.com/",
+      start: "February 2024",
+      end: "May 2024",
+      shortDescription: [
+        "Worked on a 4-month industrial project focused on Automation in Simulation and Data Management.",
+        "Collaborated with a talented team to develop innovative solutions for tyre simulation and data management.",
       ],
     },
   ];
+
   return (
     <motion.div
       className="experience"
@@ -68,36 +81,36 @@ function Experience() {
       <div className="container">
         <ul className="exp-slider">
           <div className="underline"></div>
-          {expereinces.map((expereince, index) => {
-            return (
-              <li
-                className={`exp-slider-item ${
-                  index === selected && "exp-slider-item-selected"
-                }`}
-                onClick={() => setSelected(index)}
-                key={expereince.name}
-              >
-                <span>{expereince.name}</span>
-              </li>
-            );
-          })}
+          {experiences.map((experience, index) => (
+            <li
+              className={`exp-slider-item ${
+                index === selected && "exp-slider-item-selected"
+              }`}
+              onClick={() => setSelected(index)}
+              key={experience.name}
+            >
+              <span>{experience.name}</span>
+            </li>
+          ))}
         </ul>
         <div className="exp-details">
           <div className="exp-details-position">
             <h3>
-              <span>{expereinces[selected].role}</span>
+              <span>{experiences[selected].role}</span>
               <span className="exp-details-position-company">
                 &nbsp;@&nbsp;
-                <Link href={expereinces[selected].url} className="link">
-                  {expereinces[selected].name}
+                <Link href={experiences[selected].url} legacyBehavior>
+                  <a target="_blank" rel="noopener noreferrer" className="link">
+                    {experiences[selected].name}
+                  </a>
                 </Link>
               </span>
             </h3>
             <p className="exp-details-range">
-              {expereinces[selected].start} - {expereinces[selected].end}
+              {experiences[selected].start} - {experiences[selected].end}
             </p>
             <ul className="exp-details-list">
-              {expereinces[selected].shortDescription.map(
+              {experiences[selected].shortDescription.map(
                 (description, index) => (
                   <li key={index} className="exp-details-list-item">
                     {description}

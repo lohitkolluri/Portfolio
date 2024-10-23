@@ -1,46 +1,45 @@
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { FiGithub, FiExternalLink } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { FiExternalLink, FiGithub } from "react-icons/fi";
 
 function Projects() {
   const projectsData = [
     {
-      image: "https://lohitcdn.blob.core.windows.net/portfoliocdn/Etc/P1.webp",
-      projectName: "Portfolio Website",
-      projectLink: "https://v2.lohitkolluri.tech",
+      image: "/projects/project1.png",
+      projectName: "NLP2SQL",
+      projectLink: "https://nlp2sql.streamlit.app/",
       projectDescription:
-        "This Portfolio Website is a sleek and user-friendly platform, powered by Vite.js and React. With sections like Home, About, Work, Contact, and Resume, it seamlessly showcases Lohit's projects, skills, and background. The responsive design ensures an optimal viewing experience across devices, inviting visitors to explore and connect.",
-      projectTech: ["React", "Vite.Js", "Three.Js", "Microsoft Azure", "TailwindCSS"],
+        "NLP2SQL is an NLP task that aims to generate SQL queries from natural language text. It involves converting text input into a structured format to create a semantically correct SQL query for database execution.",
+      projectTech: ["Streamlit", "Azure OpenAI", "SQLite3", "Pandas", "Altair"],
       projectExternalLinks: {
-        github: "https://github.com/lohitkolluri/Portfolio-Website",
-        externalLink: "https://v2.lohitkolluri.tech",
+        github: "https://github.com/lohitkolluri/NLP2SQL",
+        externalLink: "https://nlp2sql.streamlit.app/",
       },
     },
     {
-      image: "https://lohitcdn.blob.core.windows.net/portfoliocdn/Etc/P2.webp",
-      projectName: "Mental Health Tracker",
-      projectLink: "https://github.com/lohitkolluri/mental_health_fitness_tracker/blob/master/mental_health_tracker.pdf",
+      image: "/projects/project2.png",
+      projectName: "FlaskPost",
+      projectLink: "https://flask-post.vercel.app/",
       projectDescription:
-        "The Mental Health Fitness Tracker project focuses on analyzing and predicting mental fitness levels of individuals from various countries with different mental disorders. It utilizes regression techniques to provide insights into mental health and make predictions based on the available data.",
-      projectTech: ["Numpy", "Matplotlib", "Scikit-learn", "XGBoost", "Seaborn"],
+        "FlaskPost is a powerful and user-friendly web application designed for sending personalized mass emails effortlessly. Built with FastAPI it allows users to configure SMTP settings upload CSV files for recipient management and craft customized HTML email templates. With a sleek interface that includes an integrated HTML editor and a live preview feature FlaskPost ensures a seamless email creation experience. Whether for marketing campaigns newsletters or event invitations FlaskPost empowers users to reach their audience effectively while maintaining a professional touch.",
+      projectTech: ["FastAPI", "REST API", "Jinja2", "Fast Mail", "HTML,CSS,JS"],
       projectExternalLinks: {
-        github: "https://github.com/lohitkolluri/mental_health_fitness_tracker",
+        github: "https://github.com/lohitkolluri/FlaskPost",
         externalLink:
-          "https://github.com/lohitkolluri/mental_health_fitness_tracker/blob/master/mental_health_tracker.pdf",
+          "https://github.com/lohitkolluri/FlaskPost",
       },
     },
     {
-      image: "https://lohitcdn.blob.core.windows.net/portfoliocdn/Etc/P3.webp",
+      image: "/projects/project3.webp",
       projectName: "Compile Vortex",
-      projectLink: "https://code.lohitkolluri.tech",
+      projectLink: "https://compile-vortex.vercel.app/",
       projectDescription:
         "A web-based code editor that allows you to compile and run your code in over 40 programming languages. You can also customize your coding environment by choosing from a selection of available themes.",
       projectTech: ["React", "Node.js", "Judge0 Api", "Microsoft Azure", "TailwindCSS"],
       projectExternalLinks: {
         github: "https://github.com/lohitkolluri/CompileVortex",
-        externalLink: "https://code.lohitkolluri.tech",
+        externalLink: "https://compile-vortex.vercel.app/",
       },
     },
   ];
@@ -104,19 +103,17 @@ function Projects() {
                   </ul>
                   <ul className="project-info-links">
                     <li className="project-info-links-item">
-                      <Link
-                        href={projectExternalLinks.github}
-                        className="project-info-links-item-link"
-                      >
-                        <FiGithub />
+                      <Link href={projectExternalLinks.github} legacyBehavior>
+                        <a target="_blank" rel="noopener noreferrer" className="project-info-links-item-link">
+                          <FiGithub />
+                        </a>
                       </Link>
                     </li>
                     <li className="project-info-links-item">
-                      <Link
-                        href={projectExternalLinks.externalLink}
-                        className="project-info-links-item-link"
-                      >
-                        <FiExternalLink />
+                      <Link href={projectExternalLinks.externalLink} legacyBehavior>
+                        <a target="_blank" rel="noopener noreferrer" className="project-info-links-item-link">
+                          <FiExternalLink />
+                        </a>
                       </Link>
                     </li>
                   </ul>

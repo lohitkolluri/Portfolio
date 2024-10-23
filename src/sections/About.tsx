@@ -1,7 +1,6 @@
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useRef } from "react";
-import { useInView, motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 function About() {
   const ref = useRef(null);
@@ -29,10 +28,10 @@ function About() {
       <div className="about-grid">
         <div className="about-grid-info">
           <p className="about-grid-info-text text-justify">
-            Hello! I&apos;m Lohit Kolluri, a passionate and versatile technologist with a strong foundation in machine learning, cloud computing, and software development. I thrive on the intersection of creativity and technology, constantly exploring new ways to innovate and solve complex problems.
+            Hello! I&apos;m Lohit Kolluri, a Full Stack Developer passionate about DevOps and Machine Learning. With experience across a wide array of technologies, I strive to deliver scalable, cost-effective solutions. I hold a Bachelor of Technology from SRM Institute of Science and Technology, with a focus on cloud computing, backend development, and intelligent automation.
           </p>
           <p className="about-grid-info-text text-justify">
-            I specialize in Python, Google Cloud, and Three.Js, with hands-on experience in machine learning, C++, and Node.JS. My expertise extends to building robust web applications with React, Vue.Js, and Tailwind CSS. As an AI/ML enthusiast, I&apos;ve honed my skills through internships, including one at EduSkill Foundation, where I delved into AWS Cloud and machine learning fundamentals.
+            At Apollo Tyres R&D, I developed an intelligent task queuing system and architected a scalable backend using Django and PostgreSQL, boosting performance by 40%. My hands-on experience spans Python, Google Cloud, AWS, and frameworks like FastAPI and Flask. I've led projects such as a Natural Language to SQL Converter that reduced deployment costs by 40% while improving query accuracy to 95%.
           </p>
           <p className="about-grid-info-text text-justify">
             Here are a few technologies I&apos;ve been working with recently:
@@ -52,13 +51,11 @@ function About() {
           <div className="overlay-border"></div>
           <div className="about-grid-photo-container">
             <Image
-              src="https://lohitcdn.blob.core.windows.net/portfoliocdn/Etc/lohit.webp"
+              src="/etc/image.png"
               alt="profile"
               fill
               sizes="100vw" // Add appropriate sizes
             />
-
-
           </div>
         </div>
       </div>

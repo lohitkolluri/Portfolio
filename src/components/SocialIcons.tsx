@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FiGithub,
   FiInstagram,
@@ -21,7 +20,7 @@ function SocialIcons() {
               href={link}
               className="social-icons-list-item-link"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer" // This ensures security and performance
             >
               {icon}
             </a>
