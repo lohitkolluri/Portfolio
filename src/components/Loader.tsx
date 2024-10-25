@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import { AnimatePresence, motion } from "framer-motion";
+import PropTypes from "prop-types";
+import { useEffect } from "react";
 
 interface LoaderProps {
   isLoading: boolean;

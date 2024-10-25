@@ -23,7 +23,7 @@ function Index() {
   return (
     <div className="app">
       <Head>
-        <title>Lohit's Portfolio</title>
+        <title>Lohit&apos;s Portfolio</title>
         <link rel="shortcut icon" href="/favicon.png" />
         <meta name="google-site-verification" content="DgzOS3oNMuUQ4Y1sU7x860SgyvsYvnd1BCWQLFu0KT8" />
       </Head>
