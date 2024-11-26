@@ -23,7 +23,7 @@ function Projects() {
       projectLink: "https://flask-post.vercel.app/",
       projectDescription:
         "FlaskPost is a powerful and user-friendly web application designed for sending personalized mass emails effortlessly. Built with FastAPI it allows users to configure SMTP settings upload CSV files for recipient management and craft customized HTML email templates. With a sleek interface that includes an integrated HTML editor and a live preview feature FlaskPost ensures a seamless email creation experience. Whether for marketing campaigns newsletters or event invitations FlaskPost empowers users to reach their audience effectively while maintaining a professional touch.",
-      projectTech: ["FastAPI", "REST API", "Jinja2", "Fast Mail", "HTML,CSS,JS"],
+      projectTech: ["FastAPI", "REST API", "Jinja2", "Fast Mail", "HTML", "CSS", "JS"],
       projectExternalLinks: {
         github: "https://github.com/lohitkolluri/FlaskPost",
         externalLink:
