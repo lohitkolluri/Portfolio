@@ -27,7 +27,7 @@ const Contact = () => {
         get back to you!
       </p>
       <div className="contact-cta">
-        <Button link="mailto:lohitkolluri@gmail.com" text="Say Hello" />
+        <Button link="mailto:lohitkolluri@gmail.com" text="Say Hello" aria-label="Email Lohit Kolluri" />
       </div>
     </motion.div>
   );

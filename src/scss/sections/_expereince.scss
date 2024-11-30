@@ -6,7 +6,7 @@
     color: var(--lightest-slate);
     position: relative;
     h2 {
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       font-size: var(--tx2large);
       font-weight: 700;
       &::before {
@@ -18,7 +18,7 @@
       &::after {
         content: "";
         display: block;
-        position: absolute;
+        position: absolute; 
         top: 20px;
         width: 300px;
         height: 2px;
@@ -53,8 +53,8 @@
         background-color: var(--lightest-navy);
       }
       &-item {
-        height: 2.5rem;
-        padding: 0 1.5rem;
+        height: 3rem;
+        padding: 0 2rem;
         display: flex;
         vertical-align: middle;
         cursor: pointer;
@@ -85,6 +85,7 @@
       font-family: var(--raleway);
       &-position {
         color: var(--lightest-slate);
+        margin-top: 2rem;
         &-company {
           color: var(--theme-color);
         }
@@ -97,7 +98,7 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         padding-left: 20px;
         &-item {
           position: relative;

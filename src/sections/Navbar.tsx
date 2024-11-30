@@ -105,7 +105,7 @@ function Navbar() {
                   delay: 0.3 + index * 0.1,
                 }}
               >
-                <Link href={link} className="nav-items-list-item-link">
+                <Link href={link} className="nav-items-list-item-link" aria-label={`Navigate to ${name}`}>
                   {name}
                 </Link>
               </motion.li>

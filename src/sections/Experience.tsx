@@ -83,11 +83,9 @@ function Experience() {
           <div className="underline"></div>
           {experiences.map((experience, index) => (
             <li
-              className={`exp-slider-item ${
-                index === selected && "exp-slider-item-selected"
-              }`}
+              className={`exp-slider-item ${index === selected ? "exp-slider-item-selected" : ""}`}
               onClick={() => setSelected(index)}
-              key={experience.name}
+              key={`${experience.name}-${index}`}
             >
               <span>{experience.name}</span>
             </li>
