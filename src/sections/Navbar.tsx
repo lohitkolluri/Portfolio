@@ -17,11 +17,13 @@ function Navbar() {
   ];
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       window.pageYOffset > 100
         ? setNavbarVisible(true)
         : setNavbarVisible(false);
-    });
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); // Cleanup listener
   }, []);
 
   useEffect(() => {
@@ -53,10 +55,10 @@ function Navbar() {
       <div className={`wrapper ${navbarVisible ? "blur-nav" : ""}`}>
         <motion.div
           className="brand"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{
-            duration: 0.3,
+            duration: 0.5,
             ease: "easeInOut",
           }}
         >
@@ -66,8 +68,8 @@ function Navbar() {
         </motion.div>
         <motion.div
           className="nav-responsive-toggle"
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{
             duration: 0.3,
             ease: "easeInOut",
@@ -89,8 +91,15 @@ function Navbar() {
             />
           )}
         </motion.div>
-        <div
+        <motion.div
           className={`${responsiveNavVisible && "nav-responsive"} nav-items`}
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          transition={{
+            duration: 0.3,
+            ease: "easeInOut",
+          }}
         >
           <ul className="nav-items-list">
             {sectionLinks.map(({ name, link }, index) => (
@@ -102,7 +111,7 @@ function Navbar() {
                 transition={{
                   duration: 0.3,
                   ease: "easeInOut",
-                  delay: 0.3 + index * 0.1,
+                  delay: 0.1 + index * 0.1,
                 }}
               >
                 <Link href={link} className="nav-items-list-item-link" aria-label={`Navigate to ${name}`}>
@@ -123,7 +132,7 @@ function Navbar() {
           >
             <Button text="Resume" link="https://drive.google.com/file/d/1KwoW5uTW2aUEoi14CnM6JGQatup_5aAf/view?usp=sharing" />
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </nav>
   );

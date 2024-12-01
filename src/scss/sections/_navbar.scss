@@ -47,6 +47,7 @@ nav {
       font-weight: 500;
       font-size: var(--tsm1);
       counter-reset: nav-list;
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
       &-list {
         display: flex;
         gap: 3rem;
@@ -57,7 +58,7 @@ nav {
             padding: 10px;
             text-decoration: none;
             color: inherit;
-            transition: 0.3s ease-in-out;
+            transition: color 0.3s ease-in-out;
             &::before {
               counter-increment: nav-list;
               content: "0" counter(nav-list) ". ";
@@ -68,6 +69,7 @@ nav {
             outline-color: var(--theme-color);
           }
           &:hover {
+            transform: scale(1.05);
             color: var(--theme-color);
           }
         }
@@ -114,8 +116,8 @@ nav {
     top: 0;
     transition: 0.3s ease-in-out;
     z-index: 100;
-    background-color: rgba(30, 30, 30, 0.85);
-    box-shadow: 0 10px 30px -10px var(--navy-shadow);
-    backdrop-filter: blur(10px);
+    background-color: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
   }
 }
