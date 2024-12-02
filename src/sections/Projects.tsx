@@ -45,7 +45,7 @@ function Projects() {
   ];
 
   return (
-    <div className="projects" id="work">
+    <div id="work" className="projects" style={{ paddingTop: '170px' }}>
       <motion.div
         className="title"
         initial="hidden"

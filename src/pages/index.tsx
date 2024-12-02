@@ -10,6 +10,7 @@ import Footer from "../sections/Footer";
 import Hero from "../sections/Hero";
 import Navbar from "../sections/Navbar";
 import Projects from "../sections/Projects";
+import OtherProjects from "@/sections/OtherProjects";
 
 function Index() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,11 +33,12 @@ function Index() {
           <Navbar />
           <SocialIcons />
           <Email />
-          <main>
+          <main style={{ paddingTop: '60px' }}>
             <Hero />
             <About />
             <Experience />
             <Projects />
+            <OtherProjects/>
             <Contact />
           </main>
           <Footer />

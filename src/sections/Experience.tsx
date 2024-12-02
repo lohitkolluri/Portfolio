@@ -66,6 +66,7 @@ function Experience() {
     <motion.div
       className="experience"
       id="experience"
+      style={{ paddingTop: '250px' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

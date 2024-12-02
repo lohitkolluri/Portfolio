@@ -13,9 +13,11 @@ function Navbar() {
     { name: "About", link: "/#about" },
     { name: "Experience", link: "/#experience" },
     { name: "Work", link: "/#work" },
-    { name: "Contact", link: "/#contact" },
+    {
+      name: "Contact",
+      link: "/#contact",
+    },
   ];
-
   useEffect(() => {
     const handleScroll = () => {
       window.pageYOffset > 100

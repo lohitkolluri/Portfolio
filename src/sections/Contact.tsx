@@ -12,6 +12,7 @@ const Contact = () => {
     <motion.div
       className="contact"
       id="contact"
+      style={{ paddingTop: '250px' }}
       initial="hidden"
       animate="visible"
       exit="hidden"
