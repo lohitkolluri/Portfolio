@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
-import { useState } from "react";
 import Email from "../components/Email";
 import Loader from "../components/Loader";
 import SocialIcons from "../components/SocialIcons";
@@ -23,37 +22,38 @@ function Index() {
   };
 
   useEffect(() => {
-    const links = document.querySelectorAll("nav > .hover-this");
-    const cursor = document.querySelector(".cursor");
+    const links = document.querySelectorAll<HTMLElement>("nav > .hover-this");
+    const cursor = document.querySelector<HTMLDivElement>(".cursor");
 
-    const animateit = (e) => {
-      const { offsetX: x, offsetY: y } = e,
-        { offsetWidth: width, offsetHeight: height } = e.target,
-        move = 25,
-        xMove = (x / width) * (move * 2) - move,
-        yMove = (y / height) * (move * 2) - move;
+    const animateit = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const { offsetX: x, offsetY: y } = e;
+      const { offsetWidth: width, offsetHeight: height } = target;
+      const move = 25;
+      const xMove = (x / width) * (move * 2) - move;
+      const yMove = (y / height) * (move * 2) - move;
 
-      cursor.classList.add("cursor-animate");
-      cursor.style.transform = `translate(${xMove}px, ${yMove}px) scale(1.2)`;
+      if (cursor) {
+        cursor.classList.add("cursor-animate");
+        cursor.style.transform = `translate(${xMove}px, ${yMove}px) scale(1.2)`;
 
-      if (e.type === "mouseleave") {
-        cursor.classList.remove("cursor-animate");
-        cursor.style.transform = "";
+        if (e.type === "mouseleave") {
+          cursor.classList.remove("cursor-animate");
+          cursor.style.transform = "";
+        }
       }
     };
 
-    const editCursor = (e) => {
-      const cursor = document.querySelector(".cursor");
+    const editCursor = (e: MouseEvent) => {
       if (cursor) {
         const { clientX: x, clientY: y } = e;
-        cursor.style.left = x + "px";
-        cursor.style.top = y + "px";
+        cursor.style.left = `${x}px`;
+        cursor.style.top = `${y}px`;
         cursor.style.transition = "transform 0.2s ease";
       }
     };
 
     const handleMouseDown = () => {
-      const cursor = document.querySelector(".cursor");
       if (cursor) {
         cursor.classList.add("clicked");
         setTimeout(() => {
@@ -67,13 +67,12 @@ function Index() {
     window.addEventListener("mousemove", editCursor);
     window.addEventListener("mousedown", handleMouseDown);
 
-    // Add fade-in effect
     const mainContent = document.querySelector("main");
     if (mainContent) {
       mainContent.classList.add("fade-in");
       setTimeout(() => {
         mainContent.classList.add("show");
-      }, 100); // Delay to allow for the fade-in effect
+      }, 100);
     }
 
     return () => {
@@ -83,7 +82,7 @@ function Index() {
       window.removeEventListener("mousedown", handleMouseDown);
     };
   }, []);
-
+  
   return (
     <div className="app">
       <Head>
@@ -91,7 +90,7 @@ function Index() {
         <link rel="shortcut icon" href="/favicon.png" />
         <meta
           name="google-site-verification"
-          content="DgzOS3oNMuUQ4Y1sU7x860SgyvsYvnd1BCWQLFu0KT8"
+          content="8f4kHiiQJH_D33bDAWhQbdpfsp7PqdJyetFRN9xZ2T8"
         />
       </Head>
       {showContent && (
