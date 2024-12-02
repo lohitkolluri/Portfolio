@@ -120,6 +120,7 @@ span {
   transition: transform 0.3s ease, background-color 0.3s ease;
   animation: cursor-float 1.5s ease-in-out infinite;
   box-shadow: 0 0 10px var(--theme-color);
+  z-index: 9999;
 }
 
 .cursor::after {

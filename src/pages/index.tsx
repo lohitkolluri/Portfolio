@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Email from "../components/Email";
 import Loader from "../components/Loader";
@@ -22,31 +22,35 @@ function Index() {
   };
 
   useEffect(() => {
-    const links = document.querySelectorAll<HTMLElement>("nav > .hover-this");
-    const cursor = document.querySelector<HTMLDivElement>(".cursor");
+    const links = document.querySelectorAll("nav > .hover-this");
+    const cursor = document.querySelector(".cursor") as HTMLElement;
 
-    const animateit = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const { offsetX: x, offsetY: y } = e;
-      const { offsetWidth: width, offsetHeight: height } = target;
-      const move = 25;
-      const xMove = (x / width) * (move * 2) - move;
-      const yMove = (y / height) * (move * 2) - move;
+    const animateit = (e: Event) => {
+      const event = e as MouseEvent; // Assert MouseEvent type
+      const { offsetX: x, offsetY: y } = event,
+        { offsetWidth: width, offsetHeight: height } = event.target as HTMLElement,
+        move = 25,
+        xMove = (x / width) * (move * 2) - move,
+        yMove = (y / height) * (move * 2) - move;
 
       if (cursor) {
         cursor.classList.add("cursor-animate");
         cursor.style.transform = `translate(${xMove}px, ${yMove}px) scale(1.2)`;
-
-        if (e.type === "mouseleave") {
+      }
+      if (event.type === "mouseleave") {
+        if (cursor) {
           cursor.classList.remove("cursor-animate");
           cursor.style.transform = "";
         }
       }
     };
 
-    const editCursor = (e: MouseEvent) => {
-      if (cursor) {
-        const { clientX: x, clientY: y } = e;
+
+    const editCursor = (e: Event) => {
+      const cursor = document.querySelector(".cursor");
+      const event = e as MouseEvent;
+      if (cursor instanceof HTMLElement) {
+        const { clientX: x, clientY: y } = event;
         cursor.style.left = `${x}px`;
         cursor.style.top = `${y}px`;
         cursor.style.transition = "transform 0.2s ease";
@@ -54,6 +58,7 @@ function Index() {
     };
 
     const handleMouseDown = () => {
+      const cursor = document.querySelector(".cursor");
       if (cursor) {
         cursor.classList.add("clicked");
         setTimeout(() => {
@@ -67,12 +72,13 @@ function Index() {
     window.addEventListener("mousemove", editCursor);
     window.addEventListener("mousedown", handleMouseDown);
 
+    // Add fade-in effect
     const mainContent = document.querySelector("main");
     if (mainContent) {
       mainContent.classList.add("fade-in");
       setTimeout(() => {
         mainContent.classList.add("show");
-      }, 100);
+      }, 100); // Delay to allow for the fade-in effect
     }
 
     return () => {
@@ -82,7 +88,7 @@ function Index() {
       window.removeEventListener("mousedown", handleMouseDown);
     };
   }, []);
-  
+
   return (
     <div className="app">
       <Head>
@@ -90,7 +96,7 @@ function Index() {
         <link rel="shortcut icon" href="/favicon.png" />
         <meta
           name="google-site-verification"
-          content="8f4kHiiQJH_D33bDAWhQbdpfsp7PqdJyetFRN9xZ2T8"
+          content="DgzOS3oNMuUQ4Y1sU7x860SgyvsYvnd1BCWQLFu0KT8"
         />
       </Head>
       {showContent && (

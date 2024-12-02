@@ -2,6 +2,7 @@ import "@/scss/globals.css";
 import "@/scss/index.scss";
 import type { AppProps } from "next/app";
 import { Raleway, Fira_Code } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const raleway = Raleway({ subsets: ["latin"] });
 const firaCode = Fira_Code({
@@ -19,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <Component {...pageProps} />
+      <SpeedInsights/>
     </>
   );
 }
