@@ -15,14 +15,27 @@ function Experience() {
 
   const experiences = [
     {
+      name: "Apollo Tyres R&D",
+      role: "Project Trainee",
+      url: "https://www.apollotyres.com/",
+      start: "February 2024",
+      end: "May 2024",
+      shortDescription: [
+        "Architected a robust backend using Django and PostgreSQL to handle over 200 concurrent simulations, resulting in a 40% improvement in system performance and data retrieval efficiency.",
+        "Designed and implemented an interactive dashboard utilizing Chart.js, allowing managers to monitor job assignments and completion rates; enabled tracking of individual engineer performance across 300+ projects in real time.",
+        "Streamlined task management for a system handling over 1,000 tasks daily.",
+        "Developed a web application that optimized the simulation workflow for Apollo Tyres, enhancing task allocation efficiency by approximately 30%.",
+      ],
+    },
+    {
       name: "EduSkill Foundation",
-      role: "AI Intern",
+      role: "Artificial Intelligence Intern",
       url: "https://www.eduskillsfoundation.org",
       start: "September 2023",
       end: "November 2023",
       shortDescription: [
-        "Acquired hands-on knowledge of AWS Cloud Foundation, delving into cloud infrastructure, services, and deployment.",
-        "Gained a solid foundation in Machine Learning, covering topics like algorithms, data analysis, and model building.",
+        "Completed AWS Machine Learning and AWS Cloud Practitioner courses, gaining proficiency in deploying and scaling ML models on AWS services such as S3, Elastic Container Service, and Lambda.",
+        "Acquired cloud computing skills, including cloud security, architecture, and networking in the AWS ecosystem.",
       ],
     },
     {
@@ -49,24 +62,13 @@ function Experience() {
         "Utilized 12 regression algorithms for mental fitness analysis across 150+ countries.",
       ],
     },
-    {
-      name: "Apollo Tyres Ltd",
-      role: "Project Trainee",
-      url: "https://www.apollotyres.com/",
-      start: "February 2024",
-      end: "May 2024",
-      shortDescription: [
-        "Worked on a 4-month industrial project focused on Automation in Simulation and Data Management.",
-        "Collaborated with a talented team to develop innovative solutions for tyre simulation and data management.",
-      ],
-    },
   ];
 
   return (
     <motion.div
       className="experience"
       id="experience"
-      style={{ paddingTop: '250px' }}
+       style={{ paddingTop: '250px' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import Button from "../components/Button";
-import repositories from '../util/featured';
+import repositories from '../utils/OtherProjectsProp';
 
 // Styled Components
 const ProjectsSection = styled.section`
