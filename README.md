@@ -6,8 +6,12 @@
 
 [https://lohit.is-a.dev](https://lohit.is-a.dev)
 
-  
-  
+<h2>📸 Project Screenshots:</h2>
+
+<p align="center">
+    <img src="image.png" alt="Hero Page" width="600px">
+</p>
+
 <h2>🧐 Features</h2>
 
 Here're some of the project's best features:
