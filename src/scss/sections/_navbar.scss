@@ -50,6 +50,7 @@ nav {
       font-size: var(--tsm1);
       counter-reset: nav-list;
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      text-align: left;
       &-list {
         display: flex;
         gap: 3rem;
