@@ -93,15 +93,13 @@ const ProjectsSection = styled.section`
     }
   }
 
-  // Mobile view styles
   @media screen and (max-width: 768px) {
     padding: 20px;
     
     .title, .grid {
-      display: none; // Hide title and grid on mobile
+      display: none;
     }
     
-    // Keep only the button visible and centered
     .button-container {
       display: flex;
       justify-content: center;
@@ -110,7 +108,6 @@ const ProjectsSection = styled.section`
   }
 `;
 
-// Styled Button Component
 const StyledButton = styled(Button)`
   font-family: 'SF Mono, Roboto Mono, monospace';
   background-color: #3498db;
@@ -128,10 +125,10 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const OtherProjects = () => {
+const OtherProjects: React.FC = () => {
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (i) => ({
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: { delay: i * 0.1 },
@@ -156,7 +153,7 @@ const OtherProjects = () => {
           hidden: { opacity: 0, y: 0 },
         }}
       >
-        <h2>Some Things I've Built</h2>
+        <h2>Some Things I&apos;ve Built</h2>
       </motion.div>
       <div className="grid">
         {repositories.slice(0, 6).map((repo, index) => (

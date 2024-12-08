@@ -1,16 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import Head from "next/head";
-import Email from "../components/Email";
+import dynamic from "next/dynamic";
 import Loader from "../components/Loader";
-import SocialIcons from "../components/SocialIcons";
-import About from "../sections/About";
-import Contact from "../sections/Contact";
-import Experience from "../sections/Experience";
-import Footer from "../sections/Footer";
-import Hero from "../sections/Hero";
+
+// Components that are needed immediately
 import Navbar from "../sections/Navbar";
-import Projects from "../sections/Projects";
-import OtherProjects from "@/sections/OtherProjects";
+import Hero from "../sections/Hero";
+
+// Dynamically import components that can be loaded later
+const Email = dynamic(() => import("../components/Email"), {
+  ssr: false
+});
+
+const SocialIcons = dynamic(() => import("../components/SocialIcons"), {
+  ssr: false
+});
+
+const About = dynamic(() => import("../sections/About"), {
+  loading: () => <div className="section-loader">Loading...</div>
+});
+
+const Experience = dynamic(() => import("../sections/Experience"), {
+  loading: () => <div className="section-loader">Loading...</div>
+});
+
+const Projects = dynamic(() => import("../sections/Projects"), {
+  loading: () => <div className="section-loader">Loading...</div>
+});
+
+const OtherProjects = dynamic(() => import("@/sections/OtherProjects"), {
+  loading: () => <div className="section-loader">Loading...</div>
+});
+
+const Contact = dynamic(() => import("../sections/Contact"), {
+  loading: () => <div className="section-loader">Loading...</div>
+});
+
+const Footer = dynamic(() => import("../sections/Footer"), {
+  ssr: false
+});
 
 function Index() {
   const [isLoading, setIsLoading] = useState(true);
@@ -116,7 +144,7 @@ function Index() {
         window.removeEventListener("mousedown", handleMouseDown);
       }
     };
-  }, [isMobile]); // Add isMobile to dependency array
+  }, [isMobile]);
 
   return (
     <div className="app">
@@ -131,17 +159,29 @@ function Index() {
       {showContent && (
         <>
           <Navbar />
-          <SocialIcons />
-          <Email />
+          <Suspense fallback={<div className="loading-icon">Loading...</div>}>
+            <SocialIcons />
+            <Email />
+          </Suspense>
           <main style={{ paddingTop: "60px" }} className="fade-in">
             <Hero />
-            <About />
-            <Experience />
-            <Projects />
-            <OtherProjects />
-            <Contact />
+            <Suspense fallback={<div className="section-loader">Loading about section...</div>}>
+              <About />
+            </Suspense>
+            <Suspense fallback={<div className="section-loader">Loading experience section...</div>}>
+              <Experience />
+            </Suspense>
+            <Suspense fallback={<div className="section-loader">Loading projects section...</div>}>
+              <Projects />
+              <OtherProjects />
+            </Suspense>
+            <Suspense fallback={<div className="section-loader">Loading contact section...</div>}>
+              <Contact />
+            </Suspense>
           </main>
-          <Footer />
+          <Suspense fallback={<div className="footer-loader">Loading footer...</div>}>
+            <Footer />
+          </Suspense>
           <div className="cursor"></div>
         </>
       )}

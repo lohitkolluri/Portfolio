@@ -56,7 +56,7 @@ function Projects() {
           hidden: { opacity: 0, y: 0 },
         }}
       >
-        <h2>Some Things I've Built</h2>
+        <h2>Some Things I&apos;ve Built</h2>
       </motion.div>
       <div className="projects-container">
         {projectsData.map(
@@ -93,7 +93,6 @@ function Projects() {
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  {/* <span className="project-info-overline"></span> */}
                   <h3 className="project-info-title">
                     <span className="cursor-pointer" onClick={() => window.open(projectLink, '_blank')}>
                       {projectName}
