@@ -8,7 +8,13 @@
   --light-slate: #a8b2d1;
   --lightest-slate: #ccd6f6;
   --theme-color: #64ffda;
-  cursor: none;
+}
+
+/* Only apply cursor: none to non-mobile devices */
+@media (min-width: 769px) {
+  :root {
+    cursor: none;
+  }
 }
 
 ::-moz-selection {
@@ -52,12 +58,15 @@ html {
   scrollbar-width: thin;
   scrollbar-color: var(--dark-slate) var(--background-color);
 }
+
 ::-webkit-scrollbar {
   width: 12px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--background-color);
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: var(--dark-slate);
   border: 3px solid var(--background-color);
@@ -67,14 +76,13 @@ html {
 .text-justify {
   text-align: justify;
 }
+
 .hero-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
+  min-height: 100vh;
 }
-
-
 
 .nav-wrapper {
   width: 100%;
@@ -95,11 +103,14 @@ nav {
   transform: scale(1);
 }
 
-.hover-this:hover {
-  transform: scale(1.15) rotate(5deg);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background-color: var(--light-navy);
-  color: var(--theme-color);
+/* Only apply hover effects on non-mobile devices */
+@media (min-width: 769px) {
+  .hover-this:hover {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--light-navy);
+    color: var(--theme-color);
+  }
 }
 
 span {
@@ -110,29 +121,53 @@ span {
   transition: transform 0.1s linear;
 }
 
-.cursor {
-  pointer-events: none;
-  position: fixed;
-  padding: 1.1rem;
-  background-color: var(--theme-color);
-  border-radius: 50%;
-  mix-blend-mode: difference;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  animation: cursor-float 1.5s ease-in-out infinite;
-  box-shadow: 0 0 10px var(--theme-color);
-  z-index: 9999;
+/* Custom cursor styles - only visible on desktop */
+@media (min-width: 769px) {
+  .cursor {
+    pointer-events: none;
+    position: fixed;
+    padding: 1.1rem;
+    background-color: var(--theme-color);
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: cursor-float 1.5s ease-in-out infinite;
+    box-shadow: 0 0 10px var(--theme-color);
+    z-index: 9999;
+  }
+
+  .cursor::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--theme-color);
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    animation: trail 0.6s linear infinite;
+  }
+
+  .hover-this:hover ~ .cursor {
+    background-color: var(--lightest-slate);
+    mix-blend-mode: normal;
+    box-shadow: 0 0 20px var(--theme-color);
+  }
+
+  .hover-this:hover .cursor {
+    background-color: var(--theme-color);
+  }
+
+  .cursor.clicked {
+    animation: click-animation 0.3s ease-out;
+  }
 }
 
-.cursor::after {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background-color: var(--theme-color);
-  border-radius: 50%;
-  opacity: 0.5;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  animation: trail 0.6s linear infinite;
+/* Hide cursor completely on mobile */
+@media (max-width: 768px) {
+  .cursor {
+    display: none !important;
+  }
 }
 
 @keyframes cursor-float {
@@ -157,20 +192,6 @@ span {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0.5;
   }
-}
-
-.hover-this:hover ~ .cursor {
-  background-color: var(--lightest-slate);
-  mix-blend-mode: normal;
-  box-shadow: 0 0 20px var(--theme-color);
-}
-
-.hover-this:hover .cursor {
-  background-color: var(--theme-color);
-}
-
-.cursor.clicked {
-  animation: click-animation 0.3s ease-out;
 }
 
 @keyframes click-animation {

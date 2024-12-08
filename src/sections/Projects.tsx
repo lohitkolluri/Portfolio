@@ -6,28 +6,27 @@ import { FiExternalLink, FiGithub } from "react-icons/fi";
 function Projects() {
   const projectsData = [
     {
-      image: "/projects/project1.png",
+      image: "/projects/project1.webp",
       projectName: "NLP2SQL",
       projectLink: "https://nlp2sql.streamlit.app/",
       projectDescription:
-        "NLP2SQL is an NLP task that aims to generate SQL queries from natural language text. It involves converting text input into a structured format to create a semantically correct SQL query for database execution.",
-      projectTech: ["Streamlit", "Azure OpenAI", "SQLite3", "Pandas", "Altair"],
+        "A natural language to SQL query converter that transforms text input into structured SQL queries for database execution, streamlining database interactions through intuitive language processing.",
+      projectTech: ["Streamlit", "Azure OpenAI", "SQLite3", "Altair"],
       projectExternalLinks: {
         github: "https://github.com/lohitkolluri/NLP2SQL",
         externalLink: "https://nlp2sql.streamlit.app/",
       },
     },
     {
-      image: "/projects/project2.png",
+      image: "/projects/project2.webp",
       projectName: "FlaskPost",
       projectLink: "https://flask-post.vercel.app/",
       projectDescription:
-        "FlaskPost is a powerful and user-friendly web application designed for sending personalized mass emails effortlessly. Built with FastAPI it allows users to configure SMTP settings upload CSV files for recipient management and craft customized HTML email templates. With a sleek interface that includes an integrated HTML editor and a live preview feature FlaskPost ensures a seamless email creation experience. Whether for marketing campaigns newsletters or event invitations FlaskPost empowers users to reach their audience effectively while maintaining a professional touch.",
-      projectTech: ["FastAPI", "REST API", "Jinja2", "Fast Mail", "HTML", "CSS", "JS"],
+        "A FastAPI-powered mass email platform featuring SMTP configuration, CSV recipient management, and HTML template customization with live preview functionality.",
+      projectTech: ["FastAPI", "REST API", "Jinja2", "Fast Mail"],
       projectExternalLinks: {
         github: "https://github.com/lohitkolluri/FlaskPost",
-        externalLink:
-          "https://github.com/lohitkolluri/FlaskPost",
+        externalLink: "https://github.com/lohitkolluri/FlaskPost",
       },
     },
     {
@@ -35,8 +34,8 @@ function Projects() {
       projectName: "Compile Vortex",
       projectLink: "https://compile-vortex.vercel.app/",
       projectDescription:
-        "A web-based code editor that allows you to compile and run your code in over 40 programming languages. You can also customize your coding environment by choosing from a selection of available themes.",
-      projectTech: ["React", "Node.js", "Judge0 Api", "Microsoft Azure", "TailwindCSS"],
+        "A web-based code editor supporting 40+ programming languages with customizable themes and real-time compilation capabilities.",
+      projectTech: ["React", "Node.js", "Judge0 Api", "Microsoft Azure"],
       projectExternalLinks: {
         github: "https://github.com/lohitkolluri/CompileVortex",
         externalLink: "https://compile-vortex.vercel.app/",
@@ -57,7 +56,7 @@ function Projects() {
           hidden: { opacity: 0, y: 0 },
         }}
       >
-        <h2>Some Things I’ve Built</h2>
+        <h2>Some Things I've Built</h2>
       </motion.div>
       <div className="projects-container">
         {projectsData.map(
@@ -82,42 +81,70 @@ function Projects() {
                   hidden: { opacity: 0, y: 0 },
                 }}
               >
-                <div className="project-image">
+                <div className="project-image" onClick={() => window.open(projectLink, '_blank')}>
                   <div className="project-image-overlay"></div>
                   <div className="project-image-container">
                     <Image src={image} fill loading="lazy" alt={projectName} quality={100} />
                   </div>
                 </div>
-                <div className="project-info">
-                  <p className="project-info-overline">Featured Project</p>
-                  <h3 className="project-info-title">{projectName}</h3>
+                <motion.div 
+                  className="project-info"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {/* <span className="project-info-overline"></span> */}
+                  <h3 className="project-info-title">
+                    <span className="cursor-pointer" onClick={() => window.open(projectLink, '_blank')}>
+                      {projectName}
+                    </span>
+                  </h3>
                   <div className="project-info-description">
-                    <p style={{ textAlign: "justify" }}>{projectDescription}</p>
+                    <p>{projectDescription}</p>
                   </div>
                   <ul className="project-info-tech-list">
                     {projectTech.map((tech) => (
-                      <li className="project-info-tech-list-item" key={tech}>
+                      <motion.li 
+                        className="project-info-tech-list-item" 
+                        key={tech}
+                        whileHover={{ y: -2, color: 'var(--theme-color)' }}
+                        transition={{ duration: 0.2 }}
+                      >
                         {tech}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                   <ul className="project-info-links">
-                    <li className="project-info-links-item">
-                      <Link href={projectExternalLinks.github} legacyBehavior>
-                        <a target="_blank" rel="noopener noreferrer" className="project-info-links-item-link">
-                          <FiGithub />
-                        </a>
+                    <motion.li 
+                      className="project-info-links-item"
+                      whileHover={{ y: -2 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Link 
+                        href={projectExternalLinks.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-info-links-item-link"
+                      >
+                        <FiGithub />
                       </Link>
-                    </li>
-                    <li className="project-info-links-item">
-                      <Link href={projectExternalLinks.externalLink} legacyBehavior>
-                        <a target="_blank" rel="noopener noreferrer" className="project-info-links-item-link">
-                          <FiExternalLink />
-                        </a>
+                    </motion.li>
+                    <motion.li 
+                      className="project-info-links-item"
+                      whileHover={{ y: -2 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Link 
+                        href={projectExternalLinks.externalLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-info-links-item-link"
+                      >
+                        <FiExternalLink />
                       </Link>
-                    </li>
+                    </motion.li>
                   </ul>
-                </div>
+                </motion.div>
               </motion.div>
             );
           }

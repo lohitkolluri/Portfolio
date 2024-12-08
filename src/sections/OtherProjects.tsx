@@ -53,7 +53,7 @@ const ProjectsSection = styled.section`
       color: #A8B2D1;
       margin: 10px 0;
       line-height: 1.4;
-      text-align: justify; /* Justify align the description */
+      text-align: justify;
     }
 
     .tech-list {
@@ -92,6 +92,22 @@ const ProjectsSection = styled.section`
       color: #CCD6F6;
     }
   }
+
+  // Mobile view styles
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+    
+    .title, .grid {
+      display: none; // Hide title and grid on mobile
+    }
+    
+    // Keep only the button visible and centered
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+    }
+  }
 `;
 
 // Styled Button Component
@@ -107,18 +123,18 @@ const StyledButton = styled(Button)`
   text-decoration: none;
 
   &:hover {
-    transform: scale(1.05); // Scale effect on hover
-    background-color: #2980b9; // Darker shade on hover
+    transform: scale(1.05);
+    background-color: #2980b9;
   }
 `;
 
 const OtherProjects = () => {
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
+    visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.1 }, // Staggered effect
+      transition: { delay: i * 0.1 },
     }),
   };
 
@@ -140,7 +156,7 @@ const OtherProjects = () => {
           hidden: { opacity: 0, y: 0 },
         }}
       >
-        <h2>Some Things I’ve Built</h2>
+        <h2>Some Things I've Built</h2>
       </motion.div>
       <div className="grid">
         {repositories.slice(0, 6).map((repo, index) => (
@@ -151,7 +167,7 @@ const OtherProjects = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            custom={index} // Pass index for staggered effect
+            custom={index}
           >
             <h3>
               <FiGithub className="icon" /> {repo.name}
@@ -180,10 +196,10 @@ const OtherProjects = () => {
           </motion.div>
         ))}
       </div>
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+      <div className="button-container" style={{ textAlign: 'center', marginTop: '20px' }}>
         <StyledButton
           text="View More"
-          link={`https://github.com/lohitkolluri`}
+          link="https://github.com/lohitkolluri"
           aria-label="View more projects on GitHub"
         />
       </div>

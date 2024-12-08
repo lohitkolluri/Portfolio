@@ -15,6 +15,7 @@ import OtherProjects from "@/sections/OtherProjects";
 function Index() {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleLoaderLoaded = () => {
     setIsLoading(false);
@@ -22,11 +23,29 @@ function Index() {
   };
 
   useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+
     const links = document.querySelectorAll("nav > .hover-this");
     const cursor = document.querySelector(".cursor") as HTMLElement;
 
+    // Only show cursor on desktop
+    if (cursor) {
+      cursor.style.display = isMobile ? 'none' : 'block';
+    }
+
     const animateit = (e: Event) => {
-      const event = e as MouseEvent; // Assert MouseEvent type
+      if (isMobile) return; // Skip animation on mobile
+      
+      const event = e as MouseEvent;
       const { offsetX: x, offsetY: y } = event,
         { offsetWidth: width, offsetHeight: height } = event.target as HTMLElement,
         move = 25,
@@ -45,8 +64,9 @@ function Index() {
       }
     };
 
-
     const editCursor = (e: Event) => {
+      if (isMobile) return; // Skip cursor update on mobile
+      
       const cursor = document.querySelector(".cursor");
       const event = e as MouseEvent;
       if (cursor instanceof HTMLElement) {
@@ -58,6 +78,8 @@ function Index() {
     };
 
     const handleMouseDown = () => {
+      if (isMobile) return; // Skip click animation on mobile
+      
       const cursor = document.querySelector(".cursor");
       if (cursor) {
         cursor.classList.add("clicked");
@@ -67,10 +89,13 @@ function Index() {
       }
     };
 
-    links.forEach((link) => link.addEventListener("mousemove", animateit));
-    links.forEach((link) => link.addEventListener("mouseleave", animateit));
-    window.addEventListener("mousemove", editCursor);
-    window.addEventListener("mousedown", handleMouseDown);
+    if (!isMobile) {
+      // Only add event listeners on desktop
+      links.forEach((link) => link.addEventListener("mousemove", animateit));
+      links.forEach((link) => link.addEventListener("mouseleave", animateit));
+      window.addEventListener("mousemove", editCursor);
+      window.addEventListener("mousedown", handleMouseDown);
+    }
 
     // Add fade-in effect
     const mainContent = document.querySelector("main");
@@ -78,16 +103,20 @@ function Index() {
       mainContent.classList.add("fade-in");
       setTimeout(() => {
         mainContent.classList.add("show");
-      }, 100); // Delay to allow for the fade-in effect
+      }, 100);
     }
 
     return () => {
-      links.forEach((link) => link.removeEventListener("mousemove", animateit));
-      links.forEach((link) => link.removeEventListener("mouseleave", animateit));
-      window.removeEventListener("mousemove", editCursor);
-      window.removeEventListener("mousedown", handleMouseDown);
+      // Clean up event listeners
+      window.removeEventListener('resize', checkMobile);
+      if (!isMobile) {
+        links.forEach((link) => link.removeEventListener("mousemove", animateit));
+        links.forEach((link) => link.removeEventListener("mouseleave", animateit));
+        window.removeEventListener("mousemove", editCursor);
+        window.removeEventListener("mousedown", handleMouseDown);
+      }
     };
-  }, []);
+  }, [isMobile]); // Add isMobile to dependency array
 
   return (
     <div className="app">
