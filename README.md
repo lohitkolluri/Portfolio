@@ -1,70 +1,138 @@
-<h1 align="center" id="title">Portfolio Website</h1>
+<div align="center">
 
-<p id="description">This project is a personal portfolio website showcasing my work and skills a software developer. The website features various sections such as About Experience Projects and Contact providing visitors with insights into my professional background projects and contact information.</p>
-
-<h2>🚀 Demo</h2>
-
-[https://lohit.is-a.dev](https://lohit.is-a.dev)
-
-<h2>📸 Project Screenshots:</h2>
+![Banner](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=header&text=Portfolio%20Website&fontSize=80&animation=fadeIn&fontAlignY=35)
 
 <p align="center">
-    <img src="image.png" alt="Hero Page" width="600px">
+  <a href="#features">Features</a> •
+  <a href="#demo">Demo</a> •
+  <a href="#screenshots">Screenshots</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#tech-stack">Tech Stack</a>
 </p>
 
-<h2>🧐 Features</h2>
+[![GitHub license](https://img.shields.io/github/license/lohitkolluri/Portfolio?style=flat-square)](LICENSE)
+[![Website](https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Flohit.is-a.dev)](https://lohit.is-a.dev)
+[![Made with React](https://img.shields.io/badge/Made%20with-React-61DAFB?style=flat-square&logo=react)](https://reactjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
 
-Here're some of the project's best features:
+<p align="center">A modern, responsive portfolio website showcasing professional experience, projects, and skills. Built with React, Next.js, and TypeScript, featuring smooth animations and dynamic content. ✨</p>
 
-*   Responsive Design: The website is designed to be mobile-friendly ensuring a seamless experience across devices.
-*   Smooth Animations: Utilizes Framer Motion for smooth transitions and animations throughout the site.
-*   Dynamic Content: Sections like Projects and Experience dynamically display content enhancing user engagement.
-*   Social Media Integration: Links to Lohit's social media profiles are included for easy access.
-*   Email Contact: A dedicated section for contacting Lohit via email.
+</div>
 
-<h2>🛠️ Installation Steps:</h2>
+## ✨ Features
 
-<p>1. Clone the Repository:</p>
+<div align="center">
 
+```mermaid
+mindmap
+  root((Portfolio Website))
+    User Interface
+      Responsive Design
+      Smooth Animations
+      Dynamic Content
+    Sections
+      About Me
+      Experience
+      Projects
+      Contact
+    Technical Features
+      Next.js Integration
+      TypeScript Support
+      SEO Optimization
+    Integrations
+      Social Media
+      Email Contact
+      Project Showcase
 ```
+
+</div>
+
+## 🚀 Demo
+
+Experience the live portfolio at [https://lohit.is-a.dev](https://lohit.is-a.dev)
+
+## 📸 Screenshots
+
+<div align="center">
+  <img src="image.png" alt="Hero Page" width="600px"/>
+</div>
+
+## 🛠️ Installation
+
+1️⃣ Clone the repository:
+```bash
 git clone https://github.com/lohitkolluri/Portfolio
 ```
 
-<p>2. Navigate to the Project Directory:</p>
-
-```
+2️⃣ Navigate to project directory:
+```bash
 cd Portfolio
 ```
 
-<p>3. Install Dependencies:</p>
-
-```
+3️⃣ Install dependencies:
+```bash
 npm install
 ```
 
-<p>4. Run the Development Server:</p>
-
-```
+4️⃣ Run development server:
+```bash
 npm run dev
 ```
 
-<p>5. Open in Browser:</p>
+5️⃣ Open in browser:
+- Visit [http://localhost:3000](http://localhost:3000)
 
- Visit [http://localhost:3000](http://localhost:3000) to view the portfolio.
+## 💻 Tech Stack
 
-  
-  
-<h2>💻 Built with</h2>
+<table align="center">
+  <tr>
+    <td align="center" width="96">
+      <img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React" />
+      <br>React
+    </td>
+    <td align="center" width="96">
+      <img src="https://skillicons.dev/icons?i=nextjs" width="48" height="48" alt="Next.js" />
+      <br>Next.js
+    </td>
+    <td align="center" width="96">
+      <img src="https://skillicons.dev/icons?i=ts" width="48" height="48" alt="TypeScript" />
+      <br>TypeScript
+    </td>
+    <td align="center" width="96">
+      <img src="https://skillicons.dev/icons?i=scss" width="48" height="48" alt="SCSS" />
+      <br>SCSS
+    </td>
+  </tr>
+</table>
 
-Technologies used in the project:
+## ⚡ Core Features
 
-*   React
-*   Next.js
-*   TypeScript
-*   Framer Motion
-*   Styled Components
-*   SCSS
+- 📱 Responsive Design
+  - Mobile-first approach
+  - Seamless experience across all devices
+  - Adaptive layouts and components
 
-<h2>🛡️ License:</h2>
+- 🎯 Dynamic Content
+  - Real-time project showcase
+  - Interactive experience section
+  - Animated skill representations
 
-This project is licensed under the MIT License
+- 🎨 Modern UI/UX
+  - Smooth Framer Motion animations
+  - Intuitive navigation
+  - Clean and professional design
+
+- 🔍 SEO Optimized
+  - Meta tags optimization
+  - Semantic HTML structure
+  - Performance optimized
+
+## 📄 License
+
+<div align="center">
+
+MIT License © [Lohit Kolluri](LICENSE)
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer" width="100%"/>
+
+</div>
