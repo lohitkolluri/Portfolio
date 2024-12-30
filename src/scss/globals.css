@@ -1,6 +1,6 @@
 :root {
   --navy-shadow: rgba(0, 0, 0, 0.25);
-  --background-color: #1E1E1E;
+  --background-color: #1e1e1e;
   --lightest-navy: rgba(50, 50, 50, 1);
   --light-navy: rgb(38, 41, 43);
   --dark-slate: #2f4f4f;
@@ -13,7 +13,7 @@
 /* Only apply cursor: none to non-mobile devices */
 @media (min-width: 769px) {
   :root {
-    cursor: none;
+    cursor: none !important;
   }
 }
 
@@ -99,6 +99,7 @@ nav {
 }
 
 .hover-this {
+  cursor: none !important;
   transition: all 0.3s ease;
   transform: scale(1);
 }
@@ -171,7 +172,8 @@ span {
 }
 
 @keyframes cursor-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {

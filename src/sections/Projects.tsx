@@ -1,44 +1,44 @@
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FiExternalLink, FiGithub } from 'react-icons/fi';
 
 function Projects() {
   const projectsData = [
     {
-      image: "/projects/project1.webp",
-      projectName: "NLP2SQL",
-      projectLink: "https://nlp2sql.streamlit.app/",
+      image: '/projects/project1.webp',
+      projectName: 'NLP2SQL',
+      projectLink: 'https://nlp2sql.streamlit.app/',
       projectDescription:
-        "A natural language to SQL query converter that transforms text input into structured SQL queries for database execution, streamlining database interactions through intuitive language processing.",
-      projectTech: ["Streamlit", "Azure OpenAI", "SQLite3", "Altair"],
+        'A natural language to SQL query converter that transforms text input into structured SQL queries for database execution, streamlining database interactions through intuitive language processing.',
+      projectTech: ['Streamlit', 'Azure OpenAI', 'SQLite3', 'Altair'],
       projectExternalLinks: {
-        github: "https://github.com/lohitkolluri/NLP2SQL",
-        externalLink: "https://nlp2sql.streamlit.app/",
+        github: 'https://github.com/lohitkolluri/NLP2SQL',
+        externalLink: 'https://nlp2sql.streamlit.app/',
       },
     },
     {
-      image: "/projects/project2.webp",
-      projectName: "FlaskPost",
-      projectLink: "https://flask-post.vercel.app/",
+      image: '/projects/project2.webp',
+      projectName: 'FlaskPost',
+      projectLink: 'https://flask-post.vercel.app/',
       projectDescription:
-        "A FastAPI-powered mass email platform featuring SMTP configuration, CSV recipient management, and HTML template customization with live preview functionality.",
-      projectTech: ["FastAPI", "REST API", "Jinja2", "Fast Mail"],
+        'A FastAPI-powered mass email platform featuring SMTP configuration, CSV recipient management, and HTML template customization with live preview functionality.',
+      projectTech: ['FastAPI', 'REST API', 'Jinja2', 'Fast Mail'],
       projectExternalLinks: {
-        github: "https://github.com/lohitkolluri/FlaskPost",
-        externalLink: "https://github.com/lohitkolluri/FlaskPost",
+        github: 'https://github.com/lohitkolluri/FlaskPost',
+        externalLink: 'https://github.com/lohitkolluri/FlaskPost',
       },
     },
     {
-      image: "/projects/project3.webp",
-      projectName: "Compile Vortex",
-      projectLink: "https://compile-vortex.vercel.app/",
+      image: '/projects/project3.webp',
+      projectName: 'Compile Vortex',
+      projectLink: 'https://compile-vortex.vercel.app/',
       projectDescription:
-        "A web-based code editor supporting 40+ programming languages with customizable themes and real-time compilation capabilities.",
-      projectTech: ["React", "Node.js", "Judge0 Api", "Microsoft Azure"],
+        'A web-based code editor supporting 40+ programming languages with customizable themes and real-time compilation capabilities.',
+      projectTech: ['React', 'Node.js', 'Judge0 Api', 'Microsoft Azure'],
       projectExternalLinks: {
-        github: "https://github.com/lohitkolluri/CompileVortex",
-        externalLink: "https://compile-vortex.vercel.app/",
+        github: 'https://github.com/lohitkolluri/CompileVortex',
+        externalLink: 'https://compile-vortex.vercel.app/',
       },
     },
   ];
@@ -87,14 +87,17 @@ function Projects() {
                     <Image src={image} fill loading="lazy" alt={projectName} quality={100} />
                   </div>
                 </div>
-                <motion.div 
+                <motion.div
                   className="project-info"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
                   <h3 className="project-info-title">
-                    <span className="cursor-pointer" onClick={() => window.open(projectLink, '_blank')}>
+                    <span
+                      className="cursor-pointer"
+                      onClick={() => window.open(projectLink, '_blank')}
+                    >
                       {projectName}
                     </span>
                   </h3>
@@ -103,8 +106,8 @@ function Projects() {
                   </div>
                   <ul className="project-info-tech-list">
                     {projectTech.map((tech) => (
-                      <motion.li 
-                        className="project-info-tech-list-item" 
+                      <motion.li
+                        className="project-info-tech-list-item"
                         key={tech}
                         whileHover={{ y: -2, color: 'var(--theme-color)' }}
                         transition={{ duration: 0.2 }}
@@ -114,12 +117,12 @@ function Projects() {
                     ))}
                   </ul>
                   <ul className="project-info-links">
-                    <motion.li 
+                    <motion.li
                       className="project-info-links-item"
                       whileHover={{ y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Link 
+                      <Link
                         href={projectExternalLinks.github}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -128,12 +131,12 @@ function Projects() {
                         <FiGithub />
                       </Link>
                     </motion.li>
-                    <motion.li 
+                    <motion.li
                       className="project-info-links-item"
                       whileHover={{ y: -2 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Link 
+                      <Link
                         href={projectExternalLinks.externalLink}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -146,7 +149,7 @@ function Projects() {
                 </motion.div>
               </motion.div>
             );
-          }
+          },
         )}
       </div>
     </div>
