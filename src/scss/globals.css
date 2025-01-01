@@ -169,13 +169,12 @@ span {
 */
 
 /* Hide cursor completely on mobile */
-/*
+
 @media (max-width: 768px) {
   .cursor {
     display: none !important;
   }
 }
-*/
 
 @keyframes cursor-float {
   0%,
