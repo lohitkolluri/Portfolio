@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Button from "../components/Button";
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import Button from '../components/Button';
 
 function Hero() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -18,7 +18,7 @@ function Hero() {
         className="hero"
         initial={{ opacity: 0, y: 5, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
+        transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.6 }}
         style={{ backgroundPositionY: `${scrollY * 0.5}px` }}
       >
         <div
@@ -30,7 +30,7 @@ function Hero() {
           className="hero-title"
           initial={{ opacity: 0, y: 5, rotate: -10 }}
           animate={{ opacity: 1, y: 0, rotate: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
+          transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.6 }}
         >
           Hi, my name is
         </motion.h1>
@@ -38,7 +38,7 @@ function Hero() {
           className="hero-title-large"
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut", delay: 0.8 }}
+          transition={{ duration: 0.4, ease: 'easeInOut', delay: 0.8 }}
         >
           Lohit Kolluri.
         </motion.h2>
@@ -46,7 +46,7 @@ function Hero() {
           className="hero-title-large hero-title-sub"
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut", delay: 1.0 }}
+          transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.0 }}
         >
           I craft solutions for the web.
         </motion.h3>
@@ -54,17 +54,16 @@ function Hero() {
           className="hero-text"
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut", delay: 1.2 }}
+          transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.2 }}
         >
-          I&apos;m a software developer focusing on exceptional digital
-          experiences. My interests include Web Development, AI/ML, and
-          Cybersecurity.
+          I&apos;m a software developer focusing on exceptional digital experiences. My interests
+          include DevOps, Web Development and AI/ML.
         </motion.p>
         <motion.div
           className="hero-button"
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeInOut", delay: 1.4 }}
+          transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.4 }}
         >
           <Button
             text="Check out my LinkedIn"

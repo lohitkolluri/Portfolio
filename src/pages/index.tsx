@@ -1,43 +1,43 @@
-import React, { useEffect, useState, Suspense } from "react";
-import Head from "next/head";
-import dynamic from "next/dynamic";
-import Loader from "../components/Loader";
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import { Suspense, useEffect, useState } from 'react';
+import Loader from '../components/Loader';
 
 // Components that are needed immediately
-import Navbar from "../sections/Navbar";
-import Hero from "../sections/Hero";
+import Hero from '../sections/Hero';
+import Navbar from '../sections/Navbar';
 
 // Dynamically import components that can be loaded later
-const Email = dynamic(() => import("../components/Email"), {
-  ssr: false
+const Email = dynamic(() => import('../components/Email'), {
+  ssr: false,
 });
 
-const SocialIcons = dynamic(() => import("../components/SocialIcons"), {
-  ssr: false
+const SocialIcons = dynamic(() => import('../components/SocialIcons'), {
+  ssr: false,
 });
 
-const About = dynamic(() => import("../sections/About"), {
-  loading: () => <div className="section-loader">Loading...</div>
+const About = dynamic(() => import('../sections/About'), {
+  loading: () => <div className="section-loader">Loading...</div>,
 });
 
-const Experience = dynamic(() => import("../sections/Experience"), {
-  loading: () => <div className="section-loader">Loading...</div>
+const Experience = dynamic(() => import('../sections/Experience'), {
+  loading: () => <div className="section-loader">Loading...</div>,
 });
 
-const Projects = dynamic(() => import("../sections/Projects"), {
-  loading: () => <div className="section-loader">Loading...</div>
+const Projects = dynamic(() => import('../sections/Projects'), {
+  loading: () => <div className="section-loader">Loading...</div>,
 });
 
-const OtherProjects = dynamic(() => import("@/sections/OtherProjects"), {
-  loading: () => <div className="section-loader">Loading...</div>
+const OtherProjects = dynamic(() => import('@/sections/OtherProjects'), {
+  loading: () => <div className="section-loader">Loading...</div>,
 });
 
-const Contact = dynamic(() => import("../sections/Contact"), {
-  loading: () => <div className="section-loader">Loading...</div>
+const Contact = dynamic(() => import('../sections/Contact'), {
+  loading: () => <div className="section-loader">Loading...</div>,
 });
 
-const Footer = dynamic(() => import("../sections/Footer"), {
-  ssr: false
+const Footer = dynamic(() => import('../sections/Footer'), {
+  ssr: false,
 });
 
 function Index() {
@@ -62,75 +62,41 @@ function Index() {
     // Add resize listener
     window.addEventListener('resize', checkMobile);
 
-    const links = document.querySelectorAll("nav > .hover-this");
-    const cursor = document.querySelector(".cursor") as HTMLElement;
-
-    // Only show cursor on desktop
-    if (cursor) {
-      cursor.style.display = isMobile ? 'none' : 'block';
-    }
+    const links = document.querySelectorAll('nav > .hover-this');
 
     const animateit = (e: Event) => {
       if (isMobile) return; // Skip animation on mobile
-      
+
       const event = e as MouseEvent;
       const { offsetX: x, offsetY: y } = event,
         { offsetWidth: width, offsetHeight: height } = event.target as HTMLElement,
         move = 25,
         xMove = (x / width) * (move * 2) - move,
         yMove = (y / height) * (move * 2) - move;
-
-      if (cursor) {
-        cursor.classList.add("cursor-animate");
-        cursor.style.transform = `translate(${xMove}px, ${yMove}px) scale(1.2)`;
-      }
-      if (event.type === "mouseleave") {
-        if (cursor) {
-          cursor.classList.remove("cursor-animate");
-          cursor.style.transform = "";
-        }
-      }
     };
 
     const editCursor = (e: Event) => {
       if (isMobile) return; // Skip cursor update on mobile
-      
-      const cursor = document.querySelector(".cursor");
-      const event = e as MouseEvent;
-      if (cursor instanceof HTMLElement) {
-        const { clientX: x, clientY: y } = event;
-        cursor.style.left = `${x}px`;
-        cursor.style.top = `${y}px`;
-        cursor.style.transition = "transform 0.2s ease";
-      }
     };
 
     const handleMouseDown = () => {
       if (isMobile) return; // Skip click animation on mobile
-      
-      const cursor = document.querySelector(".cursor");
-      if (cursor) {
-        cursor.classList.add("clicked");
-        setTimeout(() => {
-          cursor.classList.remove("clicked");
-        }, 300);
-      }
     };
 
     if (!isMobile) {
       // Only add event listeners on desktop
-      links.forEach((link) => link.addEventListener("mousemove", animateit));
-      links.forEach((link) => link.addEventListener("mouseleave", animateit));
-      window.addEventListener("mousemove", editCursor);
-      window.addEventListener("mousedown", handleMouseDown);
+      links.forEach((link) => link.addEventListener('mousemove', animateit));
+      links.forEach((link) => link.addEventListener('mouseleave', animateit));
+      window.addEventListener('mousemove', editCursor);
+      window.addEventListener('mousedown', handleMouseDown);
     }
 
     // Add fade-in effect
-    const mainContent = document.querySelector("main");
+    const mainContent = document.querySelector('main');
     if (mainContent) {
-      mainContent.classList.add("fade-in");
+      mainContent.classList.add('fade-in');
       setTimeout(() => {
-        mainContent.classList.add("show");
+        mainContent.classList.add('show');
       }, 100);
     }
 
@@ -138,10 +104,10 @@ function Index() {
       // Clean up event listeners
       window.removeEventListener('resize', checkMobile);
       if (!isMobile) {
-        links.forEach((link) => link.removeEventListener("mousemove", animateit));
-        links.forEach((link) => link.removeEventListener("mouseleave", animateit));
-        window.removeEventListener("mousemove", editCursor);
-        window.removeEventListener("mousedown", handleMouseDown);
+        links.forEach((link) => link.removeEventListener('mousemove', animateit));
+        links.forEach((link) => link.removeEventListener('mouseleave', animateit));
+        window.removeEventListener('mousemove', editCursor);
+        window.removeEventListener('mousedown', handleMouseDown);
       }
     };
   }, [isMobile]);
@@ -150,6 +116,11 @@ function Index() {
     <div className="app">
       <Head>
         <title>Lohit&apos;s Portfolio</title>
+        <meta name="description" content="Lohit's personal portfolio website" />
+        <link rel="canonical" href="https://lohit.is-a.dev" />
+        <meta property="og:title" content="Lohit's Portfolio" />
+        <meta property="og:description" content="Lohit's personal portfolio website" />
+        <meta property="og:url" content="https://lohit.is-a.dev" />
         <link rel="shortcut icon" href="/favicon.png" />
         <meta
           name="google-site-verification"
@@ -163,12 +134,14 @@ function Index() {
             <SocialIcons />
             <Email />
           </Suspense>
-          <main style={{ paddingTop: "60px" }} className="fade-in">
+          <main style={{ paddingTop: '60px' }} className="fade-in">
             <Hero />
             <Suspense fallback={<div className="section-loader">Loading about section...</div>}>
               <About />
             </Suspense>
-            <Suspense fallback={<div className="section-loader">Loading experience section...</div>}>
+            <Suspense
+              fallback={<div className="section-loader">Loading experience section...</div>}
+            >
               <Experience />
             </Suspense>
             <Suspense fallback={<div className="section-loader">Loading projects section...</div>}>
@@ -182,7 +155,6 @@ function Index() {
           <Suspense fallback={<div className="footer-loader">Loading footer...</div>}>
             <Footer />
           </Suspense>
-          <div className="cursor"></div>
         </>
       )}
       <Loader isLoading={isLoading} setIsLoading={handleLoaderLoaded} />

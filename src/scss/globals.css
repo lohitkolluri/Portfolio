@@ -11,11 +11,13 @@
 }
 
 /* Only apply cursor: none to non-mobile devices */
+/*
 @media (min-width: 769px) {
   :root {
     cursor: none !important;
   }
 }
+*/
 
 ::-moz-selection {
   color: var(--background-color);
@@ -123,6 +125,7 @@ span {
 }
 
 /* Custom cursor styles - only visible on desktop */
+/*
 @media (min-width: 769px) {
   .cursor {
     pointer-events: none;
@@ -163,13 +166,16 @@ span {
     animation: click-animation 0.3s ease-out;
   }
 }
+*/
 
 /* Hide cursor completely on mobile */
+/*
 @media (max-width: 768px) {
   .cursor {
     display: none !important;
   }
 }
+*/
 
 @keyframes cursor-float {
   0%,
