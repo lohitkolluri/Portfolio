@@ -1,14 +1,10 @@
-import {
-  FiGithub,
-  FiInstagram,
-  FiLinkedin,
-} from "react-icons/fi";
+import { Github, Instagram, Linkedin } from 'lucide-react';
 
 function SocialIcons() {
   const socialLinks = [
-    { name: "Github", icon: <FiGithub />, link: "https://www.github.com/lohitkolluri" },
-    { name: "LinkedIn", icon: <FiLinkedin />, link: "https://www.linkedin.com/in/kollurilohit/" },
-    { name: "Instagram", icon: <FiInstagram />, link: "https://instagram.com/kollurilohit" },
+    { name: 'Github', icon: <Github />, link: 'https://www.github.com/lohitkolluri' },
+    { name: 'LinkedIn', icon: <Linkedin />, link: 'https://www.linkedin.com/in/kollurilohit/' },
+    { name: 'Instagram', icon: <Instagram />, link: 'https://instagram.com/kollurilohit' },
   ];
 
   return (
@@ -20,7 +16,7 @@ function SocialIcons() {
               href={link}
               className="social-icons-list-item-link"
               target="_blank"
-              rel="noopener noreferrer" // This ensures security and performance
+              rel="noopener noreferrer"
             >
               {icon}
             </a>

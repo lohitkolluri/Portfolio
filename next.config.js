@@ -31,7 +31,7 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     // Enable optimizing third-party scripts
-    optimizePackageImports: ['framer-motion', 'styled-components', 'react-icons'],
+    optimizePackageImports: ['framer-motion', 'lucide-react'],
     // Optimize CSS
     optimizeCss: true,
     // Enable scroll restoration

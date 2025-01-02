@@ -1,6 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 
 function About() {
   const ref = useRef(null);
@@ -11,28 +11,32 @@ function About() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
+
     // Initial check
     checkMobile();
-    
+
     // Add resize listener
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
-    console.log("Element is in view: ", isInView);
+    console.log('Element is in view: ', isInView);
   }, [isInView]);
 
   const mobileText = {
-    intro: "Hello! I am Lohit Kolluri, a Full Stack Developer passionate about DevOps and Machine Learning. I hold a Bachelor of Technology from SRM Institute of Science and Technology.",
-    experience: "At Apollo Tyres R&D, I developed an intelligent task queuing system and architected scalable solutions. My expertise includes Python, Cloud platforms (AWS, GCP), and frameworks like FastAPI and Flask."
+    intro:
+      'Hello! I am Lohit Kolluri, a Full Stack Developer passionate about DevOps and Machine Learning. I hold a Bachelor of Technology from SRM Institute of Science and Technology.',
+    experience:
+      'At Apollo Tyres R&D, I developed an intelligent task queuing system and architected scalable solutions. My expertise includes Python, Cloud platforms (AWS, GCP), and frameworks like FastAPI and Flask.',
   };
 
   const desktopText = {
-    intro: "Hello! I am Lohit Kolluri, a Full Stack Developer passionate about DevOps and Machine Learning. With experience across a wide array of technologies, I strive to deliver scalable, cost-effective solutions. I hold a Bachelor of Technology from SRM Institute of Science and Technology, with a focus on cloud computing, backend development, and intelligent automation.",
-    experience: "At Apollo Tyres R&D, I developed an intelligent task queuing system and architected a scalable backend using Django and PostgreSQL, boosting performance by 40%. My hands-on experience spans Python, Google Cloud, AWS, and frameworks like FastAPI and Flask. I have led projects such as a Natural Language to SQL Converter that reduced deployment costs by 40% while improving query accuracy to 95%."
+    intro:
+      'Hello! I am Lohit Kolluri, a Full Stack Developer passionate about DevOps and Machine Learning. With experience across a wide array of technologies, I strive to deliver scalable, cost-effective solutions. I hold a Bachelor of Technology from SRM Institute of Science and Technology, with a focus on cloud computing, backend development, and intelligent automation.',
+    experience:
+      'At Apollo Tyres R&D, I developed an intelligent task queuing system and architected a scalable backend using Django and PostgreSQL, boosting performance by 40%. My hands-on experience spans Python, Google Cloud, AWS, and frameworks like FastAPI and Flask. I have led projects such as a Natural Language to SQL Converter that reduced deployment costs by 40% while improving query accuracy to 95%.',
   };
 
   return (

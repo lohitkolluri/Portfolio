@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 function Email() {
   return (
     <motion.div
@@ -7,11 +7,15 @@ function Email() {
       animate={{ opacity: 1 }}
       transition={{
         duration: 0.3,
-        ease: "easeInOut",
+        ease: 'easeInOut',
         delay: 1.95,
       }}
     >
-      <a href="mailto:lohitkolluri@gmail.com" className="email-link" aria-label="Email Lohit Kolluri">
+      <a
+        href="mailto:lohitkolluri@gmail.com"
+        className="email-link"
+        aria-label="Email Lohit Kolluri"
+      >
         lohitkolluri@gmail.com
       </a>
     </motion.div>

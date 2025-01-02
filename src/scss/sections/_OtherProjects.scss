@@ -1,0 +1,119 @@
+.projects-section {
+  color: #333;
+  padding: 50px 20px;
+  font-family: 'Raleway', sans-serif;
+
+  .title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #ccd6f6;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+
+  .card {
+    background-color: var(--light-navy);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #a8b2d1;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #a8b2d1;
+      margin: 10px 0;
+      line-height: 1.4;
+      text-align: justify;
+    }
+
+    .tech-list {
+      margin: 15px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      span {
+        background-color: #1e1e1e;
+        color: #64ffda;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .links {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+
+      a {
+        color: #ccd6f6;
+        font-size: 1.2rem;
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+          color: #3498db;
+        }
+      }
+    }
+
+    .icon {
+      margin-right: 8px;
+      color: #ccd6f6;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    .styled-button {
+      font-family: 'SF Mono, Roboto Mono, monospace';
+      background-color: #3498db;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+      text-decoration: none;
+
+      &:hover {
+        transform: scale(1.05);
+        background-color: #2980b9;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+
+    .title,
+    .grid {
+      display: none;
+    }
+  }
+}

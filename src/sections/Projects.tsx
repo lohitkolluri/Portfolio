@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
+import { ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiExternalLink, FiGithub } from 'react-icons/fi';
 
 function Projects() {
   const projectsData = [
@@ -128,7 +128,7 @@ function Projects() {
                         rel="noopener noreferrer"
                         className="project-info-links-item-link"
                       >
-                        <FiGithub />
+                        <Github />
                       </Link>
                     </motion.li>
                     <motion.li
@@ -142,7 +142,7 @@ function Projects() {
                         rel="noopener noreferrer"
                         className="project-info-links-item-link"
                       >
-                        <FiExternalLink />
+                        <ExternalLink />
                       </Link>
                     </motion.li>
                   </ul>

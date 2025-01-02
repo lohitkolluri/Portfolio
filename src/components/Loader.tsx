@@ -1,6 +1,6 @@
-import { AnimatePresence, motion, Variants } from "framer-motion";
-import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { AnimatePresence, motion, Variants } from 'framer-motion';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
 interface LoaderProps {
   isLoading: boolean;
@@ -37,9 +37,9 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
       opacity: 1,
       transition: {
         duration: 2.5,
-        ease: "easeInOut",
+        ease: 'easeInOut',
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: 'reverse',
       },
     },
   };
@@ -47,12 +47,7 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
   return (
     <AnimatePresence>
       {isLoading && (
-        <motion.div
-          className="loader"
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
+        <motion.div className="loader" initial="hidden" animate="visible" exit="exit">
           <motion.svg
             id="logo"
             xmlns="http://www.w3.org/2000/svg"
@@ -63,8 +58,8 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
             <title>Lohit Kolluri</title>
             <defs>
               <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: "#8892AF", stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: "#CCD6F6", stopOpacity: 1 }} />
+                <stop offset="0%" style={{ stopColor: '#8892AF', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: '#CCD6F6', stopOpacity: 1 }} />
               </linearGradient>
             </defs>
             <g>
@@ -109,7 +104,7 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                 fill="#CCD6F6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ repeat: Infinity, repeatType: "reverse", duration: 2 }}
+                transition={{ repeat: Infinity, repeatType: 'reverse', duration: 2 }}
               />
               <motion.circle
                 cx="75"
@@ -118,29 +113,29 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                 fill="#CCD6F6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ repeat: Infinity, repeatType: "reverse", duration: 2, delay: 0.5 }}
+                transition={{ repeat: Infinity, repeatType: 'reverse', duration: 2, delay: 0.5 }}
               />
               <motion.polygon
                 points="50,10 60,30 40,30"
                 fill="#CCD6F6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, rotate: 360 }}
-                transition={{ repeat: Infinity, repeatType: "reverse", duration: 5 }}
+                transition={{ repeat: Infinity, repeatType: 'reverse', duration: 5 }}
               />
               <motion.polygon
                 points="30,90 40,70 20,70"
                 fill="#CCD6F6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, rotate: 360 }}
-                transition={{ repeat: Infinity, repeatType: "reverse", duration: 5, delay: 1 }}
+                transition={{ repeat: Infinity, repeatType: 'reverse', duration: 5, delay: 1 }}
               />
 
               {/* Glowing Effect */}
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+                <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
                 <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
               <motion.circle
@@ -153,14 +148,9 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                 filter="url(#glow)"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ repeat: Infinity, repeatType: "reverse", duration: 2 }}
+                transition={{ repeat: Infinity, repeatType: 'reverse', duration: 2 }}
               >
-                <animate
-                  attributeName="r"
-                  values="40;45;40"
-                  dur="2s"
-                  repeatCount="indefinite"
-                />
+                <animate attributeName="r" values="40;45;40" dur="2s" repeatCount="indefinite" />
               </motion.circle>
             </g>
           </motion.svg>

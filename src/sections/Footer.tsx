@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { FaRegStar } from "react-icons/fa";
-import { FiGitBranch } from "react-icons/fi";
+import { useEffect, useState } from 'react';
 
 function Footer() {
   const [githubInfo, setGitHubInfo] = useState({
@@ -28,12 +26,14 @@ function Footer() {
       </a>
       {githubInfo.stars !== null && (
         <span className="footer-icon">
-          <FaRegStar /> {githubInfo.stars}
+          {/* Display stars */}
+          {githubInfo.stars}
         </span>
       )}
       {githubInfo.forks !== null && (
         <span className="footer-icon">
-          <FiGitBranch /> {githubInfo.forks}
+          {/* Display forks */}
+          {githubInfo.forks}
         </span>
       )}
     </footer>
