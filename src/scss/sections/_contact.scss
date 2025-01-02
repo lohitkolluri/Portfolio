@@ -1,11 +1,13 @@
 .contact {
   max-width: 700px;
-  margin: 15rem auto;
+  margin: 10rem auto;
+  min-height: 100vh;
   display: flex;
   gap: 1rem;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   .contact-title {
     color: var(--theme-color);
     font-size: var(--tbase);
@@ -13,16 +15,18 @@
     font-weight: 300;
     &::before {
       counter-increment: title;
-      content: "0" counter(title) ".";
+      content: '0' counter(title) '.';
       margin-right: 0.5rem;
       color: var(--theme-color);
     }
   }
+
   .contact-sub-title {
     font-size: var(--tgiant);
     font-family: var(--raleway);
     color: var(--light-slate);
   }
+
   .contact-text {
     color: var(--slate);
     font-size: var(--tlarge);
@@ -31,11 +35,82 @@
     font-weight: 500;
     font-family: var(--raleway);
     text-align: center;
+    margin-bottom: 2rem;
   }
+
+  .contact-form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .form-group {
+      width: 100%;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 1rem;
+      background: var(--light-navy);
+      border: 1px solid var(--theme-color);
+      border-radius: 4px;
+      color: var(--light-slate);
+      font-family: var(--raleway);
+      font-size: var(--tbase);
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: var(--theme-color);
+        box-shadow: 0 0 0 2px rgba(var(--theme-color-rgb), 0.2);
+      }
+
+      &::placeholder {
+        color: var(--slate);
+      }
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+  }
+
   .contact-cta {
     margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
     .btn {
       padding: 1rem 2rem;
+      min-width: 150px;
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
     }
+  }
+
+  .success-message,
+  .error-message {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    font-family: var(--raleway);
+  }
+
+  .success-message {
+    background-color: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
+  }
+
+  .error-message {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
   }
 }

@@ -8,10 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@types/node": "^20.17.10",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "critters": "^0.0.25",
+    "dotenv": "^16.4.7",
     "eslint": "^9.17.0",
     "eslint-config-next": "^15.1.3",
     "framer-motion": "^10.18.0",

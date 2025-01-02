@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  
+
   // Optimize images
   images: {
     remotePatterns: [
@@ -24,7 +24,8 @@ const nextConfig = {
     // Remove console.log in production
     removeConsole: process.env.NODE_ENV === 'production',
     // Remove react-dev-tools in production
-    reactRemoveProperties: process.env.NODE_ENV === 'production' ? { properties: ['^data-test'] } : false,
+    reactRemoveProperties:
+      process.env.NODE_ENV === 'production' ? { properties: ['^data-test'] } : false,
   },
 
   // Enable experimental features for better performance
@@ -77,27 +78,27 @@ const nextConfig = {
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            value: 'on',
           },
           {
             key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload'
+            value: 'max-age=63072000; includeSubDomains; preload',
           },
           {
             key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            value: 'nosniff',
           },
           {
             key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
+            value: 'SAMEORIGIN',
           },
           {
             key: 'X-XSS-Protection',
-            value: '1; mode=block'
+            value: '1; mode=block',
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin'
+            value: 'origin-when-cross-origin',
           },
         ],
       },
@@ -106,13 +107,13 @@ const nextConfig = {
 
   // Enable page caching for better performance
   generateEtags: true,
-  
+
   // Compress responses
   compress: true,
-  
+
   // Increase build output details
   output: 'standalone',
-  
+
   // Disable powered by header
   poweredByHeader: false,
 };

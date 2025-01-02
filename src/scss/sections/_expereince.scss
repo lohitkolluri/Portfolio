@@ -11,12 +11,12 @@
       font-weight: 700;
       &::before {
         counter-increment: title;
-        content: "0" counter(title) ".";
+        content: '0' counter(title) '.';
         margin-right: 0.5rem;
         color: var(--theme-color);
       }
       &::after {
-        content: "";
+        content: '';
         display: block;
         position: absolute;
         top: 20px;
@@ -47,7 +47,7 @@
       &::before {
         position: absolute;
         left: -0px;
-        content: "";
+        content: '';
         height: 100%;
         width: 1px;
         background-color: var(--lightest-navy);
@@ -104,7 +104,7 @@
           color: var(--slate);
           font-weight: 500;
           &::before {
-            content: "▹";
+            content: '▹';
             position: absolute;
             left: -20px;
             top: 6px;
