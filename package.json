@@ -15,7 +15,7 @@
     "critters": "^0.0.25",
     "dotenv": "^16.4.7",
     "framer-motion": "^10.18.0",
-    "lucide-react": "^0.469.0",
+    "lucide-react": "^0.482.0",
     "next": "^14.2.22",
     "node": "^21.7.3",
     "prop-types": "^15.8.1",
