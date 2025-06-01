@@ -80,12 +80,14 @@ const OtherProjects: React.FC = () => {
           </motion.div>
         ))}
       </div>
-      <div className="button-container" style={{ textAlign: 'center', marginTop: '20px' }}>
+      <div className="button-container">
         <Button
-          className="styled-button"
           text="View More"
           link="https://github.com/lohitkolluri"
           aria-label="View more projects on GitHub"
+          variant="outline"
+          size="lg"
+          showExternalIcon={true}
         />
       </div>
     </section>

@@ -17,6 +17,9 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ['image/webp'],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
   // Enable compiler optimizations
@@ -32,14 +35,27 @@ const nextConfig = {
   experimental: {
     // Enable optimizing third-party scripts
     optimizePackageImports: ['framer-motion', 'lucide-react'],
-    // Optimize CSS
-    optimizeCss: true,
     // Enable scroll restoration
     scrollRestoration: true,
   },
 
   // Configure webpack for better performance
   webpack: (config, { dev, isServer }) => {
+    // Add file loader for image files
+    config.module.rules.push({
+      test: /\.(png|jpe?g|gif|svg|webp)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'static/images/',
+            publicPath: '/_next/static/images/'
+          }
+        }
+      ]
+    });
+    
     // Optimize production builds
     if (!dev) {
       config.optimization = {

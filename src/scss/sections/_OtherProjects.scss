@@ -88,32 +88,24 @@
   .button-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-
-    .styled-button {
-      font-family: 'SF Mono, Roboto Mono, monospace';
-      background-color: #3498db;
-      color: #ffffff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-      text-decoration: none;
-
-      &:hover {
-        transform: scale(1.05);
-        background-color: #2980b9;
-      }
-    }
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
 
   @media screen and (max-width: 768px) {
     padding: 20px;
 
-    .title,
+    .title {
+      font-size: 2rem;
+    }
+    
     .grid {
-      display: none;
+      grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+    
+    .button-container {
+      margin-top: 30px;
     }
   }
 }

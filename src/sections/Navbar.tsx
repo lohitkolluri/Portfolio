@@ -51,7 +51,7 @@ function Navbar() {
   }, [responsiveNavVisible]);
 
   return (
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
       <div className={`wrapper ${navbarVisible ? 'blur-nav' : ''}`}>
         <motion.div
           className="brand"
@@ -62,7 +62,7 @@ function Navbar() {
             ease: 'easeInOut',
           }}
         >
-          <Link href="">
+          <Link href="" aria-label="Homepage">
             <Logo />
           </Link>
         </motion.div>
@@ -81,7 +81,10 @@ function Navbar() {
                 e.stopPropagation();
                 setResponsiveNavVisible(false);
               }}
-              size={24} // Customize size if needed
+              size={24}
+              aria-label="Close navigation menu"
+              role="button"
+              tabIndex={0}
             />
           ) : (
             <Menu
@@ -89,11 +92,17 @@ function Navbar() {
                 e.stopPropagation();
                 setResponsiveNavVisible(true);
               }}
-              size={24} // Customize size if needed
+              size={24}
+              aria-label="Open navigation menu"
+              role="button"
+              tabIndex={0}
+              aria-expanded={responsiveNavVisible}
+              aria-controls="nav-menu"
             />
           )}
         </motion.div>
         <motion.div
+          id="nav-menu"
           className={`${responsiveNavVisible && 'nav-responsive'} nav-items`}
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -102,6 +111,7 @@ function Navbar() {
             duration: 0.3,
             ease: 'easeInOut',
           }}
+          aria-hidden={!responsiveNavVisible}
         >
           <ul className="nav-items-list">
             {sectionLinks.map(({ name, link }, index) => (
@@ -139,6 +149,10 @@ function Navbar() {
             <Button
               text="Resume"
               link="https://drive.google.com/file/d/1KwoW5uTW2aUEoi14CnM6JGQatup_5aAf/view?usp=sharing"
+              variant="outline"
+              size="sm"
+              showExternalIcon={true}
+              className="resume-btn"
             />
           </motion.div>
         </motion.div>

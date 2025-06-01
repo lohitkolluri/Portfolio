@@ -1,8 +1,10 @@
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
+import Button from '../components/Button';
 
 const Contact = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,7 +41,13 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitForm = () => {
+    if (formRef.current && !status.submitting) {
+      formRef.current.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+    }
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ submitting: true, submitted: false, error: null });
 
@@ -88,6 +96,7 @@ const Contact = () => {
       </motion.p>
 
       <motion.form
+        ref={formRef}
         onSubmit={handleSubmit}
         className="contact-form"
         variants={itemVariants}
@@ -132,15 +141,14 @@ const Contact = () => {
         </div>
 
         <motion.div className="contact-cta" variants={itemVariants} custom={4}>
-          <motion.button
-            type="submit"
-            className="btn"
-            disabled={status.submitting}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {status.submitting ? 'Sending...' : 'Send Message'}
-          </motion.button>
+          <Button
+            text={status.submitting ? 'Sending...' : 'Send Message'}
+            link="#"
+            variant="primary"
+            size="lg"
+            className={`send-message-btn ${status.submitting ? 'disabled' : ''}`}
+            onClick={status.submitting ? undefined : handleSubmitForm}
+          />
         </motion.div>
 
         {status.submitted && (

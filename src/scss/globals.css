@@ -1,13 +1,29 @@
 :root {
-  --navy-shadow: rgba(0, 0, 0, 0.25);
-  --background-color: #1e1e1e;
-  --lightest-navy: rgba(50, 50, 50, 1);
-  --light-navy: rgb(38, 41, 43);
-  --dark-slate: #2f4f4f;
-  --slate: #8892b0;
-  --light-slate: #a8b2d1;
-  --lightest-slate: #ccd6f6;
-  --theme-color: #64ffda;
+  /* Material Design Dark Theme Colors */
+  --navy-shadow: rgba(0, 0, 0, 0.4);
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --surface-color-light: #2c2c2c;
+  --lightest-navy: rgba(66, 66, 66, 0.8);
+  --light-navy: rgba(48, 48, 48, 1);
+  --dark-slate: #424242;
+  --slate: #9e9e9e;
+  --light-slate: #bdbdbd;
+  --lightest-slate: #eeeeee;
+  --theme-color: #bb86fc; /* Primary - Purple */
+  --theme-color-secondary: #03dac6; /* Secondary - Teal */
+  --theme-color-error: #cf6679; /* Error - Pink */
+  --theme-color-transparent: rgba(187, 134, 252, 0.1);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  --border-radius: 4px;
+  --card-shadow: 0 10px 30px -15px var(--navy-shadow);
+  --elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --elevation-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --elevation-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  --elevation-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --elevation-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 /* Only apply cursor: none to non-mobile devices */
@@ -36,12 +52,17 @@ body {
 
 body {
   background-color: var(--background-color);
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(66, 66, 66, 0.2) 0%, transparent 40%), 
+    radial-gradient(circle at 75% 75%, rgba(66, 66, 66, 0.2) 0%, transparent 40%);
   color: var(--lightest-slate);
   counter-reset: title;
+  line-height: 1.5;
+  font-family: var(--font-sans);
 }
 
 main {
-  transition: 0.3s ease-in-out;
+  transition: var(--transition);
 }
 
 .blur {
@@ -62,7 +83,7 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -73,6 +94,47 @@ html {
   background-color: var(--dark-slate);
   border: 3px solid var(--background-color);
   border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--theme-color);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--theme-color-secondary);
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  transition: var(--transition);
+  color: var(--theme-color);
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+}
+
+.link:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--theme-color);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.link:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .text-justify {
@@ -89,7 +151,7 @@ html {
 .nav-wrapper {
   width: 100%;
   height: 100vh;
-  background: #161616;
+  background: var(--background-color);
 }
 
 nav {
@@ -101,122 +163,118 @@ nav {
 }
 
 .hover-this {
-  cursor: none !important;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: var(--transition);
   transform: scale(1);
+}
+
+/* Material design button */
+.md-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 500;
+  background-color: var(--theme-color);
+  color: var(--background-color);
+  box-shadow: var(--elevation-1);
+  transition: all 0.3s ease;
+}
+
+.md-btn:hover {
+  box-shadow: var(--elevation-2);
+  transform: translateY(-1px);
+}
+
+.md-btn-outlined {
+  background-color: transparent;
+  border: 1px solid var(--theme-color);
+  color: var(--theme-color);
+}
+
+.md-btn-outlined:hover {
+  background-color: var(--theme-color-transparent);
+}
+
+.md-card {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--elevation-1);
+  transition: all 0.3s ease;
+}
+
+.md-card:hover {
+  box-shadow: var(--elevation-2);
+  transform: translateY(-2px);
 }
 
 /* Only apply hover effects on non-mobile devices */
 @media (min-width: 769px) {
   .hover-this:hover {
-    transform: scale(1.15) rotate(5deg);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: var(--light-navy);
+    transform: scale(1.05);
+    box-shadow: var(--elevation-2);
+    background-color: var(--surface-color-light);
     color: var(--theme-color);
   }
 }
 
-span {
-  display: inline-block;
-  font-family: 'Russo One', sans-serif;
+.section-heading {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 10px 0 40px;
+  width: 100%;
+  font-size: var(--tx2large);
+  white-space: nowrap;
+}
+
+.section-heading:after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 300px;
+  height: 1px;
+  margin-left: 20px;
+  background: linear-gradient(90deg, var(--dark-slate) 0%, transparent 100%);
+}
+
+.numbered-heading {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 10px 0 40px;
+  width: 100%;
+  font-size: var(--heading);
+  white-space: nowrap;
+}
+
+.numbered-heading:before {
+  position: relative;
+  counter-increment: section;
+  content: "0" counter(section) ".";
+  margin-right: 10px;
+  color: var(--theme-color);
+  font-family: var(--font-mono);
+  font-size: clamp(16px, 3vw, 20px);
   font-weight: 400;
-  pointer-events: none;
-  transition: transform 0.1s linear;
 }
 
-/* Custom cursor styles - only visible on desktop */
-/*
-@media (min-width: 769px) {
-  .cursor {
-    pointer-events: none;
-    position: fixed;
-    padding: 1.1rem;
-    background-color: var(--theme-color);
-    border-radius: 50%;
-    mix-blend-mode: difference;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    animation: cursor-float 1.5s ease-in-out infinite;
-    box-shadow: 0 0 10px var(--theme-color);
-    z-index: 9999;
-  }
-
-  .cursor::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: var(--theme-color);
-    border-radius: 50%;
-    opacity: 0.5;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    animation: trail 0.6s linear infinite;
-  }
-
-  .hover-this:hover ~ .cursor {
-    background-color: var(--lightest-slate);
-    mix-blend-mode: normal;
-    box-shadow: 0 0 20px var(--theme-color);
-  }
-
-  .hover-this:hover .cursor {
-    background-color: var(--theme-color);
-  }
-
-  .cursor.clicked {
-    animation: click-animation 0.3s ease-out;
-  }
+.numbered-heading:after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 300px;
+  height: 1px;
+  margin-left: 20px;
+  background-color: var(--dark-slate);
 }
-*/
-
-/* Hide cursor completely on mobile */
 
 @media (max-width: 768px) {
-  .cursor {
-    display: none !important;
-  }
-}
-
-@keyframes cursor-float {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}
-
-@keyframes trail {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 0.2;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.5;
-  }
-}
-
-@keyframes click-animation {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.8);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@media (min-width: 900px) {
-  nav {
-    display: flex;
-    justify-content: space-around;
+  .section-heading:after,
+  .numbered-heading:after {
+    width: 100%;
   }
 }
 
@@ -230,4 +288,38 @@ span {
     padding: 20px 0;
     display: inline-block;
   }
+}
+
+/* Removed Glitch Effect */
+
+/* Highlight Styling */
+.highlight {
+  color: var(--theme-color);
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.highlight:hover {
+  color: var(--theme-color-secondary);
+}
+
+/* Scroll Animations */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, visibility 0.6s ease-out;
+  will-change: opacity, transform, visibility;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.section-transition {
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
 }

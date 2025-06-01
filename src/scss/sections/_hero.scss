@@ -41,3 +41,23 @@
     }
   }
 }
+
+.hero-button {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+.ml-4 {
+  margin-left: 16px;
+  
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
+  }
+}

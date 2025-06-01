@@ -1,3 +1,40 @@
 @import './variables';
 @import './components/';
 @import './sections/';
+
+// Mobile optimization
+@media screen and (max-width: 768px) {
+  // Improve touch targets
+  a, button, .link, .hover-this, .timeline-item, .experience-item, .md-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+    
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+  
+  // Improve form elements
+  input, textarea, select {
+    font-size: 16px; // Prevents iOS zoom on focus
+    padding: 12px;
+  }
+  
+  // Add momentum scrolling
+  html, body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  // Disable hover effects
+  .hover-this {
+    &:hover {
+      transform: none !important;
+    }
+  }
+  
+  // Increase space between clickable elements
+  .nav-items-list-item, .project-info-links-item {
+    margin: 0 10px;
+  }
+}

@@ -51,10 +51,12 @@ nav {
       counter-reset: nav-list;
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
       text-align: left;
+      align-items: center;
       &-list {
         display: flex;
         gap: 3rem;
         list-style-type: none;
+        align-items: center;
         &-item {
           a {
             outline: 2px dashed transparent;
@@ -75,6 +77,16 @@ nav {
             transform: scale(1.05);
             color: var(--theme-color);
           }
+        }
+      }
+      &-button {
+        display: flex;
+        align-items: center;
+        margin-left: 15px;
+        
+        @media screen and (max-width: 1020px) {
+          margin-left: 0;
+          margin-top: 30px;
         }
       }
     }
@@ -103,6 +115,9 @@ nav {
         z-index: 11;
         &-list {
           flex-direction: column;
+        }
+        &-button {
+          margin-top: 30px;
         }
       }
 

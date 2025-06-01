@@ -324,3 +324,22 @@
     }
   }
 }
+
+.project-info-links {
+  display: flex;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mr-3 {
+  margin-right: 12px;
+  
+  @media screen and (max-width: 768px) {
+    margin-right: 0;
+  }
+}
+
+.mt-4 {
+  margin-top: 16px;
+}

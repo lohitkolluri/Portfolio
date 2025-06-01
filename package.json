@@ -9,10 +9,13 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@google/generative-ai": "^0.24.1",
+    "@types/d3": "^7.4.3",
     "@types/node": "^20.17.11",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "critters": "^0.0.25",
+    "d3": "^7.9.0",
     "dotenv": "^16.4.7",
     "framer-motion": "^10.18.0",
     "lucide-react": "^0.469.0",
@@ -22,9 +25,11 @@
     "react": "18.2.0",
     "react-animated-cursor": "^2.11.2",
     "react-dom": "18.2.0",
+    "react-icons": "^5.5.0",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
+    "file-loader": "^6.2.0",
     "sass": "^1.83.0"
   }
 }

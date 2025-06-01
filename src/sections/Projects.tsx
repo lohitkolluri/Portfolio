@@ -2,19 +2,20 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button3D from '@/components/Button3D';
 
 function Projects() {
   const projectsData = [
     {
       image: '/projects/project1.webp',
       projectName: 'NLP2SQL',
-      projectLink: 'https://nlp2sql.streamlit.app/',
+      projectLink: 'https://trynlp2sql.streamlit.app/',
       projectDescription:
         'A natural language to SQL query converter that transforms text input into structured SQL queries for database execution, streamlining database interactions through intuitive language processing.',
       projectTech: ['Streamlit', 'Azure OpenAI', 'SQLite3', 'Altair'],
       projectExternalLinks: {
         github: 'https://github.com/lohitkolluri/NLP2SQL',
-        externalLink: 'https://nlp2sql.streamlit.app/',
+        externalLink: 'https://trynlp2sql.streamlit.app/',
       },
     },
     {
@@ -116,36 +117,20 @@ function Projects() {
                       </motion.li>
                     ))}
                   </ul>
-                  <ul className="project-info-links">
-                    <motion.li
-                      className="project-info-links-item"
-                      whileHover={{ y: -2 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Link
-                        href={projectExternalLinks.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-info-links-item-link"
-                      >
-                        <Github />
-                      </Link>
-                    </motion.li>
-                    <motion.li
-                      className="project-info-links-item"
-                      whileHover={{ y: -2 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Link
-                        href={projectExternalLinks.externalLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-info-links-item-link"
-                      >
-                        <ExternalLink />
-                      </Link>
-                    </motion.li>
-                  </ul>
+                  <div className="project-info-links mt-4">
+                    <Button3D
+                      text="View Project"
+                      link={projectLink}
+                      color="primary"
+                      className="mr-3"
+                    />
+                    <Button3D
+                      text="GitHub"
+                      link={projectExternalLinks.github}
+                      color="secondary"
+                      icon={<Github size={16} />}
+                    />
+                  </div>
                 </motion.div>
               </motion.div>
             );
