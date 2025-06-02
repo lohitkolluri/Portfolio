@@ -11,27 +11,46 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsLoading();
-    }, 2500);
+    }, 3000);
 
     return () => clearTimeout(timeoutId);
   }, [setIsLoading]);
 
+  const containerVariants = {
+    hidden: { opacity: 1 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        when: "beforeChildren",
+        staggerChildren: 0.1
+      }
+    },
+    exit: { 
+      opacity: 0,
+      transition: { 
+        duration: 0.8, 
+        ease: "easeInOut",
+        when: "afterChildren"
+      }
+    }
+  };
+
   const svgVariants = {
     hidden: { opacity: 0, scale: 0.5 },
-    visible: (i: number) => ({
+    visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: i * 0.15,
-        duration: 0.7,
-        ease: "easeInOut",
+        duration: 0.8,
+        ease: "easeOut",
       },
-    }),
+    },
     exit: { 
       opacity: 0, 
-      scale: 0.5, 
+      scale: 0.8, 
+      y: -20,
       transition: { 
-        duration: 0.5,
+        duration: 0.6,
         ease: "easeInOut"
       } 
     },
@@ -50,13 +69,59 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
         repeatDelay: 0.2
       },
     },
+    exit: {
+      pathLength: 0,
+      opacity: 0,
+      transition: {
+        duration: 0.4,
+        ease: 'easeInOut'
+      }
+    }
+  };
+
+  const circleVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: [0, 0.7, 0],
+      scale: [0.8, 1.2, 0.8],
+      transition: { 
+        repeat: Infinity, 
+        duration: 3,
+        ease: "easeInOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  const polygonVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: [0, 0.7, 0],
+      rotate: 360,
+      scale: [0.8, 1.2, 0.8],
+      transition: { 
+        repeat: Infinity, 
+        duration: 3,
+        ease: "easeInOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0,
+      transition: { duration: 0.3 }
+    }
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isLoading && (
         <motion.div 
           className="loader" 
+          variants={containerVariants}
           initial="hidden" 
           animate="visible" 
           exit="exit"
@@ -66,7 +131,6 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 100 100"
             variants={svgVariants}
-            custom={0}
           >
             <title>Lohit Kolluri</title>
             <defs>
@@ -86,9 +150,6 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                 stroke="var(--theme-color)"
                 strokeWidth="1.5"
                 variants={svgVariants}
-                custom={0.5}
-                initial="hidden"
-                animate="visible"
               />
               <motion.rect
                 x="15"
@@ -99,9 +160,6 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                 stroke="var(--theme-color)"
                 strokeWidth="1.5"
                 variants={svgVariants}
-                custom={0.8}
-                initial="hidden"
-                animate="visible"
               />
 
               {/* Letter K */}
@@ -111,8 +169,6 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                 stroke="var(--theme-color)"
                 strokeWidth="1.5"
                 variants={pathVariants as Variants}
-                initial="hidden"
-                animate="visible"
               />
 
               {/* Additional Shapes */}
@@ -121,27 +177,14 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                 cy="25"
                 r="5"
                 fill="var(--theme-color)"
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: [0, 0.7, 0],
-                  scale: [0.8, 1.2, 0.8]
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 3,
-                  ease: "easeInOut"
-                }}
+                variants={circleVariants}
               />
               <motion.circle
                 cx="75"
                 cy="75"
                 r="5"
                 fill="var(--theme-color)"
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: [0, 0.7, 0],
-                  scale: [0.8, 1.2, 0.8]
-                }}
+                variants={circleVariants}
                 transition={{ 
                   repeat: Infinity, 
                   duration: 3,
@@ -152,27 +195,12 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
               <motion.polygon
                 points="50,10 60,30 40,30"
                 fill="var(--theme-color-secondary)"
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: [0, 0.7, 0],
-                  rotate: 360,
-                  scale: [0.8, 1.2, 0.8]
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 3,
-                  ease: "easeInOut"
-                }}
+                variants={polygonVariants}
               />
               <motion.polygon
                 points="30,90 40,70 20,70"
                 fill="var(--theme-color-secondary)"
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: [0, 0.7, 0],
-                  rotate: 360,
-                  scale: [0.8, 1.2, 0.8]
-                }}
+                variants={polygonVariants}
                 transition={{ 
                   repeat: Infinity, 
                   duration: 3,
@@ -197,15 +225,22 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                 stroke="var(--theme-color)"
                 strokeWidth="1"
                 filter="url(#glow)"
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: [0, 0.4, 0],
-                  scale: [0.9, 1.05, 0.9],
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 3,
-                  ease: "easeInOut"
+                variants={{
+                  hidden: { opacity: 0, scale: 0.9 },
+                  visible: { 
+                    opacity: [0, 0.4, 0],
+                    scale: [0.9, 1.05, 0.9],
+                    transition: { 
+                      repeat: Infinity, 
+                      duration: 3,
+                      ease: "easeInOut"
+                    }
+                  },
+                  exit: {
+                    opacity: 0,
+                    scale: 1.2,
+                    transition: { duration: 0.8 }
+                  }
                 }}
               />
             </g>

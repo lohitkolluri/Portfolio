@@ -15,10 +15,24 @@
     radial-gradient(circle at 25% 25%, rgba(66, 66, 66, 0.2) 0%, transparent 40%), 
     radial-gradient(circle at 75% 75%, rgba(66, 66, 66, 0.2) 0%, transparent 40%);
   z-index: 9999;
+  transition: opacity 0.8s ease-in-out;
   
   svg {
     height: 15rem;
     width: 15rem;
     filter: drop-shadow(0 0 8px rgba(187, 134, 252, 0.3));
+    will-change: transform, opacity;
+  }
+}
+
+// Fade-in animation for main content
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

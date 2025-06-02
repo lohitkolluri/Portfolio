@@ -7,12 +7,22 @@
   font-weight: 600;
   font-size: var(--tsm2);
   overflow: hidden;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
   perspective: 800px;
   box-shadow: 
     0 4px 6px rgba(0, 0, 0, 0.1),
     0 1px 3px rgba(0, 0, 0, 0.08);
+  
+  &__border {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
   
   &:after {
     content: '';
@@ -53,6 +63,7 @@
     justify-content: center;
     z-index: 1;
     transform: translateZ(10px);
+    transition: transform 0.3s ease;
   }
   
   &__glare {
@@ -64,23 +75,44 @@
     border-radius: 8px;
     background: radial-gradient(
       circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(255, 255, 255, 0) 50%
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0) 60%
     );
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
+    z-index: 1;
   }
   
   &__icon {
     margin-right: 10px;
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  &__text {
+    position: relative;
+    transition: transform 0.3s ease;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 1px;
+      background: var(--theme-color);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+      opacity: 0.7;
+    }
   }
   
   &__arrow {
     margin-left: 6px;
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
   }
   
   /* Color variants */
@@ -91,6 +123,10 @@
     &:hover, &:focus {
       color: var(--navy);
     }
+    
+    .btn-3d__border {
+      border-color: rgba(10, 25, 47, 0.3);
+    }
   }
   
   &--secondary {
@@ -99,6 +135,10 @@
     
     &:hover, &:focus {
       color: var(--theme-color);
+    }
+    
+    .btn-3d__border {
+      border-color: rgba(100, 255, 218, 0.3);
     }
   }
   
@@ -109,6 +149,10 @@
     &:hover, &:focus {
       color: var(--navy);
     }
+    
+    .btn-3d__border {
+      border-color: rgba(10, 25, 47, 0.3);
+    }
   }
   
   /* Hover state */
@@ -118,12 +162,47 @@
       0 10px 20px rgba(0, 0, 0, 0.15),
       0 3px 6px rgba(0, 0, 0, 0.1);
       
-    &:after, &:before, .btn-3d__glare {
+    &:after, &:before, .btn-3d__glare, .btn-3d__border {
       opacity: 1;
     }
     
     .btn-3d__arrow {
       transform: translateX(3px);
+    }
+    
+    .btn-3d__text::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+  
+  /* Pressed state */
+  &.is-pressed {
+    transform: scale(0.98) translateY(0);
+    box-shadow: 
+      0 5px 10px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.05);
+    
+    .btn-3d__content {
+      transform: translateZ(5px);
+    }
+  }
+  
+  /* Animated state */
+  &.is-animating {
+    animation: buttonPulse 2.5s infinite;
+    
+    .btn-3d__border {
+      opacity: 1;
+      animation: borderPulse 2.5s infinite;
+    }
+    
+    .btn-3d__icon {
+      animation: iconBounce 2.5s infinite;
+    }
+    
+    .btn-3d__text::after {
+      animation: lineExpand 2.5s infinite;
     }
   }
   
@@ -144,5 +223,51 @@
   @media screen and (max-width: 480px) {
     padding: 12px 16px;
     font-size: var(--tsm);
+  }
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  50% {
+    transform: scale(1.03) translateY(-3px);
+    box-shadow: 
+      0 8px 16px rgba(0, 0, 0, 0.15),
+      0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes borderPulse {
+  0%, 100% {
+    opacity: 0.3;
+    box-shadow: 0 0 0 rgba(100, 255, 218, 0);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+  }
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes lineExpand {
+  0%, 100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 } 

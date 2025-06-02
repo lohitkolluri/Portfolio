@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { Suspense, useEffect, useState } from 'react';
 import Loader from '../components/Loader';
+import { motion } from 'framer-motion';
 
 // Components that are needed immediately
 import Hero from '../sections/Hero';
@@ -51,7 +52,7 @@ function Index() {
 
   const handleLoaderLoaded = () => {
     setIsLoading(false);
-    setTimeout(() => setShowContent(true), 450);
+    setTimeout(() => setShowContent(true), 800);
   };
 
   useEffect(() => {
@@ -59,7 +60,7 @@ function Index() {
     const contentTimer = setTimeout(() => {
       setIsLoading(false);
       setShowContent(true);
-    }, 3000);
+    }, 3500);
 
     return () => clearTimeout(contentTimer);
   }, []);
@@ -185,7 +186,19 @@ function Index() {
       
       {isLoading && <Loader isLoading={isLoading} setIsLoading={handleLoaderLoaded} />}
       
-      <div style={{ display: showContent ? 'block' : 'none' }}>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ 
+          opacity: showContent ? 1 : 0,
+          y: showContent ? 0 : 20
+        }}
+        transition={{ 
+          duration: 0.8, 
+          ease: "easeOut",
+          delay: 0.1
+        }}
+        style={{ display: showContent ? 'block' : 'none' }}
+      >
           <Navbar />
           <Suspense fallback={<div className="loading-icon">Loading...</div>}>
             <SocialIcons />
@@ -213,7 +226,7 @@ function Index() {
             <Footer />
           </Suspense>
           <FloatingButton showAt={400} />
-      </div>
+      </motion.div>
     </div>
   );
 }

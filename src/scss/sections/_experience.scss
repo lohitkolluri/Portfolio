@@ -29,10 +29,11 @@
       &::after {
         content: '';
         display: block;
-        height: 1px;
+        height: 2px;
         width: 300px;
         margin-left: 1.5rem;
-        background: linear-gradient(90deg, var(--theme-color) 0%, transparent 100%);
+        background-color: var(--lightest-navy);
+        box-shadow: 0 0 10px rgba(100, 255, 218, 0.1);
       }
     }
   }
