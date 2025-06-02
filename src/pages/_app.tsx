@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import { Fira_Code, Raleway } from 'next/font/google';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 
@@ -62,6 +63,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
       <style jsx global>{`
         :root {
           --raleway: ${raleway.style.fontFamily};

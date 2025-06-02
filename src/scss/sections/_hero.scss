@@ -35,9 +35,12 @@
       font-size: var(--tsm1);
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 480px) {
     &-text {
-      width: 90%;
+      width: 100%;
+      margin-right: 0;
+      box-sizing: border-box;
+      padding: 0 1.5rem; // Add padding to prevent text from touching the edges
     }
   }
 }
@@ -48,16 +51,17 @@
   flex-wrap: wrap;
   margin-top: 25px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 480px) {
     justify-content: center;
     gap: 12px;
+    padding: 0 1.5rem; // Add padding to prevent buttons from touching the edges
   }
 }
 
 .ml-4 {
   margin-left: 16px;
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 480px) {
     margin-left: 0;
   }
 }

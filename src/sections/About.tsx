@@ -10,16 +10,16 @@ interface AboutText {
 
 const mobileText: AboutText = {
   intro:
-    'Hey there! I\'m Lohit Kolluri, a DevOps & Cloud Solutions Engineer passionate about building scalable, reliable systems with expertise in cloud-native technologies.',
+    'Hello! I\'m Lohit Kolluri, a DevOps & Cloud Solutions Engineer. My passion lies in building scalable and reliable systems using cloud-native technologies.',
   experience:
-    'Currently pursuing B.Tech at SRM Institute of Science and Technology, I\'ve architected robust backend systems at Apollo Tyres R&D, delivering 40% performance improvements and building interactive dashboards for 300+ projects.',
+    'Currently pursuing B.Tech at SRM Institute of Science and Technology, I\'ve architected robust backend systems at Apollo Tyres R&D, where I significantly improved performance by 40% and developed interactive dashboards for over 300 projects.',
 };
 
 const desktopText: AboutText = {
   intro:
-    'Hey there! I\'m Lohit Kolluri, a DevOps & Cloud Solutions Engineer passionate about cloud-native solutions. I specialize in building scalable, efficient systems that drive innovation with expertise spanning cloud platforms (AWS, Azure), containerization (Docker, Kubernetes), and CI/CD pipelines, complemented by strong full-stack development skills.',
+    'Hello! I\'m Lohit Kolluri, a DevOps & Cloud Solutions Engineer passionate about cloud-native solutions. I focus on creating scalable, efficient, and innovative systems. My expertise covers cloud platforms (AWS, Azure), containerization (Docker, Kubernetes), and CI/CD pipelines, complemented by strong full-stack development skills.',
   experience:
-    'Currently pursuing a B.Tech in Computer Science Engineering at SRM Institute of Science and Technology, I bring hands-on experience with tools and platforms across the DevOps, Cloud, and ML stack. At Apollo Tyres R&D, I built a scalable backend architecture using Django and PostgreSQL to support 200+ concurrent simulations, increasing performance by 40%. I also automated simulation task queues and delivered real-time dashboards with Chart.js for 300+ engineering projects. My achievements include a 1st Runner-Up at DevTrails by Guidewire Software, 2nd Runner-Up at SEED Global Education\'s Global Hackathon, and 1st Runner-Up at Genesis Mini-Hack by TPH SRM. I\'m a Microsoft Certified professional (3x) with expertise in Azure, Security, and AI.',
+    'Currently pursuing a B.Tech in Computer Science Engineering at SRM Institute of Science and Technology, my hands-on experience spans a wide array of tools and platforms within the DevOps, Cloud, and ML ecosystems. At Apollo Tyres R&D, I built a scalable backend architecture using Django and PostgreSQL to support 200+ concurrent simulations, increasing performance by 40%. I also automated simulation task queues and delivered real-time dashboards with Chart.js for 300+ engineering projects. My achievements include a 1st Runner-Up at DevTrails by Guidewire Software, 2nd Runner-Up at SEED Global Education\'s Global Hackathon, and 1st Runner-Up at Genesis Mini-Hack by TPH SRM. As a 3x Microsoft Certified professional, I have proven expertise in Azure, Security, and AI.',
 };
 
 const technologies = [
@@ -103,7 +103,7 @@ function About() {
             {isMobile ? mobileText.experience : desktopText.experience}
           </p>
           <p className="about-grid-info-text text-justify">
-            Here are a few technologies I&apos;ve been working with recently:
+            Technologies I frequently work with include:
           </p>
 
           <ul className="about-grid-info-list">

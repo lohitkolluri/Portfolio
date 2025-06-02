@@ -3,7 +3,7 @@ const repositories = [
     id: 1,
     name: 'GitHub Dynamic Status',
     description:
-      'Dynamic GitHub status updater that displays your real-time coding activity using WakaTime data.',
+      'This tool dynamically updates your GitHub status to reflect real-time coding activity using WakaTime data.',
     language: ['Node.Js', 'GitHub', 'WakaTime', 'Netlify'],
     html_url: 'https://github.com/lohitkolluri/GitHub-Dynamic-Status',
     homepage: 'https://github.com/lohitkolluri/GitHub-Dynamic-Status',
@@ -13,7 +13,7 @@ const repositories = [
     id: 2,
     name: 'FlaskPost',
     description:
-      'FlaskPost is a user-friendly web app for sending personalized mass emails, built with FastAPI.',
+      'A user-friendly web application for sending personalized mass emails, FlaskPost is built with FastAPI.',
     language: ['FastAPI', 'FastMail', 'Jinja2', 'REST API'],
     html_url: 'https://github.com/lohitkolluri/FlaskPost',
     homepage: 'https://flask-post.vercel.app/',
@@ -23,7 +23,7 @@ const repositories = [
     id: 3,
     name: 'CompileVortex',
     description:
-      'CompileVortex is a web-based code editor supporting over 40 programming languages with customizable themes.',
+      'CompileVortex is a web-based code editor that supports over 40 programming languages and offers customizable themes.',
     language: ['React.js', 'TypeScript', 'Axios', 'Tailwind CSS'],
     html_url: 'https://github.com/lohitkolluri/CompileVortex',
     homepage: 'https://compile-vortex.vercel.app/',
@@ -33,7 +33,7 @@ const repositories = [
     id: 4,
     name: 'PayloadMaster',
     description:
-      'PayloadMaster is a bash script for creating Metasploit payloads, setting up listeners, and exploiting Windows targets.',
+      'A bash script, PayloadMaster helps create Metasploit payloads, set up listeners, and exploit Windows targets.',
     language: ['Bash', 'Metasploit'],
     html_url: 'https://github.com/lohitkolluri/PayloadMaster',
     homepage: 'https://github.com/lohitkolluri/PayloadMaster',
@@ -43,7 +43,7 @@ const repositories = [
     id: 5,
     name: 'QuickMark',
     description:
-      'QuickMark Preview is a web app for writing and previewing Markdown in real-time, built with React.',
+      'QuickMark Preview, a React-based web app, allows for writing and previewing Markdown in real-time.',
     language: ['React', 'React Markdown', 'Remark-GFM', 'ReHype-RAW', 'Tailwind CSS'],
     html_url: 'https://github.com/lohitkolluri/QuickMark-Preview',
     homepage: 'https://quikmarkpreview.vercel.app',
@@ -53,7 +53,7 @@ const repositories = [
     id: 6,
     name: 'Portfolio',
     description:
-      'My personal portfolio website built using Next.js, showcasing projects, skills, and experience in software engineering.',
+      'This is my personal portfolio, built with Next.js, to showcase my software engineering projects, skills, and experience.',
     language: ['Next.js', 'React', 'Framer Motion', 'Tailwind CSS'],
     html_url: 'https://github.com/lohitkolluri/Portfolio',
     homepage: 'https://lohit.is-a.dev',

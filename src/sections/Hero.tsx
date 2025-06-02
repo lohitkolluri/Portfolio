@@ -86,7 +86,7 @@ const Hero: FC = () => {
           initial="hidden"
           animate="visible"
         >
-          Hi, my name is
+          Hello, I&apos;m
         </motion.h1>
         <motion.h2
           className="hero-title-large"
@@ -109,7 +109,7 @@ const Hero: FC = () => {
           className="hero-text"
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.2 }}
+          transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.4 }}
         >
           I&apos;m a <span className="highlight">DevOps & Cloud Solutions Engineer</span> specializing in <span className="highlight">cloud-native</span> technologies, 
           containerization, and <span className="highlight">CI/CD pipelines</span>. My expertise includes <span className="highlight">AWS</span>, <span className="highlight">Azure</span>, <span className="highlight">Docker</span>, <span className="highlight">Kubernetes</span>, 
@@ -122,7 +122,7 @@ const Hero: FC = () => {
           transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.4 }}
         >
           <Button
-            text="Check out my LinkedIn"
+            text="Connect on LinkedIn"
             link="https://linkedin.com/in/kollurilohit"
             aria-label="LinkedIn profile of Lohit Kolluri"
             variant="primary"

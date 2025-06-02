@@ -164,7 +164,7 @@
             height: auto;
             border-radius: 8px;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease-in-out;
             
             &:hover {
               transform: scale(1.03);
@@ -302,8 +302,8 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 
-                0 6px 10px 0 rgba(0, 0, 0, 0.14), 
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+                0 6px 10px 0 rgba(0, 0, 0, 0.14),
                 0 1px 18px 0 rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.12);
     text-align: center;
@@ -335,8 +335,8 @@
     background-color: var(--light-navy);
     border-radius: 8px;
     padding: 1.5rem;
-    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 
-                0 6px 10px 0 rgba(0, 0, 0, 0.14), 
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+                0 6px 10px 0 rgba(0, 0, 0, 0.14),
                 0 1px 18px 0 rgba(0, 0, 0, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.12);
     position: relative;
@@ -344,8 +344,8 @@
     transition: box-shadow 0.3s ease-in-out;
     
     &:hover {
-      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 
-                  0 8px 10px 1px rgba(0, 0, 0, 0.14), 
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                  0 8px 10px 1px rgba(0, 0, 0, 0.14),
                   0 3px 14px 2px rgba(0, 0, 0, 0.12);
     }
     
@@ -413,7 +413,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease-in-out;
           
           &:hover {
             color: var(--theme-color);
@@ -497,7 +497,7 @@
             font-family: var(--fira-code);
             font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease-in-out;
             
             &:hover:not(:disabled) {
               background-color: rgba(100, 255, 218, 0.1);
@@ -1417,85 +1417,443 @@
     }
   }
 
-  @media screen and (max-width: 480px) {
-    margin: 5rem 0;
+  // Medium tablet breakpoint
+  @media screen and (max-width: 768px) {
+    margin: 4rem 0;
+    padding: 0 1.5rem;
     
+    .project-of-the-day {
+      .potd-content {
+        .potd-project {
+          gap: 1.5rem;
+          
+          .potd-preview {
+            margin-top: 1.5rem;
+            
+            .preview-container {
+              .preview-content {
+                min-height: 240px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    margin: 3rem 0;
+    padding: 0 1rem; // Add padding to the main projects section
+    box-sizing: border-box; // Ensure padding is included in width
+
     .featured-spotlight {
       padding: 1.5rem;
       margin-bottom: 5rem;
-      
+      box-sizing: border-box; // Ensure padding is included in width
+
       .spotlight-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
       }
-      
+
       .spotlight-project {
+        flex-direction: column; // Stack media and details
+        gap: 1.5rem; // Adjust gap
+
+        .spotlight-media {
+          box-sizing: border-box; // Ensure padding/border is included
+        }
+
         .spotlight-details {
+          padding: 1rem 0; // Adjust padding
+          box-sizing: border-box; // Ensure padding is included
+
           h4 {
             font-size: var(--txlarge);
           }
-        }
-      }
-    }
-    
-    .title {
-      margin-bottom: 4rem;
-      
-      h2::after {
-        width: 150px;
-        margin-left: 320px;
-      }
-    }
-    
-    &-container {
-      gap: 4rem;
-      
-      .project {
-        &-inner {
-          padding: 0;
-        }
-        
-        &-image {
-          &-container {
-            height: 250px;
+
+          p {
+            padding-bottom: 1.5rem; // Add padding below description
+            &::after {
+              bottom: 0.75rem; // Adjust position of pseudo-element
+            }
           }
-        }
-        
-        &-info {
-          padding: 1.25rem;
-          
-          .project-meta {
-            flex-direction: column;
-            align-items: flex-start;
+
+          .spotlight-meta {
+            flex-direction: column; // Stack meta items
             gap: 0.5rem;
           }
-          
-          &-title {
-            font-size: var(--tlarge);
+
+          .spotlight-tech {
+            gap: 0.5rem; // Adjust tech tag gap
+            margin-bottom: 1.5rem; // Adjust margin
           }
+
+          .spotlight-actions {
+            flex-direction: column; // Stack action buttons
+            gap: 0.5rem;
+          }
+        }
+      }
+    }
+
+    .title {
+      margin-bottom: 3rem;
+      padding: 0 0.5rem;
+
+      h2 {
+        font-size: var(--t2xlarge);
+        text-align: center;
+        
+        &::after {
+          display: none; // Hide decorative line on mobile
+        }
+      }
+    }
+
+    .project-of-the-day {
+      padding: 1rem;
+      margin: 0 0 3rem 0;
+      box-sizing: border-box;
+
+      &::before {
+        width: 80px; // Reduce size of pseudo-element
+        height: 80px;
+        right: -15px; // Adjust position
+        top: -15px;
+      }
+
+      .potd-header {
+        margin-bottom: 1.5rem;
+        
+        h3 {
+          font-size: var(--tlarge);
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.75rem;
+
+          .sparkle-icon {
+            font-size: 16px;
+          }
+
+          .date-pill {
+            margin-left: 0;
+            margin-top: 0;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            order: 3;
+          }
+
+          .change-project-btn {
+            margin-left: auto;
+            margin-top: -1.5rem;
+            order: 2;
+            align-self: flex-end;
+          }
+        }
+      }
+
+      .potd-content {
+        .potd-project {
+          gap: 1rem;
           
-          &-description {
-            padding: 1rem;
+          .potd-details {
+            .potd-status {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 0.75rem;
+              margin-bottom: 1rem;
+              
+              .github-activity {
+                font-size: 0.8rem;
+              }
+              
+              .github-stats {
+                gap: 0.5rem;
+                
+                .stat-item {
+                  font-size: 0.75rem;
+                  padding: 0.2rem 0.5rem;
+                }
+              }
+            }
+            
+            h4 {
+              font-size: var(--tlarge);
+              margin-bottom: 0.75rem;
+              word-wrap: break-word;
+              overflow-wrap: break-word;
+              
+              &::after {
+                width: 2rem;
+                height: 2px;
+              }
+            }
             
             p {
-              font-size: 0.85rem;
+              font-size: 0.9rem;
+              line-height: 1.5;
+              margin-bottom: 1rem;
+              word-wrap: break-word;
+              overflow-wrap: break-word;
+              hyphens: auto;
             }
-          }
-          
-          &-tech-list {
-            gap: 0.5rem;
-            margin: 0.75rem 0;
             
-            &-item {
-              font-size: 0.65rem;
-              padding: 0.25rem 0.6rem;
+            .potd-ai-insight {
+              padding: 0.75rem;
+              margin-bottom: 1rem;
+              
+              .insight-header {
+                font-size: 0.8rem;
+                margin-bottom: 0.5rem;
+              }
+              
+              p {
+                font-size: 0.8rem;
+                margin-bottom: 0;
+              }
+            }
+            
+            .potd-tech {
+              gap: 0.4rem;
+              margin-bottom: 1rem;
+              overflow-x: auto;
+              scrollbar-width: thin;
+              scrollbar-color: var(--theme-color) transparent;
+              
+              &::-webkit-scrollbar {
+                height: 3px;
+              }
+              
+              &::-webkit-scrollbar-track {
+                background: transparent;
+              }
+              
+              &::-webkit-scrollbar-thumb {
+                background: var(--theme-color);
+                border-radius: 3px;
+              }
+              
+              .tech-tag {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+              }
+            }
+            
+            .potd-actions {
+              display: flex;
+              gap: 0.75rem;
+              
+              .btn, .md-btn {
+                flex: 1;
+                text-align: center;
+                justify-content: center;
+                padding: 0.75rem 0.5rem;
+                font-size: 0.9rem;
+                min-width: 0; // Allow buttons to shrink if needed
+              }
             }
           }
           
-          &-links {
-            gap: 0.8rem;
+          .potd-preview {
+            margin-top: 1.5rem;
+            
+            .preview-header {
+              font-size: 0.8rem;
+              margin-bottom: 0.5rem;
+            }
+            
+            .preview-container {
+              .browser-chrome {
+                padding: 8px 12px;
+                
+                .browser-buttons {
+                  gap: 6px;
+                  margin-right: 12px;
+                  
+                  .browser-button {
+                    width: 12px;
+                    height: 12px;
+                  }
+                }
+                
+                .browser-address {
+                  padding: 4px 8px;
+                  font-size: 0.7rem;
+                }
+              }
+              
+              .preview-content {
+                min-height: 200px;
+              }
+              
+              .iframe-loading, 
+              .iframe-fallback {
+                p {
+                  font-size: 0.8rem;
+                }
+                
+                small {
+                  font-size: 0.7rem;
+                }
+              }
+            }
           }
+        }
+      }
+
+      .repo-selector {
+        margin-top: 1rem;
+        
+        .repo-selector-form {
+          flex-direction: column;
+          gap: 0.75rem;
+
+          .repo-input {
+            width: 100%;
+            min-width: 0; // Allow input to shrink
+            font-size: 0.9rem;
+            padding: 0.75rem;
+            box-sizing: border-box;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            background-color: var(--light-navy);
+            color: var(--lightest-slate);
+            border-radius: 4px;
+            
+            &::placeholder {
+              color: var(--light-slate);
+              opacity: 0.7;
+            }
+            
+            &:focus {
+              outline: none;
+              border-color: var(--theme-color);
+              box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
+            }
+          }
+
+          .apply-btn, .random-btn {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+            border: 1px solid var(--theme-color);
+            background-color: transparent;
+            color: var(--theme-color);
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--fira-code);
+            transition: all 0.3s ease;
+            
+            &:hover {
+              background-color: rgba(100, 255, 218, 0.1);
+              transform: translateY(-1px);
+            }
+            
+            &:active {
+              transform: translateY(0);
+            }
+            
+            &:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+              
+              &:hover {
+                background-color: transparent;
+                transform: none;
+              }
+            }
+          }
+          
+          .apply-btn {
+            background-color: var(--theme-color);
+            color: var(--navy);
+            
+            &:hover {
+              background-color: rgba(100, 255, 218, 0.9);
+            }
+          }
+        }
+        
+        .repo-tip {
+          font-size: 0.8rem;
+          margin-top: 0.5rem;
+          text-align: center;
+        }
+      }
+    }
+
+    .other-projects-grid {
+      grid-template-columns: 1fr; // Stack projects on small screens
+    }
+
+    .other-project-card {
+      padding: 1rem; // Adjust padding
+      box-sizing: border-box; // Ensure padding is included
+    }
+
+    .project-info-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      
+      .project-info-links-item {
+        flex: 1;
+        min-width: 0; // Allow items to shrink if needed
+        
+        .project-info-links-item-link {
+          padding: 0.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 44px; // Ensure good touch targets
+        }
+      }
+    }
+
+    .project-modal {
+      .modal-content {
+        padding: 1rem; // Adjust modal padding
+      }
+
+      .modal-header {
+        flex-direction: column; // Stack modal header elements
+        align-items: flex-start;
+        gap: 0.5rem;
+
+        .modal-title {
+          font-size: var(--txlarge); // Adjust title size
+        }
+      }
+
+      .modal-body {
+        flex-direction: column; // Stack modal body elements
+        gap: 1rem; // Adjust gap
+
+        .modal-media {
+          box-sizing: border-box; // Ensure padding is included
+        }
+
+        .modal-details {
+          padding: 1rem 0; // Adjust padding
+          box-sizing: border-box; // Ensure padding is included
+        }
+
+        .modal-meta {
+          flex-direction: column; // Stack meta items
+          gap: 0.5rem;
+        }
+
+        .modal-tech {
+          gap: 0.5rem; // Adjust tech tag gap
+        }
+
+        .modal-actions {
+          flex-direction: column; // Stack action buttons
+          gap: 0.5rem;
         }
       }
     }

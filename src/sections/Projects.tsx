@@ -37,14 +37,14 @@ function Projects() {
       },
       featured: true,
       timeframe: '2023',
-      accolades: 'Runner Up at DevSummit 2025 (DevTrails University Hackathon) among 700+ teams',
+      accolades: 'Achieved Runner-Up at DevSummit 2025 (DevTrails University Hackathon) among 730+ teams and 3000 participants',
     },
     {
       video: 'https://www.youtube.com/embed/_zZ1Ndt5diU',
       projectName: 'QueryLens',
       projectLink: 'https://trynlp2sql.streamlit.app/',
       projectDescription:
-        'A natural language to SQL query converter that transforms text input into structured SQL queries for database execution, streamlining database interactions through intuitive language processing.',
+        'QueryLens converts natural language to SQL queries, streamlining database interactions through intuitive processing.',
       projectTech: ['Streamlit', 'Azure OpenAI', 'SQLite3', 'Altair'],
       projectExternalLinks: {
         github: 'https://github.com/lohitkolluri/NLP2SQL',
@@ -70,62 +70,6 @@ function Projects() {
     },
   ];
 
-  // Additional projects for daily rotation
-  const extraProjects = [
-    {
-      projectName: 'Auto-GPT',
-      projectDescription: 'An autonomous AI agent that can perform complex tasks through self-directed decision making and API interactions',
-      projectTech: ['Python', 'OpenAI', 'Agents', 'Machine Learning'],
-      projectExternalLinks: {
-        github: 'https://github.com/lohitkolluri/auto-gpt-clone',
-        externalLink: 'https://github.com/lohitkolluri/auto-gpt-clone',
-      },
-      timeframe: '2024',
-      image: '/projects/default-project.webp',
-    },
-    {
-      projectName: 'DevPortfolio',
-      projectDescription: 'A modern developer portfolio template built with Next.js, React, and TypeScript',
-      projectTech: ['Next.js', 'React', 'TypeScript', 'SCSS'],
-      projectExternalLinks: {
-        github: 'https://github.com/lohitkolluri/portfolio',
-        externalLink: 'https://lohitkolluri.com',
-      },
-      timeframe: '2024',
-      image: '/projects/default-project.webp',
-    },
-    {
-      projectName: 'CloudGuard',
-      projectDescription: 'Security monitoring and cost optimization tool for AWS cloud infrastructure',
-      projectTech: ['AWS', 'Python', 'Terraform', 'CloudWatch'],
-      projectExternalLinks: {
-        github: 'https://github.com/lohitkolluri/cloudguard',
-        externalLink: 'https://github.com/lohitkolluri/cloudguard',
-      },
-      timeframe: '2023',
-      image: '/projects/default-project.webp',
-    }
-  ];
-
-  // Select a fallback project if API fails
-  const selectFallbackProject = () => {
-    const allProjects = [...projectsData, ...extraProjects];
-    const today = new Date();
-    const dayOfMonth = today.getDate();
-    const projectIndex = dayOfMonth % allProjects.length;
-    
-    const selectedProject = {
-      ...allProjects[projectIndex],
-      lastActivity: getRandomDateWithinLastWeek(),
-      aiInsight: generateAIInsight(
-        allProjects[projectIndex].projectName, 
-        allProjects[projectIndex].projectTech
-      ),
-    };
-    
-    setProjectOfTheDay(selectedProject);
-  };
-
   // Generate a random recent date for "last commit" or "last activity"
   const getRandomDateWithinLastWeek = () => {
     const today = new Date();
@@ -143,16 +87,16 @@ function Projects() {
   // Generate an AI insight about the project
   const generateAIInsight = (projectName: string, technologies: string[]) => {
     const insights = [
-      `${projectName} shows strong potential for CI/CD integration to streamline deployments.`,
-      `Adding unit tests would improve the maintainability of ${projectName}.`,
-      `The codebase is well-structured with clear separation of concerns.`,
-      `Consider implementing a more modular architecture for better scalability.`,
-      `Adding more comprehensive documentation would make this project more accessible.`,
-      `Performance optimizations could enhance user experience significantly.`,
-      `This project effectively leverages ${technologies[0]} best practices.`,
-      `Integrating with ${technologies[technologies.length-1]} could expand functionality.`,
-      `Code quality metrics indicate a well-maintained repository.`,
-      `Consider containerizing this application for easier deployment.`
+      `Integrating CI/CD could significantly streamline deployments for ${projectName}.`,
+      `The maintainability of ${projectName} could be enhanced by adding unit tests.`,
+      `${projectName} features a well-structured codebase with clear separation of concerns.`,
+      `A more modular architecture could improve the scalability of ${projectName}.`,
+      `Comprehensive documentation would make ${projectName} more accessible to users and contributors.`,
+      `Focusing on performance optimizations could greatly enhance the user experience for ${projectName}.`,
+      `${projectName} effectively leverages the best practices of ${technologies[0]}.`,
+      `Expanding functionality for ${projectName} could be achieved by integrating with ${technologies[technologies.length-1]}.`,
+      `The repository for ${projectName} is well-maintained, as indicated by code quality metrics.`,
+      `Containerizing ${projectName} would simplify its deployment process.`
     ];
     
     return insights[Math.floor(Math.random() * insights.length)];
@@ -205,9 +149,6 @@ function Projects() {
     } catch (err) {
       console.error('Error fetching project of the day:', err);
       setError('Failed to load project of the day');
-      
-      // Use fallback data
-      selectFallbackProject();
     } finally {
       setIsLoading(false);
     }

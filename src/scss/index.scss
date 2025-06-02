@@ -2,6 +2,11 @@
 @import './components/';
 @import './sections/';
 
+// Global mobile fixes
+html, body {
+  overflow-x: hidden; // Prevent horizontal scrolling
+}
+
 // Mobile optimization
 @media screen and (max-width: 768px) {
   // Improve touch targets
@@ -37,4 +42,64 @@
   .nav-items-list-item, .project-info-links-item {
     margin: 0 10px;
   }
+
+  // Global container width restrictions
+  * {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  
+  // Ensure all sections maintain proper spacing
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
 }
+
+@media screen and (max-width: 480px) {
+  // Extra small mobile adjustments
+  section {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  // Ensure buttons don't exceed container width
+  .btn, .md-btn {
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+}
+
+/* No existing styles for .about-grid-info-list or .about-grid-info-list-item found, adding new styles */
+.about-grid-info-list {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.about-grid-info-list-item .highlight {
+  display: inline-block;
+  background-color: var(--surface-color-light);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: var(--slate);
+  font-family: var(--fira-code);
+  font-size: var(--tsm1);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.about-grid-info-list-item .highlight:hover {
+  background-color: var(--light-navy);
+  color: var(--theme-color);
+  transform: translateY(-2px);
+}
+
+/* Ensure to remove or comment out any old ::before pseudo-elements for list items if they exist elsewhere */

@@ -35,9 +35,9 @@ function Experience() {
       start: 'September 2023',
       end: 'Present',
       color: '#bb86fc', // Primary color
-      icon: '💻',
+      icon: 'M',
       shortDescription: [
-        'Developed and deployed "Atlas Bot," a custom Discord bot enhancing community engagement and automating administrative tasks for student members.',
+        'Developed "Atlas Bot," a Discord bot that boosted community engagement and automated tasks for student members.',
         'Optimized the official website, implementing modern web technologies and best practices for improved user experience.',
         'Orchestrated technical workshops and hands-on training sessions focusing on Web Development, UI/UX, and more.',
         'Collaborated with team members to organize and execute community events, fostering a dynamic learning environment.',
@@ -50,10 +50,10 @@ function Experience() {
       start: 'February 2024',
       end: 'May 2024',
       color: '#03dac6', // Secondary color
-      icon: '🔧',
+      icon: 'A',
       shortDescription: [
         'Architected a robust backend using Django and PostgreSQL to handle over 200 concurrent simulations, resulting in a 40% improvement in system performance and data retrieval efficiency.',
-        'Designed and implemented an interactive dashboard utilizing Chart.js, allowing managers to monitor job assignments and completion rates; enabled tracking of individual engineer performance across 300+ projects in real time.',
+        'Designed an interactive Chart.js dashboard for managers to track job assignments, completion rates, and real-time engineer performance across 300+ projects.',
         'Streamlined task management for a system handling over 1,000 tasks daily.',
         'Developed a web application that optimized the simulation workflow for Apollo Tyres, enhancing task allocation efficiency by approximately 30%.',
       ],
@@ -65,9 +65,9 @@ function Experience() {
       start: 'October 2023',
       end: 'March 2024',
       color: '#cf6679', // Error color
-      icon: '🧩',
+      icon: 'S',
       shortDescription: [
-        'Recognized as a Top Contributor (Under 60) for outstanding open-source contributions, earning exclusive swags including T-shirts and stickers.',
+        'Recognized as a Top Contributor (among the top 60) for significant open-source contributions, receiving exclusive project merchandise.',
         'Developed and improved features for multiple open-source projects using modern technologies.',
         'Consistently delivered high-quality code contributions, leading to recognition from project maintainers.',
         'Built strong relationships within the open-source community through active participation and quality contributions.',
@@ -80,7 +80,7 @@ function Experience() {
       start: 'September 2023',
       end: 'November 2023',
       color: '#bb86fc', // Primary color
-      icon: '☁️',
+      icon: 'E',
       shortDescription: [
         'Completed comprehensive AWS certification training, mastering deployment of ML models on AWS services (S3, ECS, Lambda).',
         'Developed and deployed scalable cloud solutions, implementing best practices in security and architecture.',
@@ -95,7 +95,7 @@ function Experience() {
       start: 'May 2023',
       end: 'September 2023',
       color: '#03dac6', // Secondary color
-      icon: '📊',
+      icon: 'M',
       shortDescription: [
         'Completed advanced courses in AI tools and technologies provided by MathWorks.',
         'Developed proficiency in MATLAB for data analysis and model development.',
@@ -145,83 +145,75 @@ function Experience() {
         <h2>Where I&apos;ve Worked</h2>
       </div>
 
-      {/* Timeline for all devices */}
-      <div className="timeline-container" ref={timelineRef}>
-        {experiences.map((experience, index) => (
-          <motion.div
-            key={`timeline-${index}`}
-            className={`timeline-item timeline-item-${index} ${index === selected ? 'timeline-selected' : ''}`}
-            onClick={() => setSelected(index)}
-            whileHover={{ y: -5 }}
-            style={{ 
-              borderColor: index === selected ? experience.color : 'var(--dark-slate)',
-              boxShadow: index === selected ? `0 4px 20px rgba(0,0,0,0.3)` : 'var(--elevation-1)'
-            }}
-          >
-            <div className="timeline-icon" style={{ backgroundColor: experience.color }}>
-              {experience.icon}
-            </div>
-            <div className="timeline-content">
-              <h3>{experience.name}</h3>
-              <p className="timeline-date">{experience.start} - {experience.end}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+      <div className="experience-content-container">
+        {/* Tabbed Navigation */}
+        <div className="experience-tabs" ref={timelineRef}>
+          {experiences.map((experience, index) => (
+            <button
+              key={`tab-${index}`}
+              className={`experience-tab ${index === selected ? 'experience-tab-selected' : ''}`}
+              onClick={() => setSelected(index)}
+              style={{ borderColor: index === selected ? experience.color : 'transparent' }}
+            >
+              {experience.name}
+            </button>
+          ))}
+        </div>
 
-      {/* Experience Card */}
-      <motion.div
-        className="experience-card md-card"
-        key={selected}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.4 }}
-      >
+        {/* Experience Card */}
         <motion.div
-          className="experience-header"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+          className="experience-card md-card"
+          key={selected}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4 }}
         >
-          <motion.div className="experience-title-container" variants={itemVariants}>
-            <div className="experience-title-badge" style={{ backgroundColor: experiences[selected].color }}>
-              {experiences[selected].icon}
-            </div>
-            <div>
-              <h3 className="experience-title">
-                {experiences[selected].role}
-                <span className="experience-company">
-                  &nbsp;@&nbsp;
-                  <Link href={experiences[selected].url} legacyBehavior>
-                    <a target="_blank" rel="noopener noreferrer" className="link">
-                      {experiences[selected].name}
-                    </a>
-                  </Link>
-                </span>
-              </h3>
-              <p className="experience-date">
-                {experiences[selected].start} - {experiences[selected].end}
-              </p>
-            </div>
-          </motion.div>
-          
-          <motion.div className="experience-content" variants={containerVariants}>
-            {experiences[selected].shortDescription.map((description, index) => (
-              <motion.div
-                key={index}
-                className="experience-item"
-                variants={itemVariants}
-                custom={index}
-                whileHover={{ x: 5 }}
-              >
-                <div className="experience-item-bullet" style={{ backgroundColor: experiences[selected].color }}></div>
-                <p>{description}</p>
-              </motion.div>
-            ))}
+          <motion.div
+            className="experience-header"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div className="experience-title-container" variants={itemVariants}>
+              <div className="experience-title-badge" style={{ backgroundColor: experiences[selected].color }}>
+                {experiences[selected].icon}
+              </div>
+              <div>
+                <h3 className="experience-title">
+                  {experiences[selected].role}
+                  <span className="experience-company">
+                    &nbsp;@&nbsp;
+                    <Link href={experiences[selected].url} legacyBehavior>
+                      <a target="_blank" rel="noopener noreferrer" className="link">
+                        {experiences[selected].name}
+                      </a>
+                    </Link>
+                  </span>
+                </h3>
+                <p className="experience-date">
+                  {experiences[selected].start} - {experiences[selected].end}
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div className="experience-description" variants={containerVariants}>
+              {experiences[selected].shortDescription.map((description, index) => (
+                <motion.div
+                  key={index}
+                  className="experience-item"
+                  variants={itemVariants}
+                  custom={index}
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="experience-item-bullet" style={{ backgroundColor: experiences[selected].color }}></div>
+                  <p>{description}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

@@ -1,5 +1,5 @@
 .experience {
-  margin: 10rem auto;
+  margin: 8rem auto; // Slightly reduced top margin
   max-width: 900px;
   padding: 0 1.5rem;
   
@@ -38,165 +38,160 @@
     }
   }
   
-  // Timeline container
-  .timeline-container {
+  // Content container for tabs and card
+  .experience-content-container {
     display: flex;
-    margin-bottom: 3rem;
-    gap: 1rem;
-    overflow-x: auto;
-    padding: 0.5rem 0;
-    position: relative;
-    scroll-behavior: smooth;
-    
-    &::-webkit-scrollbar {
-      height: 6px;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--dark-slate);
-      border-radius: 6px;
+    gap: 3rem; // Increased gap for better separation
+
+    // Tabbed Navigation
+    .experience-tabs {
+      display: flex;
+      flex-direction: column;
+      min-width: 200px; // Adjust width as needed
+      border-left: 2px solid var(--dark-slate);
+      justify-content: space-evenly; // Added to distribute tabs evenly vertically
+      padding-left: 0.5rem; // Space for the border
+
+      .experience-tab {
+        background-color: transparent;
+        border: none;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        color: var(--slate);
+        font-family: var(--fira-code);
+        font-size: var(--tsm2);
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        border-left: 2px solid transparent; // For selected state
+        outline: none;
+
+        &:hover {
+          color: var(--theme-color);
+          background-color: var(--surface-color-light);
+        }
+
+        &.experience-tab-selected {
+          color: var(--theme-color);
+          border-left-color: var(--theme-color);
+          background-color: var(--surface-color-light);
+        }
+      }
     }
 
-    // Timeline item
-    .timeline-item {
-      min-width: 200px;
-      max-width: 250px;
+    // Experience card
+    .experience-card {
+      flex-grow: 1; // Allow card to take remaining space
       background-color: var(--surface-color);
-      border-radius: 8px;
-      padding: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-left: 3px solid var(--dark-slate);
-      box-shadow: var(--elevation-1);
+      border-radius: 12px;
+      padding: 2.5rem; // Further increased padding for more internal space
+      box-shadow: var(--elevation-3); // Increased shadow for more depth
+      border: 1px solid var(--dark-slate); // Add a subtle border
+      transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; // Keep existing transitions
+      min-height: 380px; // Added to prevent height changes on tab selection
+      display: flex; // Added to help manage internal content flow if needed
+      flex-direction: column; // Added
       
       &:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--elevation-2);
+        box-shadow: var(--elevation-4); // More pronounced shadow on hover
+        // transform: translateY(-5px); // Optional: keep or remove based on preference from prior suggestions
       }
       
-      .timeline-icon {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
+      .experience-header {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 0.75rem;
-        font-size: 1.25rem;
-        box-shadow: var(--elevation-1);
+        flex-direction: column;
+        gap: 1.5rem;
       }
       
-      .timeline-content {
-        h3 {
-          font-size: var(--tsm2);
-          font-weight: 600;
-          color: var(--lightest-slate);
-          margin-bottom: 0.25rem;
+      .experience-title-container {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        
+        .experience-title-badge {
+          width: 42px;
+          height: 42px;
+          border-radius: 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          box-shadow: var(--elevation-1);
+          flex-shrink: 0;
         }
         
-        .timeline-date {
-          font-size: var(--tsm);
-          color: var(--slate);
+        .experience-title {
+          font-size: var(--tlarge2);
+          font-weight: 600;
+          color: var(--lightest-slate);
+          line-height: 1.3;
+          margin-bottom: 0.25rem;
+          
+          .experience-company {
+            color: var(--theme-color);
+            transition: all 0.3s ease-in-out;
+            
+            .link {
+              position: relative;
+              transition: all 0.3s ease-in-out;
+              
+              &:hover {
+                color: var(--theme-color-secondary);
+              }
+            }
+          }
+        }
+        
+        .experience-date {
+          font-size: var(--tsm2);
+          color: var(--light-slate);
           font-family: var(--fira-code);
         }
       }
       
-      &.timeline-selected {
-        background-color: var(--surface-color-light);
-        transform: translateY(-5px);
-        box-shadow: var(--elevation-2);
-      }
-    }
-  }
-  
-  // Experience card
-  .experience-card {
-    background-color: var(--surface-color);
-    border-radius: 12px;
-    padding: 1.75rem;
-    box-shadow: var(--elevation-2);
-    
-    .experience-header {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    
-    .experience-title-container {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      
-      .experience-title-badge {
-        width: 42px;
-        height: 42px;
-        border-radius: 8px;
+      .experience-description { // Renamed from experience-content for clarity
         display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5rem;
-        box-shadow: var(--elevation-1);
-        flex-shrink: 0;
-      }
-      
-      .experience-title {
-        font-size: var(--tlarge2);
-        font-weight: 600;
-        color: var(--lightest-slate);
-        line-height: 1.3;
-        margin-bottom: 0.25rem;
-        
-        .experience-company {
-          color: var(--theme-color);
-          transition: all 0.3s ease;
-          
-          .link {
-            position: relative;
-            transition: all 0.3s ease;
-            
-            &:hover {
-              color: var(--theme-color-secondary);
-            }
-          }
-        }
-      }
-      
-      .experience-date {
-        font-size: var(--tsm2);
-        color: var(--light-slate);
-        font-family: var(--fira-code);
-      }
-    }
-    
-    .experience-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      
-      .experience-item {
-        display: flex;
+        flex-direction: column;
         gap: 1rem;
-        position: relative;
-        padding: 0.25rem 0;
-        transition: all 0.3s ease;
         
-        .experience-item-bullet {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          margin-top: 0.5rem;
-          flex-shrink: 0;
-        }
-        
-        p {
-          color: var(--light-slate);
-          font-size: var(--tsm2);
-          line-height: 1.6;
-        }
-        
-        &:hover {
+        .experience-item {
+          display: flex;
+          gap: 1rem;
+          position: relative;
+          padding: 0.75rem 0; // Further increased vertical padding
+          transition: all 0.3s ease-in-out;
+          border-radius: 4px; // Subtle border radius
+          padding-left: 0.5rem; // Add some padding for hover effect
+          
+          &:hover {
+            background-color: var(--surface-color-light); // Subtle background change on hover
+          }
+          
+          .experience-item-bullet {
+            width: 10px; // Slightly larger bullet
+            height: 10px; // Slightly larger bullet
+            border-radius: 50%;
+            margin-top: 0.6rem; // Adjust margin to center with text
+            flex-shrink: 0;
+            box-shadow: var(--elevation-1); // Add subtle shadow to bullet
+          }
+          
           p {
-            color: var(--lightest-slate);
+            color: var(--light-slate);
+            font-size: var(--tsm2);
+            line-height: 1.6;
+          }
+          
+          p {
+            color: var(--light-slate);
+            font-size: var(--tsm2);
+            line-height: 1.6;
+            transition: color 0.3s ease-in-out; // Add transition for text color change
+          }
+          
+          &:hover {
+            p {
+              color: var(--lightest-slate);
+            }
           }
         }
       }
@@ -205,7 +200,7 @@
   
   // Media queries
   @media screen and (max-width: 768px) {
-    margin: 6rem auto;
+    margin: 5rem auto; // Adjusted margin for tablet
     
     .title {
       h2 {
@@ -215,17 +210,43 @@
       }
     }
     
-    .timeline-container {
-      overflow-x: auto;
-      padding-bottom: 1rem;
+    .experience-content-container {
+      flex-direction: column; // Stack tabs and card on smaller screens
+      gap: 2rem; // Adjusted gap for mobile
       
-      .timeline-item {
-        min-width: 180px;
+      .experience-tabs {
+        flex-direction: row; // Horizontal tabs on smaller screens
+        border-left: none;
+        border-bottom: 2px solid var(--dark-slate);
+        padding-left: 0;
+        padding-bottom: 0.5rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        
+        &::-webkit-scrollbar {
+          height: 6px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--dark-slate);
+          border-radius: 6px;
+        }
+        
+        .experience-tab {
+          padding: 0.5rem 1rem;
+          border-left: none;
+          border-bottom: 2px solid transparent; // For selected state
+          
+          &.experience-tab-selected {
+            border-left-color: transparent;
+            border-bottom-color: var(--theme-color);
+          }
+        }
       }
     }
     
     .experience-card {
-      padding: 1.25rem;
+      padding: 1.75rem; // Adjusted padding for mobile
       
       .experience-title-container {
         .experience-title {
@@ -236,7 +257,7 @@
   }
   
   @media screen and (max-width: 480px) {
-    margin: 4rem auto 3rem;
+    margin: 3rem auto 2rem; // Adjusted margin for smaller mobile
     
     .title {
       h2 {
@@ -246,18 +267,20 @@
       }
     }
     
-    .timeline-container {
-      .timeline-item {
-        min-width: 160px;
+    .experience-content-container {
+      .experience-tabs {
+        .experience-tab {
+          min-width: 120px; // Ensure tabs are wide enough
+        }
       }
-    }
-    
-    .experience-card {
-      .experience-title-container {
-        flex-direction: column;
-        
-        .experience-title-badge {
-          margin-bottom: 0.5rem;
+      
+      .experience-card {
+        .experience-title-container {
+          flex-direction: column;
+          
+          .experience-title-badge {
+            margin-bottom: 0.5rem;
+          }
         }
       }
     }

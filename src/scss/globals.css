@@ -16,7 +16,7 @@
   --theme-color-transparent: rgba(187, 134, 252, 0.1);
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  --transition: all 0.3s ease-in-out;
   --border-radius: 4px;
   --card-shadow: 0 10px 30px -15px var(--navy-shadow);
   --elevation-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
