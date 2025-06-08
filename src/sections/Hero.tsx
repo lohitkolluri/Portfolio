@@ -34,6 +34,53 @@ const textVariants: Variants = {
   })
 };
 
+// Keywords for floating background
+const keywords = [
+  'AWS', 'Azure', 'Docker', 'Kubernetes', 'CI/CD', 'DevOps', 'Cloud', 
+  'Terraform', 'Ansible', 'Jenkins', 'Git', 'Linux', 'Microservices', 
+  'Serverless', 'Monitoring', 'Automation', 'Scalability', 'Containers',
+  'Infrastructure', 'Deployment', 'Security', 'REST', 'Python', 'JavaScript'
+];
+
+// Floating Keyword component
+const FloatingKeyword: FC<{ text: string, index: number, scrollY: number }> = ({ text, index, scrollY }) => {
+  // Create more varied and interesting random positions and animations
+  const randomX = Math.random() * 100;
+  const randomY = Math.random() * 100;
+  const randomSize = 12 + Math.random() * 6; // Between 12-18px
+  const randomOpacity = 0.02 + Math.random() * 0.03; // Very subtle
+  
+  // Create very gentle scroll-based movement
+  // Each keyword moves at a different rate based on its index
+  const scrollFactor = 0.005 + (index % 5) * 0.002; // Between 0.005 and 0.013
+  const scrollOffset = scrollY * scrollFactor;
+  
+  // Alternate direction based on index
+  const direction = index % 2 === 0 ? 1 : -1;
+  
+  return (
+    <div 
+      className="floating-keyword"
+      style={{
+        position: 'absolute',
+        left: `${randomX}%`,
+        top: `${randomY}%`,
+        transform: `translateY(${scrollOffset * direction}px)`,
+        fontSize: `${randomSize}px`,
+        color: 'var(--theme-color)',
+        opacity: randomOpacity,
+        zIndex: 0,
+        fontFamily: 'var(--fira-code)',
+        pointerEvents: 'none',
+        fontWeight: 'bold',
+        transition: 'transform 0.5s ease-out' // Smooth transition for scroll movements
+      }}
+    >
+      {text}
+    </div>
+  );
+};
+
 const Hero: FC = () => {
   const [scrollY, setScrollY] = useState<number>(0);
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -42,25 +89,28 @@ const Hero: FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
-      
-      // Check if section is in viewport
-      const section = document.querySelector('.hero-container');
-      if (section) {
-        const sectionTop = section.getBoundingClientRect().top;
-        const sectionBottom = section.getBoundingClientRect().bottom;
-        const isInView = (sectionTop >= 0 && sectionTop <= window.innerHeight) || 
-                       (sectionBottom >= 0 && sectionBottom <= window.innerHeight) ||
-                       (sectionTop <= 0 && sectionBottom >= window.innerHeight);
+      // Use requestAnimationFrame for smoother scrolling effects
+      requestAnimationFrame(() => {
+        setScrollY(window.scrollY);
         
-        if (isInView && !isVisible) {
-          setIsVisible(true);
-          controls.start({ opacity: 1, y: 0 });
+        // Check if section is in viewport
+        const section = document.querySelector('.hero-container');
+        if (section) {
+          const sectionTop = section.getBoundingClientRect().top;
+          const sectionBottom = section.getBoundingClientRect().bottom;
+          const isInView = (sectionTop >= 0 && sectionTop <= window.innerHeight) || 
+                         (sectionBottom >= 0 && sectionBottom <= window.innerHeight) ||
+                         (sectionTop <= 0 && sectionBottom >= window.innerHeight);
+          
+          if (isInView && !isVisible) {
+            setIsVisible(true);
+            controls.start({ opacity: 1, y: 0 });
+          }
         }
-      }
+      });
     };
     
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     // Initial check
     handleScroll();
 
@@ -69,15 +119,24 @@ const Hero: FC = () => {
 
   return (
     <section className={`hero-container fade-in-section ${isVisible ? 'is-visible' : ''}`} aria-labelledby="hero-heading">
+      <div className="floating-keywords-container">
+        {keywords.map((keyword, index) => (
+          <FloatingKeyword key={index} text={keyword} index={index} scrollY={scrollY} />
+        ))}
+      </div>
       <motion.div
         className="hero section-transition"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        style={{ backgroundPositionY: `${scrollY * 0.5}px` }}
+        style={{ 
+          backgroundPositionY: `${scrollY * 0.05}px` // 10x slower than before
+        }}
       >
         <div className="hero-background-wrapper">
-          <div className="hero-background" style={{ backgroundPositionY: `${scrollY * 0.3}px` }}></div>
+          <div className="hero-background" style={{ 
+            backgroundPositionY: `${scrollY * 0.03}px` // 10x slower than before
+          }}></div>
         </div>
         <motion.h1
           id="hero-heading"
@@ -103,7 +162,7 @@ const Hero: FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.0 }}
         >
-          I build <span className="highlight">scalable systems</span>.
+          I build <span className="highlight">scalable systems</span>
         </motion.h3>
         <motion.p
           className="hero-text"

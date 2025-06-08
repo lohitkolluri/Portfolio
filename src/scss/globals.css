@@ -296,7 +296,7 @@ nav {
 .highlight {
   color: var(--theme-color);
   font-weight: 700;
-  position: relative;
+  /* position: relative; */
   display: inline-block;
   transition: color 0.3s ease;
 }
