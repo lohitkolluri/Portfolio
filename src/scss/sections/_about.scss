@@ -1,5 +1,26 @@
 .about {
   margin: 15rem 0;
+  overflow: hidden; /* Important for containing the animations */
+  
+  /* Create continuous marquee effect with true infinite loop */
+  @keyframes scrollRightToLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Exactly half to create perfect loop */
+    }
+  }
+  
+  @keyframes scrollLeftToRight {
+    0% {
+      transform: translateX(-50%); /* Start from negative half for perfect loop */
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
   .title {
     font-family: var(--raleway);
     color: var(--lightest-slate);
@@ -30,10 +51,14 @@
     display: grid;
     grid-template-columns: 60% 40%;
     gap: 1rem;
+    position: relative;
+    
     &-info {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      width: 100%;
+      
       &-text {
         color: var(--slate);
         margin-right: 0;
@@ -43,33 +68,108 @@
         font-weight: 500;
         font-family: var(--raleway);
       }
-      &-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        list-style-type: none;
-        padding: 0;
+      
+      .tech-section {
+        position: relative;
         width: 100%;
-        &-item {
-          font-family: var(--raleway);
-          line-height: 1.6rem;
-          font-weight: 500;
-          font-size: var(--tbase);
-          color: var(--slate);
+        margin-bottom: 180px;
+        
+        .tech-carousel {
+          position: absolute;
+          left: 0;
+          width: 100vw; /* Full viewport width */
+          max-width: 100vw; /* Prevent horizontal scrolling */
+          display: flex;
+          flex-direction: column;
+          gap: 45px;
+          pointer-events: none;
+          overflow: hidden;
+        }
+        
+        .tech-container {
+          display: flex; /* Use regular flex instead of inline-flex */
+          flex-wrap: nowrap;
+          overflow: hidden;
+          padding: 12px 0;
+          width: fit-content; /* Use fit-content for exact sizing */
           position: relative;
-          /* Commenting out the ::before pseudo-element to remove the bullet
-          &::before {
-            content: "▹";
-            position: absolute;
-            left: -20px;
-            top: 6px;
-            color: var(--theme-color);
-            line-height: 12px;
+          pointer-events: auto;
+          will-change: transform; /* Improve animation performance */
+          
+          /* Fixed positioning for each row */
+          &.right-to-left {
+            animation: scrollRightToLeft 40s linear infinite;
+            
+            &:hover {
+              animation-play-state: paused;
+            }
           }
-          */
+          
+          &.left-to-right {
+            animation: scrollLeftToRight 40s linear infinite;
+            
+            &:hover {
+              animation-play-state: paused;
+            }
+          }
+          
+          .tech-badge {
+            font-family: var(--raleway);
+            line-height: 1.6rem;
+            font-weight: 600;
+            font-size: var(--tbase);
+            color: var(--lightest-slate);
+            background-color: rgba(48, 48, 48, 0.8);
+            padding: 10px 18px;
+            margin: 0 8px; /* Increased margin for better spacing */
+            border-radius: 50px;
+            white-space: nowrap;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            flex-shrink: 0;
+            cursor: default;
+            box-shadow: var(--elevation-1);
+            border: 1px solid rgba(187, 134, 252, 0.1);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            
+            .tech-icon {
+              width: 22px;
+              height: 22px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+              
+              img, svg {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+              }
+            }
+            
+            /* Modern gradient on hover */
+            &:hover {
+              background: linear-gradient(
+                135deg, 
+                var(--light-navy) 0%, 
+                rgba(187, 134, 252, 0.2) 100%
+              );
+              transform: translateY(-4px);
+              box-shadow: var(--elevation-2);
+              border-color: rgba(187, 134, 252, 0.3);
+              color: var(--theme-color);
+              
+              .tech-icon {
+                filter: brightness(1.2); // Brighten icon on hover
+              }
+            }
+          }
         }
       }
     }
+    
     &-photo {
       position: relative;
       width: max-content;
@@ -122,77 +222,126 @@
         }
       }
     }
-    @media screen and (max-width: 1080px) {
-      margin: 5rem 0;
-      &-grid {
-        &-photo {
-          .overlay {
-            height: 223px;
-            width: 223px;
-          }
-          &-container {
-            height: 223px;
-            width: 223px;
-          }
+  
+  @media screen and (max-width: 1080px) {
+    margin: 5rem 0;
+    &-grid {
+      &-photo {
+        .overlay {
+          height: 223px;
+          width: 223px;
         }
-        &-info {
-          &-list {
-            grid-template-columns: 1fr;
-          }
-        }
-      }
-    }
-    @media screen and (max-width: 768px) {
-      margin: 5rem auto;
-      .title {
-        h2 {
-          &::after {
-            width: 200px;
-          }
-        }
-      }
-      &-grid {
-        &-photo {
-          margin-top: 3rem;
-          .overlay {
-            height: 300px;
-            width: 300px;
-          }
-          &-container {
-            height: 300px;
-            width: 300px;
-          }
-        }
-        &-info {
-          &-text {
-            margin-right: 0;
-          }
-        }
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
-    }
-    @media screen and (max-width: 480px) {
-      .title {
-        h2 {
-          &::after {
-            width: 100px;
-          }
-        }
-      }
-      &-grid {
-        &-photo {
-          .overlay {
-            height: 223px;
-            width: 223px;
-          }
-          &-container {
-            height: 223px;
-            width: 223px;
-          }
+        &-container {
+          height: 223px;
+          width: 223px;
         }
       }
     }
   }
+  
+  @media screen and (max-width: 768px) {
+    margin: 5rem auto;
+    .title {
+      h2 {
+        &::after {
+          width: 200px;
+        }
+      }
+    }
+    &-grid {
+      &-info {
+        .tech-section {
+          margin-bottom: 220px;
+          
+          .tech-carousel {
+            width: 100vw;
+            max-width: 100vw;
+            gap: 35px;
+          }
+          
+          .tech-container {
+            /* Faster animation on mobile */
+            &.right-to-left {
+              animation: scrollRightToLeft 25s linear infinite;
+            }
+            
+            &.left-to-right {
+              animation: scrollLeftToRight 25s linear infinite;
+            }
+            
+            .tech-badge {
+              padding: 8px 14px;
+              margin: 0 6px; /* Adjusted margin for mobile */
+              font-size: calc(var(--tbase) - 1px);
+              gap: 6px;
+              
+              .tech-icon {
+                width: 18px;
+                height: 18px;
+              }
+            }
+          }
+        }
+      }
+      
+      &-photo {
+        margin-top: 3rem;
+        .overlay {
+          height: 300px;
+          width: 300px;
+        }
+        &-container {
+          height: 300px;
+          width: 300px;
+        }
+      }
+      &-info {
+        &-text {
+          margin-right: 0;
+        }
+      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .title {
+      h2 {
+        &::after {
+          width: 100px;
+        }
+      }
+    }
+    &-grid {
+      &-info {
+        .tech-section {
+          margin-bottom: 220px;
+          
+          /* Even faster animation on smaller screens */
+          .tech-container {
+            &.right-to-left {
+              animation: scrollRightToLeft 18s linear infinite;
+            }
+            
+            &.left-to-right {
+              animation: scrollLeftToRight 18s linear infinite;
+            }
+          }
+        }
+      }
+      &-photo {
+        .overlay {
+          height: 223px;
+          width: 223px;
+        }
+        &-container {
+          height: 223px;
+          width: 223px;
+        }
+      }
+    }
+  }
+}
