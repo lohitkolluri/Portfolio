@@ -1,4 +1,4 @@
-/* Button Base Styles */
+/* Enhanced Button System */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -7,23 +7,25 @@
   white-space: nowrap;
   text-decoration: none;
   line-height: 1;
-  font-family: var(--fira-code);
+  font-family: var(--font-mono);
   font-weight: 500;
-  border-radius: 4px;
+  border: none;
   cursor: pointer;
-  font-family: var(--fira-code);
-  font-weight: 500;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--timing-base) var(--ease-out);
   outline: none;
+  user-select: none;
+  overflow: hidden;
   
+  /* Enhanced Focus */
   &:focus-visible {
-    box-shadow: 0 0 0 2px var(--theme-color);
+    outline: 2px solid var(--theme-color);
+    outline-offset: 2px;
   }
   
-  &.disabled {
-    opacity: 0.7;
+  /* Disabled State */
+  &.disabled,
+  &:disabled {
+    opacity: 0.6;
     pointer-events: none;
     cursor: not-allowed;
   }
@@ -33,68 +35,96 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: transform var(--timing-base) var(--ease-out);
     
     &--left {
-      margin-right: 8px;
+      margin-right: var(--space-sm);
     }
     
     &--right {
-      margin-left: 8px;
-      transition: transform 0.3s ease-in-out;
+      margin-left: var(--space-sm);
     }
   }
   
-  &:hover {
-    .btn__icon--right {
-      transform: translateX(2px);
-    }
+  /* Hover Icon Animation */
+  &:hover .btn__icon--right {
+    transform: translateX(4px);
   }
 
   /* Button Size Variants */
   &--sm {
     height: 40px;
-    padding: 0 16px;
+    padding: 0 var(--space-lg);
     font-size: var(--tsm);
+    border-radius: var(--radius-sm);
   }
   
   &--md {
     height: 44px;
-    padding: 0 20px;
+    padding: 0 var(--space-xl);
     font-size: var(--tsm1);
+    border-radius: var(--radius-md);
   }
   
   &--lg {
     height: 52px;
-    padding: 0 24px;
+    padding: 0 var(--space-2xl);
     font-size: var(--tbase);
+    border-radius: var(--radius-md);
+  }
+
+  /* Enhanced Shimmer Effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left var(--timing-slow) var(--ease-out);
   }
 
   /* Button Style Variants */
   &--primary {
-    background-color: var(--theme-color);
-    color: var(--navy);
-    border: 1px solid var(--theme-color);
+    background: var(--gradient-primary);
+    color: var(--background-color);
+    border: 1px solid transparent;
+    box-shadow: var(--shadow-md);
     
-    &:hover, &:focus {
-      background-color: transparent;
-      color: var(--theme-color);
+    &:hover,
+    &:focus {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(100, 255, 218, 0.15);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    &:hover::before {
+      left: 100%;
     }
     
     &:active {
       transform: translateY(0);
+      box-shadow: var(--shadow-sm);
     }
   }
   
   &--secondary {
-    background-color: var(--lightest-navy);
+    background: var(--surface-color);
     color: var(--theme-color);
-    border: 1px solid var(--lightest-navy);
+    border: 1px solid var(--dark-slate);
+    box-shadow: var(--shadow-sm);
     
-    &:hover, &:focus {
-      background-color: var(--light-navy);
+    &:hover,
+    &:focus {
+      background: var(--surface-color-light);
+      border-color: var(--theme-color);
       transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
     
     &:active {
@@ -103,13 +133,17 @@
   }
   
   &--outline {
-    background-color: transparent;
+    background: transparent;
     color: var(--theme-color);
-    border: 1px solid var(--theme-color);
+    border: 2px solid var(--theme-color);
     
-    &:hover, &:focus {
-      background-color: rgba(100, 255, 218, 0.1);
+    &:hover,
+    &:focus {
+      background: var(--theme-color-transparent);
+      border-color: var(--theme-color-hover);
+      color: var(--theme-color-hover);
       transform: translateY(-2px);
+      box-shadow: var(--shadow-glow);
     }
     
     &:active {
@@ -118,12 +152,14 @@
   }
   
   &--ghost {
-    background-color: transparent;
+    background: transparent;
     color: var(--theme-color);
     border: 1px solid transparent;
     
-    &:hover, &:focus {
-      background-color: rgba(100, 255, 218, 0.05);
+    &:hover,
+    &:focus {
+      background: var(--theme-color-transparent);
+      color: var(--theme-color-hover);
       transform: translateY(-2px);
     }
     
@@ -131,37 +167,140 @@
       transform: translateY(0);
     }
   }
+
+  /* Enhanced Glow Effect for Accent Buttons */
+  &--accent {
+    background: var(--theme-color-accent);
+    color: var(--background-color);
+    border: 1px solid transparent;
+    box-shadow: var(--shadow-md), 0 0 0 rgba(207, 102, 121, 0);
+    
+    &:hover,
+    &:focus {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg), 0 0 20px rgba(207, 102, 121, 0.4);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
   
-  /* Button Effects */
-  @media (prefers-reduced-motion: no-preference) {
+  /* Loading State */
+  &--loading {
+    position: relative;
+    color: transparent;
+    
     &::after {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      border-radius: 4px;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-      z-index: -1;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+  }
+  
+  /* Group Buttons */
+  .btn-group & {
+    &:not(:first-child) {
+      margin-left: -1px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
     
-    &:hover::after {
-      opacity: 0.1;
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    &:hover {
+      z-index: 1;
     }
   }
   
   /* Media Queries */
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     &--sm, &--md {
       height: 40px;
-      padding: 0 14px;
+      padding: 0 var(--space-md);
+      font-size: var(--tsm);
     }
     
     &--lg {
       height: 48px;
-      padding: 0 18px;
+      padding: 0 var(--space-lg);
+      font-size: var(--tsm1);
     }
+    
+    /* Improve touch targets */
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  @media (hover: none) {
+    /* Touch device optimizations */
+    &:hover {
+      transform: none;
+    }
+    
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+/* Button Text Animation */
+.btn__text {
+  position: relative;
+  transition: all var(--timing-base) var(--ease-out);
+}
+
+/* Enhanced Button Group */
+.btn-group {
+  display: inline-flex;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  
+  .btn {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* Floating Action Button */
+.btn--fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  padding: 0;
+  box-shadow: var(--shadow-lg);
+  position: fixed;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  z-index: var(--z-fixed);
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .btn__icon {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .btn--fab {
+    width: 48px;
+    height: 48px;
+    bottom: var(--space-lg);
+    right: var(--space-lg);
   }
 }
