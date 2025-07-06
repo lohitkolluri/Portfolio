@@ -1,15 +1,156 @@
+/* Enhanced Design System Variables */
 :root {
-  --tsm: 13px;
-  --tsm1: 14px;
-  --tsm2: 15px;
-  --tbase: 16px;
-  --tlarge: 18px;
-  --tlarge2: 22px;
-  --txlarge: 25px;
-  --tx2large: 32px;
-  --tgiant: clamp(40px, 8vw, 80px);
+  /* Consistent Typography Scale */
+  --tsm: 0.75rem;     /* 12px */
+  --tsm1: 0.875rem;   /* 14px */
+  --tsm2: 0.9375rem;  /* 15px */
+  --tbase: 1rem;      /* 16px */
+  --tlarge: 1.125rem; /* 18px */
+  --tlarge2: 1.375rem; /* 22px */
+  --txlarge: 1.5625rem; /* 25px */
+  --tx2large: 2rem;   /* 32px */
+  --tgiant: clamp(2.5rem, 8vw, 5rem); /* 40px - 80px responsive */
+  
+  /* Enhanced Typography Hierarchy */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+  --text-6xl: 3.75rem;   /* 60px */
+  --text-7xl: 4.5rem;    /* 72px */
+  --text-8xl: 6rem;      /* 96px */
+  --text-9xl: 8rem;      /* 128px */
+  
+  /* Heading Scale */
+  --heading-xs: var(--text-lg);
+  --heading-sm: var(--text-xl);
+  --heading-md: var(--text-2xl);
+  --heading-lg: var(--text-3xl);
+  --heading-xl: var(--text-4xl);
+  --heading-2xl: var(--text-5xl);
+  --heading-3xl: var(--text-6xl);
+  --heading-4xl: var(--text-7xl);
+  
+  /* Consistent Font Weights */
+  --font-thin: 100;
+  --font-extralight: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+  
+  /* Enhanced Responsive Breakpoints */
+  --breakpoint-xs: 375px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1920px;
+  
+  /* Content Width Constraints */
+  --content-xs: 20rem;    /* 320px */
+  --content-sm: 24rem;    /* 384px */
+  --content-md: 28rem;    /* 448px */
+  --content-lg: 32rem;    /* 512px */
+  --content-xl: 36rem;    /* 576px */
+  --content-2xl: 42rem;   /* 672px */
+  --content-3xl: 48rem;   /* 768px */
+  --content-4xl: 56rem;   /* 896px */
+  --content-5xl: 64rem;   /* 1024px */
+  --content-6xl: 72rem;   /* 1152px */
+  --content-7xl: 80rem;   /* 1280px */
+  --content-full: 100%;
+  
+  /* Component Dimensions */
+  --button-height-xs: 24px;
+  --button-height-sm: 32px;
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+  --button-height-xl: 56px;
+  
+  --input-height-xs: 28px;
+  --input-height-sm: 36px;
+  --input-height-md: 44px;
+  --input-height-lg: 52px;
+  --input-height-xl: 60px;
+  
+  /* Enhanced Container Sizes */
+  --container-xs: var(--content-xs);
+  --container-sm: var(--content-sm);
+  --container-md: var(--content-md);
+  --container-lg: var(--content-lg);
+  --container-xl: var(--content-xl);
+  --container-2xl: var(--content-2xl);
+  --container-3xl: var(--content-3xl);
+  --container-4xl: var(--content-4xl);
+  --container-5xl: var(--content-5xl);
+  --container-6xl: var(--content-6xl);
+  --container-7xl: var(--content-7xl);
+  --container-full: var(--content-full);
+  
+  /* Mobile-First Typography Adjustments */
   @media screen and (max-width: 480px) {
-    --tx2large: 25px;
-    // --tgiant: 40px;
+    --tx2large: 1.5625rem; /* 25px on mobile */
+    --tgiant: clamp(2rem, 10vw, 2.5rem); /* More conservative scaling on mobile */
+    --tlarge2: 1.25rem; /* 20px on mobile */
+    --tlarge: 1rem; /* 16px on mobile */
   }
+  
+  @media screen and (max-width: 375px) {
+    --tx2large: 1.375rem; /* 22px on very small screens */
+    --tgiant: clamp(1.75rem, 10vw, 2.25rem);
+  }
+  
+  /* Print Styles */
+  @media print {
+    --tgiant: 2rem;
+    --tx2large: 1.5rem;
+    --tlarge2: 1.25rem;
+    --tlarge: 1.125rem;
+  }
+}
+
+/* Global Typography Classes */
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+.text-2xl { font-size: var(--text-2xl); }
+.text-3xl { font-size: var(--text-3xl); }
+.text-4xl { font-size: var(--text-4xl); }
+.text-5xl { font-size: var(--text-5xl); }
+.text-6xl { font-size: var(--text-6xl); }
+
+/* Font Weight Classes */
+.font-thin { font-weight: var(--font-thin); }
+.font-extralight { font-weight: var(--font-extralight); }
+.font-light { font-weight: var(--font-light); }
+.font-normal { font-weight: var(--font-normal); }
+.font-medium { font-weight: var(--font-medium); }
+.font-semibold { font-weight: var(--font-semibold); }
+.font-bold { font-weight: var(--font-bold); }
+.font-extrabold { font-weight: var(--font-extrabold); }
+.font-black { font-weight: var(--font-black); }
+
+/* Responsive Typography Utilities */
+.responsive-text {
+  font-size: clamp(var(--text-sm), 2.5vw, var(--text-lg));
+}
+
+.responsive-heading {
+  font-size: clamp(var(--text-xl), 4vw, var(--text-3xl));
+}
+
+.responsive-display {
+  font-size: clamp(var(--text-2xl), 6vw, var(--text-6xl));
 }
